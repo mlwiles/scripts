@@ -1,5 +1,9 @@
-#https://app.testdome.com/
+# https://app.testdome.com/
 # 
+# Implement the IceCreamMachine's scoops method so that it returns all combinations of one ingredients and one topping.
+# if there are no ingredients or toppings, the method should return an empty list.list
+# For example,     machine = IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"]).scoops() should return
+# [['vanilla', 'chocolate sauce'], ['chocolate', 'chocolate sauce']]
 
 class IceCreamMachine:
     

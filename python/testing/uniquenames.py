@@ -1,5 +1,10 @@
-#https://app.testdome.com/
+# https://app.testdome.com/
 #
+# Implement the unique_names method.  Whem passed two lists of names, it will return a list containing the names that appear in 
+# either or both lists.  The returned list should have no duplicates.
+#
+# For example, calling unique_names(["Ava", "Emma", "Olivia"], ["Olivia", "Sophia", "Emma"]) should return a list containing Ava, Emma, Olivia, Sophi
+# in any order.
 
 def unique_names(names1, names2):
     names = []

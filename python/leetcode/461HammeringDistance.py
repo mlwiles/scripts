@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/maximal-rectangle/
+# 
 # The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
 # Given two integers x and y, return the Hamming distance between them.
 
@@ -50,3 +52,8 @@ class Solution(object):
             # shift 1 position to the right
             result >>= 1
         return count
+
+
+sol = Solution()
+print(sol.hammingDistance(1, 4))
+print(sol.hammingDistance(3, 1))
