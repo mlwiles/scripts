@@ -35,14 +35,36 @@ class Solution(object):
         :rtype: int
         """
         index = 0
-        length = 0
-        while index < len(s):
-    	    letter = s[index]
-    	    index = index + 1
-        return length
+        longest = 0
+        templongest = 0
+        starter = 0
+        tempstr = ""
+        while starter < len(s):
+            while index < len(s):
+                letter = s[index]
+                if tempstr and tempstr.find(letter) > -1:
+                    if templongest > longest:
+                        longest = templongest
+                    templongest = 0
+                    tempstr = letter
+                else:
+                    tempstr =  tempstr + letter
+                    templongest = len(tempstr)
+                index += 1   
+                if templongest > longest:
+                        longest = templongest
+            starter += 1
+            index = starter
+            tempstr = ""
+        return longest
 
 sol = Solution()
-print(sol.lengthOfLongestSubstring("abcabcbb"))
-print(sol.lengthOfLongestSubstring("bbbbb"))
-print(sol.lengthOfLongestSubstring("pwwkew"))
-print(sol.lengthOfLongestSubstring(""))
+print(sol.lengthOfLongestSubstring("abcabcbb")) #3
+print(sol.lengthOfLongestSubstring("bbbbb")) #1
+print(sol.lengthOfLongestSubstring("pwwkew")) #3
+print(sol.lengthOfLongestSubstring("")) #0
+print(sol.lengthOfLongestSubstring("aba")) #2
+print(sol.lengthOfLongestSubstring("dvdf")) #3
+print(sol.lengthOfLongestSubstring("asjrgapa")) #6
+print(sol.lengthOfLongestSubstring(" ")) #1
+
