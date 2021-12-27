@@ -1,10 +1,7 @@
-// Your First Program
+// Playing with different datatypes and seeing how they react with IO
 
-class HelloWorld {
+class DataTypes {
     public static void main(String[] args) {
-
-        System.out.println("Hello, World!");
-
         /*
         Converter	Flag	Explanation
         d	         	    A decimal integer.
