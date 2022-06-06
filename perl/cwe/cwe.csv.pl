@@ -1,8 +1,12 @@
 #!/usr/bin/perl
+#################################
+# Michael Wiles - michael.wiles@intel.com
+# 2022/04/29
+# CWE treebuidler via CSV
 
 # https://cwe.mitre.org/data/archive.html
-# CSV's without proper parsing are not good dpne with way
-# this is not a good implmentation, discovered there was an XML option!
+# CSV's without proper parsing are not good done with way this is not a good implmentation, discovered there was an XML option!
+# preserving this for historical purposes, dont laugh too hard, but nothing to see here ... cough cough 
 
 use warnings;
 use List::MoreUtils qw(uniq);

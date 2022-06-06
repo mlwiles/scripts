@@ -1,5 +1,12 @@
 #!/usr/bin/perl
 #################################
+# Michael Wiles - michael.wiles@intel.com
+# 2022/04/29
+# CWE treebuidler via XML
+
+# was going to user OO / classes here, but when I tried to create a linked list it fell flat on it face. 
+# leaving this for historical purposes, nothing to see here ... move along to the next section
+
 package CWE;
 sub new {
    print "CWE::new called\n";
@@ -32,7 +39,7 @@ sub setDesc {
 }
 #################################
 
-# main program using above classes.
+# main program - there is where the magic starts (in my Shia Labeouf voice)
 package main;
 
 use List::MoreUtils qw(uniq);
