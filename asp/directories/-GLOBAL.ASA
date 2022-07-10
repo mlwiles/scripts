@@ -1,0 +1,33 @@
+<SCRIPT LANGUAGE=VBScript RUNAT=Server> 
+Sub Application_OnStart
+	Application("TimeOut") = 20 'length of default TimeOut
+End Sub
+
+Sub Session_OnStart
+	Dim username
+	' On Error resume next
+	Session("FailCheck") = true
+	
+	'create database connection and save it in the session object
+	Session("DSNName") = "REDACTED"
+	Session("DBUser") = "REDACTED"
+	Session("DBPwd") = "REDACTED"
+	Session.Timeout = 30
+	Session("templateLimit") = "5"
+	Session("begLinkLoc") = "24"
+	
+	set dbobject = Server.createobject("ADODB.Connection")
+	dbobject.Open "DSN=" & Session("DSNName") & ";UID=" & Session("DBUser") & ";pwd=" & Session("DBPwd") & ";"
+	set Session("dbobject") = dbobject		
+End sub
+Sub Session_OnEnd
+	if isobject(dbobject) then
+		dbobject.close
+	end if
+	Set Session("tooltype") = Nothing
+'	if isobject(objLogonUser) then
+'		objLogonUser.LogOutUser
+'		Set objLogonUser = Nothing 
+'	end if
+end sub
+</SCRIPT>

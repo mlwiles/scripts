@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app id="WebApp_INS_Portlets">
+    <display-name>Intelligent Notification Web Application</display-name>
+    <!-- First do all of the servlet definitions -->
+    <servlet id="Servlet_INS_ManagePortlet">
+        <servlet-name>Intelligent Notification Server Management</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.ManagePortlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_SubscriptionAdminPortlet">
+        <servlet-name>Intelligent Notification Subscription Administration</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.SubscriptionAdminPortlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_GatewayAdminPortlet">
+        <servlet-name>Intelligent Notification Gateway Administration</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.GatewayAdminPortlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_UserDeletePortlet">
+        <servlet-name>Intelligent Notification User Preference Administration</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.UserDeletePortlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_MyDeliveryChannels">
+         <servlet-name>Intelligent Notification My Delivery Channels</servlet-name>
+         <servlet-class>com.ibm.pvc.we.ins.portlets.MyDeliveryChannelsController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_AolDeliveryChannels">
+         <servlet-name>Intelligent Notification Aol Delivery Channels</servlet-name>
+         <servlet-class>com.ibm.pvc.we.ins.portlets.AolDeliveryChannelController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_SMTPDeliveryChannels">
+         <servlet-name>Intelligent Notification SMTP Delivery Channels</servlet-name>
+         <servlet-class>com.ibm.pvc.we.ins.portlets.SmtpDeliveryChannelController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_WAPDeliveryChannels">
+         <servlet-name>Intelligent Notification WAP Delivery Channels</servlet-name>
+         <servlet-class>com.ibm.pvc.we.ins.portlets.WapDeliveryChannelController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_SMSDeliveryChannels">
+         <servlet-name>Intelligent Notification SMS Delivery Channels</servlet-name>
+         <servlet-class>com.ibm.pvc.we.ins.portlets.SmsDeliveryChannelController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_MessageCenterDeliveryChannels">
+         <servlet-name>Intelligent Notification Message Center Delivery Channels</servlet-name>
+         <servlet-class>com.ibm.pvc.we.ins.portlets.MessageCenterDeliveryChannelController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_ServerInitiatedActionsDeliveryChannels">
+         <servlet-name>Intelligent Notification Server Initiated Actions Delivery Channels</servlet-name>
+         <servlet-class>com.ibm.pvc.we.ins.portlets.ServerInitiatedActionsDeliveryChannelController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+      <servlet id="Servlet_INS_MySubscriptions">
+         <servlet-name>Intelligent Notification My Subscriptions</servlet-name>
+         <servlet-class>com.ibm.pvc.we.ins.portlets.MySubscriptionsInfoController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+         <servlet id="Servlet_INS_NewsSubscriptions">
+        <servlet-name>Intelligent Notification News Subscriptions</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.NewsSubscriptionBaseController</servlet-class>
+          <load-on-startup>0</load-on-startup>
+    </servlet>
+
+     <servlet id="Servlet_INS_StockSubscriptions">
+        <servlet-name>Intelligent Notification Stock Subscriptions</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.StockSubscriptionBaseController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet id="Servlet_INS_WeatherSubscriptions">
+        <servlet-name>Intelligent Notification Weather Subscriptions</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.WeatherSubscriptionBaseController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+     <servlet id="Servlet_INS_RSSSubscriptions">
+        <servlet-name>Intelligent Notification RSS Subscriptions</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.RSSSubscriptionBaseController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet id="Servlet_INS_NotesEmailSubscriptions">
+        <servlet-name>Intelligent Notification Lotus Notes E-mail Subscriptions</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.NotesEmailSubscriptionBaseController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet id="Servlet_INS_ExchangeEmailSubscriptions">
+        <servlet-name>Intelligent Notification Microsoft Exchange E-mail Subscriptions</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.ExchangeEmailSubscriptionBaseController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+
+    <servlet id="Servlet_INS_MessageRules">
+        <servlet-name>Intelligent Notification Message Rules</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.MessagePriorityController</servlet-class>
+    <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet id="Servlet_INS_MessageCenter">
+        <servlet-name>Intelligent Notification Message Center</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.MessageCenterController</servlet-class>
+    <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet id="Servlet_INS_NotificationGroup">
+        <servlet-name>Intelligent Notification Notification Groups</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.NotificationGroupController</servlet-class>
+    <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet id="Servlet_INS_SIASendMessage">
+        <servlet-name>Intelligent Notification Server Initiated Actions</servlet-name>
+        <servlet-class>com.ibm.pvc.we.ins.portlets.SIAMessageController</servlet-class>
+	<load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <!-- Then do all of the servlet mappings -->
+    <servlet-mapping id="ServletMapping_INS_ManagePortlet">
+        <servlet-name>Intelligent Notification Server Management</servlet-name>
+        <url-pattern>/INS_ManagePortlet/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_SubscriptionAdminPortlet">
+        <servlet-name>Intelligent Notification Subscription Administration</servlet-name>
+        <url-pattern>/INS_SubscriptionAdminPortlet/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_GatewayAdminPortlet">
+        <servlet-name>Intelligent Notification Gateway Administration</servlet-name>
+        <url-pattern>/INS_GatewayAdminPortlet/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_UserDeletePortlet">
+        <servlet-name>Intelligent Notification User Preference Administration</servlet-name>
+        <url-pattern>/INS_UserDeletePortlet/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_MyDeliveryChannels">
+         <servlet-name>Intelligent Notification My Delivery Channels</servlet-name>
+        <url-pattern>/INS_MyDeliveryChannels/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_AolDeliveryChannels">
+         <servlet-name>Intelligent Notification Aol Delivery Channels</servlet-name>
+        <url-pattern>/INS_AolDeliveryChannels/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_SMTPDeliveryChannels">
+         <servlet-name>Intelligent Notification SMTP Delivery Channels</servlet-name>
+        <url-pattern>/INS_SMTPDeliveryChannels/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_WAPDeliveryChannels">
+         <servlet-name>Intelligent Notification WAP Delivery Channels</servlet-name>
+        <url-pattern>/INS_WAPDeliveryChannels/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_SMSDeliveryChannels">
+         <servlet-name>Intelligent Notification SMS Delivery Channels</servlet-name>
+        <url-pattern>/INS_SMSDeliveryChannels/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_MessageCenterDeliveryChannels">
+         <servlet-name>Intelligent Notification Message Center Delivery Channels</servlet-name>
+        <url-pattern>/INS_MessageCenterDeliveryChannels/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_ServerInitiatedActionsDeliveryChannels">
+         <servlet-name>Intelligent Notification Server Initiated Actions Delivery Channels</servlet-name>
+        <url-pattern>/INS_ServerInitiatedActionsDeliveryChannels/*</url-pattern>
+    </servlet-mapping>
+      <servlet-mapping id="ServletMapping_INS_MySubscriptions">
+         <servlet-name>Intelligent Notification My Subscriptions</servlet-name>
+        <url-pattern>/INS_MySubscriptions/*</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping id="ServletMapping_INS_NewsSubscriptions">
+        <servlet-name>Intelligent Notification News Subscriptions</servlet-name>
+        <url-pattern>/INS_NewsSubscriptions/*</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping id="ServletMapping_INS_StockSubscriptions">
+        <servlet-name>Intelligent Notification Stock Subscriptions</servlet-name>
+        <url-pattern>/INS_StockSubscriptions/*</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping id="ServletMapping_INS_WeatherSubscriptions">
+        <servlet-name>Intelligent Notification Weather Subscriptions</servlet-name>
+        <url-pattern>/INS_WeatherSubscriptions/*</url-pattern>
+    </servlet-mapping>
+
+     <servlet-mapping id="ServletMapping_INS_RSSSubscriptions">
+        <servlet-name>Intelligent Notification RSS Subscriptions</servlet-name>
+        <url-pattern>/INS_RSSSubscriptions/*</url-pattern>
+    </servlet-mapping>
+
+ <servlet-mapping id="ServletMapping_INS_NotesEmailSubscriptions">
+        <servlet-name>Intelligent Notification Lotus Notes E-mail Subscriptions</servlet-name>
+        <url-pattern>/INS_NotesEmailSubscriptions/*</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping id="ServletMapping_INS_ExchangeEmailSubscriptions">
+        <servlet-name>Intelligent Notification Microsoft Exchange E-mail Subscriptions</servlet-name>
+        <url-pattern>/INS_ExchangeEmailSubscriptions/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_MessageRules">
+        <servlet-name>Intelligent Notification Message Rules</servlet-name>
+        <url-pattern>/INS_MessageRules/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_MessageCenter">
+        <servlet-name>Intelligent Notification Message Center</servlet-name>
+        <url-pattern>/INS_MessageCenter/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_NotificationGroup">
+        <servlet-name>Intelligent Notification Notification Groups</servlet-name>
+        <url-pattern>/INS_NotificationGroup/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping id="ServletMapping_INS_SIASendMessage">
+        <servlet-name>Intelligent Notification Server Initiated Actions</servlet-name>
+        <url-pattern>/INS_ServerInitiatedActions/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>

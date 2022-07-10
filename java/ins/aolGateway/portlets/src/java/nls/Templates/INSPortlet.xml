@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE portlet-app-def PUBLIC "-//IBM//DTD Portlet Application 1.1//EN" "portlet_1.1.dtd">
+<portlet-app-def>
+    <portlet-app uid="INS_Portlets">
+        <portlet-app-name>Intelligent Notification Portlet Application</portlet-app-name>
+        <!-- First do all of the portlets -->
+        <portlet href="WEB-INF/web.xml#Servlet_INS_ManagePortlet" id="Portlet_INS_ManagePortlet">
+            <portlet-name>Intelligent Notification Server Management</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view/>
+                    <!-- This one doesn't have an edit mode -->
+                    <help/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_SubscriptionAdminPortlet" id="Portlet_INS_SubscriptionAdminPortlet">
+            <portlet-name>Intelligent Notification Subscription Administration</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view/>
+                    <!-- This one doesn't have an edit mode -->
+                    <help/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_GatewayAdminPortlet" id="Portlet_INS_GatewayAdminPortlet">
+            <portlet-name>Intelligent Notification Gateway Administration</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view/>
+                    <!-- This one doesn't have an edit mode -->
+                    <help/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_UserDeletePortlet" id="Portlet_INS_UserDeletePortlet">
+            <portlet-name>Intelligent Notification User Preference Administration</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view/>
+                    <!-- This one doesn't have an edit mode -->
+                    <help/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_SIASendMessage" id="Portlet_INS_SIASendMessage">
+            <portlet-name>Intelligent Notification Server Initiated Actions</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view/>
+                    <help/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_MyDeliveryChannels" id="Portlet_INS_MyDeliveryChannels">
+            <portlet-name>Intelligent Notification My Delivery Channels</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_AolDeliveryChannels" id="Portlet_INS_AolDeliveryChannels">
+            <portlet-name>Intelligent Notification Aol Delivery Channels</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                 </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_SMTPDeliveryChannels" id="Portlet_INS_SMTPDeliveryChannels">
+            <portlet-name>Intelligent Notification SMTP Delivery Channels</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                 </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_WAPDeliveryChannels" id="Portlet_INS_WAPDeliveryChannels">
+            <portlet-name>Intelligent Notification WAP Delivery Channels</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                 </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_SMSDeliveryChannels" id="Portlet_INS_SMSDeliveryChannels">
+            <portlet-name>Intelligent Notification SMS Delivery Channels</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                 </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_MessageCenterDeliveryChannels" id="Portlet_INS_MessageCenterDeliveryChannels">
+            <portlet-name>Intelligent Notification Message Center Delivery Channels</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                 </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+        <portlet href="WEB-INF/web.xml#Servlet_INS_ServerInitiatedActionsDeliveryChannels" id="Portlet_INS_ServerInitiatedActionsDeliveryChannels">
+            <portlet-name>Intelligent Notification Server Initiated Actions Delivery Channels</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                 </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+            <portlet href="WEB-INF/web.xml#Servlet_INS_MySubscriptions" id="Portlet_INS_MySubscriptions">
+            <portlet-name>Intelligent Notification My Subscriptions</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+             <portlet href="WEB-INF/web.xml#Servlet_INS_NewsSubscriptions" id="Portlet_INS_NewsSubscriptions">
+            <portlet-name>Intelligent Notification News Subscriptions</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                 <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+        <portlet href="WEB-INF/web.xml#Servlet_INS_StockSubscriptions" id="Portlet_INS_StockSubscriptions">
+            <portlet-name>Intelligent Notification Stock Subscriptions</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                  <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+        <portlet href="WEB-INF/web.xml#Servlet_INS_WeatherSubscriptions" id="Portlet_INS_WeatherSubscriptions">
+            <portlet-name>Intelligent Notification Weather Subscriptions</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                 <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_RSSSubscriptions" id="Portlet_INS_RSSSubscriptions">
+            <portlet-name>Intelligent Notification RSS News Subscriptions</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                  <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+        <portlet href="WEB-INF/web.xml#Servlet_INS_NotesEmailSubscriptions" id="Portlet_INS_NotesEmailSubscriptions">
+            <portlet-name>Intelligent Notification Lotus Notes E-mail Subscriptions</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                 <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+        <portlet href="WEB-INF/web.xml#Servlet_INS_ExchangeEmailSubscriptions" id="Portlet_INS_ExchangeEmailSubscriptions">
+            <portlet-name>Intelligent Notification Microsoft Exchange E-mail Subscriptions</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                 <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+
+        <portlet href="WEB-INF/web.xml#Servlet_INS_MessageRules" id="Portlet_INS_MessageRules">
+            <portlet-name>Intelligent Notification Message Rules</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_MessageCenter" id="Portlet_INS_MessageCenter">
+            <portlet-name>Intelligent Notification Message Center</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+        <portlet href="WEB-INF/web.xml#Servlet_INS_NotificationGroup" id="Portlet_INS_NotificationGroup">
+            <portlet-name>Intelligent Notification User Groups</portlet-name>
+            <cache>
+                <expires>0</expires>
+                <shared>NO</shared>
+            </cache>
+            <allows>
+                <maximized/>
+                <minimized/>
+            </allows>
+            <supports>
+                <markup name="html">
+                    <view output="fragment"/>
+                    <help output="fragment"/>
+                </markup>
+                <markup name="wml">
+                    <view output="fragment"/>
+                 </markup>
+                <markup name="pda">
+                    <view output="fragment"/>
+                </markup>
+            </supports>
+        </portlet>
+
+    </portlet-app>
+
+    <concrete-portlet-app uid="INS_Portlets_Concrete">
+        <portlet-app-name>Intelligent Notification Portlet Application (Concrete)</portlet-app-name>
+        <!-- Then do all of the concrete portlets -->
+        <concrete-portlet href="Portlet_INS_ManagePortlet">
+            <portlet-name>Intelligent Notification Server Management</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.manage@-->
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_SubscriptionAdminPortlet">
+            <portlet-name>Intelligent Notification Subscription Administration</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.subscriptionadmin@-->
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_GatewayAdminPortlet">
+            <portlet-name>Intelligent Notification Gateway Administration</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.gatewayadmin@-->
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_UserDeletePortlet">
+            <portlet-name>Intelligent Notification User Preference Administration</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.userdelete@-->
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_SIASendMessage">
+            <portlet-name>Intelligent Notification Server Initiated Actions</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.siaSendMessage@-->
+            <config-param>
+                <param-name>validActionCodes</param-name>
+                <param-value>000000, 010000, 020000, 030000, 040000, 050000</param-value>
+            </config-param>
+            <config-param>
+                <param-name>actionsPropertyFile</param-name>
+                <param-value>com.ibm.pvc.we.ins.apps.sia.UserDefinedServerInitiatedActions</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_MyDeliveryChannels">
+            <portlet-name>Intelligent Notification My Delivery Channels</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.mydeliverychannels@-->
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_AolDeliveryChannels">
+            <portlet-name>Intelligent Notification Aol Delivery Channels</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.dcAol@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/deliveryChannels.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_SMTPDeliveryChannels">
+            <portlet-name>Intelligent Notification SMTP Delivery Channels</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.dcsmtp@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/deliveryChannels.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_WAPDeliveryChannels">
+            <portlet-name>Intelligent Notification WAP Delivery Channels</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.dcwap@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/deliveryChannels.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_SMSDeliveryChannels">
+            <portlet-name>Intelligent Notification SMS Delivery Channels</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.dcsms@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/deliveryChannels.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_MessageCenterDeliveryChannels">
+            <portlet-name>Intelligent Notification Message Center Delivery Channels</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.dcmessagecenter@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/deliveryChannels.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_ServerInitiatedActionsDeliveryChannels">
+            <portlet-name>Intelligent Notification Server Initiated Actions Delivery Channels</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.dcsia@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/deliveryChannels.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_MySubscriptions">
+            <portlet-name>Intelligent Notification My Subscriptions</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.mySubscriptions@-->
+        </concrete-portlet>
+         <concrete-portlet href="Portlet_INS_NewsSubscriptions">
+            <portlet-name>Intelligent Notification News Subscriptions</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.newsSubscriptions@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/subscriptions.gif</param-value>
+            </config-param>
+            <config-param>
+             <param-name>newsFeeds0</param-name>
+             <param-value>ap.business</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeeds1</param-name>
+             <param-value>newsbytes.news</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeeds2</param-name>
+             <param-value>business_wire.corporate_newsfeed.ft</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeeds3</param-name>
+             <param-value>business_wire.europe.ft</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeeds4</param-name>
+             <param-value>upi.all.ft</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeeds5</param-name>
+             <param-value>sportsnetwork.news.ft</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeedsDisplay0</param-name>
+             <param-value>AP:Business</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeedsDisplay1</param-name>
+             <param-value>Newsbytes Top Stories</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeedsDisplay2</param-name>
+             <param-value>Business Wire: Corporate Industry Press Releases</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeedsDisplay3</param-name>
+             <param-value>Business Wire: European Press Releases</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeedsDisplay4</param-name>
+             <param-value>UPI</param-value>
+             </config-param>
+            <config-param>
+             <param-name>newsFeedsDisplay5</param-name>
+             <param-value>Sports Network News</param-value>
+             </config-param>
+
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_StockSubscriptions">
+            <portlet-name>Intelligent Notification Stock Subscriptions</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.stockSubscriptions@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/subscriptions.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_WeatherSubscriptions">
+            <portlet-name>Intelligent Notification Weather Subscriptions</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.weatherSubscriptions@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/subscriptions.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+         <concrete-portlet href="Portlet_INS_RSSSubscriptions">
+            <portlet-name>Intelligent Notification RSS Subscriptions</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.rssSubscriptions@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/subscriptions.gif</param-value>
+            </config-param>
+            <!--
+             <config-param>
+             <param-name>rssFeeds0</param-name>
+             <param-value>Breaking News Headlines from Around the World, Powered by Worldpress.org</param-value>
+             </config-param>
+            <config-param>
+             <param-name>rssFeeds1</param-name>
+             <param-value>Top Headlines from World Press Review</param-value>
+             </config-param>
+            <config-param>
+             <param-name>rssFeeds2</param-name>
+             <param-value>Latin American and Canadian News from World Press Reivew</param-value>
+             </config-param>
+             <config-param>
+             <param-name>rssFeedsDisplay0</param-name>
+             <param-value>WorldPressReview-Breaking News Headlines </param-value>
+             </config-param>
+            <config-param>
+             <param-name>rssFeedsDisplay1</param-name>
+             <param-value>WorldPressReview-Top Headlines from WorldPress Review</param-value>
+             </config-param>
+            <config-param>
+             <param-name>rssFeedsDisplay2</param-name>
+             <param-value>WorldPressReview-Latin American and Canadian News</param-value>
+             </config-param>
+             -->
+        </concrete-portlet>
+
+        <concrete-portlet href="Portlet_INS_NotesEmailSubscriptions">
+            <portlet-name>Intelligent Notification Lotus Notes E-mail Subscriptions</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.notesEmailSubscriptions@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/subscriptions.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_ExchangeEmailSubscriptions">
+            <portlet-name>Intelligent Notification Microsoft Exchange E-mail Subscriptions</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.exchangeEmailSubscriptions@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/subscriptions.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+
+        <concrete-portlet href="Portlet_INS_MessageRules">
+            <portlet-name>Intelligent Notification Message Rules</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.messagePriority@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/notificationSettings.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_MessageCenter">
+            <portlet-name>Intelligent Notification Message Center</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.messageCenter@-->
+            <config-param>
+                <param-name>UND.PREF.MULTI</param-name>
+                <param-value>all</param-value>
+            </config-param>
+
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/messaging.gif</param-value>
+            </config-param>
+        </concrete-portlet>
+        <concrete-portlet href="Portlet_INS_NotificationGroup">
+            <portlet-name>Intelligent Notification User Groups</portlet-name>
+            <default-locale>en</default-locale>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.notificationGroup@-->
+            <config-param>
+                <param-name>pda-icon</param-name>
+                <param-value>/images/pda/notificationGroups.gif</param-value>
+            </config-param>            
+        </concrete-portlet>
+
+    </concrete-portlet-app>
+</portlet-app-def>

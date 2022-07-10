@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE request PUBLIC "-//DTD Portal Configuration 1.1//EN" "PortalConfig_1.1.dtd">
+<request>
+    <portal action="locate">
+        <!-- locate the "NoSkin" for the Admin Portlets -->
+        <skin action="locate" handle="NoSkin" name="NoSkin"/>
+        <!-- locate the WPS Portlet Selector Portlet -->
+        <package action="locate" globalid="com.ibm.wps.portlets.install" handle="com.ibm.wps.portlets.install" name="Abstract Portlet Installer">
+            <application action="locate" globalid="com.ibm.wps.portlets.install.1" handle="com.ibm.wps.portlets.install.1" name="Portlet Installer">
+                <portlet action="locate" handle="com.ibm.wps.portlets.install.1.Install_Portlets" name="Install Portlets">
+                </portlet>
+            </application>
+        </package>
+        <!-- INS Portlets package -->
+        <package action="locate" globalid="INS_Portlets" handle="INS_Portlets" name="Intelligent Notification Portlet Application">
+            <!-- First find all of the templates -->
+            <!-- Admin Portlet templates -->
+            <portlettemplate action="locate" handle="INS_Portlets.INS_ManagePortlet" name="Intelligent Notification Server Management" referenceid="Portlet_INS_ManagePortlet"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_SubscriptionAdminPortlet" name="Intelligent Notification Subscription Administration" referenceid="Portlet_INS_SubscriptionAdminPortlet"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_GatewayAdminPortlet" name="Intelligent Notification Gateway Administration" referenceid="Portlet_INS_GatewayAdminPortlet"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_UserDeletePortlet" name="Intelligent Notification User Preference Administration" referenceid="Portlet_INS_UserDeletePortlet"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_SIASendMessage" name="Intelligent Notification Server Initiated Actions" referenceid="Portlet_INS_SIASendMessage"/>
+            <!-- User Portlet templates -->
+            <portlettemplate action="locate" handle="INS_Portlets.INS_MyDeliveryChannels" name="Intelligent Notification My Delivery Channels" referenceid="Portlet_INS_MyDeliveryChannels"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_AolDeliveryChannels" name="Intelligent Notification Aol Delivery Channels" referenceid="Portlet_INS_AolDeliveryChannels"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_SMTPDeliveryChannels" name="Intelligent Notification SMTP Delivery Channels" referenceid="Portlet_INS_SMTPDeliveryChannels"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_WAPDeliveryChannels" name="Intelligent Notification WAP Delivery Channels" referenceid="Portlet_INS_WAPDeliveryChannels"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_SMSDeliveryChannels" name="Intelligent Notification SMS Delivery Channels" referenceid="Portlet_INS_SMSDeliveryChannels"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_MessageCenterDeliveryChannels" name="Intelligent Notification Message Center Delivery Channels" referenceid="Portlet_INS_MessageCenterDeliveryChannels"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_ServerInitiatedActionsDeliveryChannels" name="Intelligent Notification Server Initiated Actions Delivery Channels" referenceid="Portlet_INS_ServerInitiatedActionsDeliveryChannels"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_MySubscriptions" name="Intelligent Notification My Subscriptions" referenceid="Portlet_INS_MySubscriptions"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_NewsSubscriptions" name="Intelligent Notification News Subscriptions" referenceid="Portlet_INS_NewsSubscriptions"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_StockSubscriptions" name="Intelligent Notification Stock Subscriptions" referenceid="Portlet_INS_StockSubscriptions"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_WeatherSubscriptions" name="Intelligent Notification Weather Subscriptions" referenceid="Portlet_INS_WeatherSubscriptions"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_RSSSubscriptions" name="Intelligent Notification RSS Subscriptions" referenceid="Portlet_INS_RSSSubscriptions"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_NotesEmailSubscriptions" name="Intelligent Notification Lotus Notes E-mail Subscriptions" referenceid="Portlet_INS_NotesEmailSubscriptions"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_ExchangeEmailSubscriptions" name="Intelligent Notification Microsoft Exchange E-mail Subscriptions" referenceid="Portlet_INS_ExchangeEmailSubscriptions"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_MessageRules" name="Intelligent Notification Message Rules" referenceid="Portlet_INS_MessageRules"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_NotificationGroup" name="Intelligent Notification User Groups" referenceid="Portlet_INS_NotificationGroup"/>
+            <portlettemplate action="locate" handle="INS_Portlets.INS_MessageCenter" name="Intelligent Notification Message Center" referenceid="Portlet_INS_MessageCenter"/>
+            <application action="locate" globalid="INS_Portlets_Concrete" handle="INS_Portlets_Concrete" name="Intelligent Notification Portlet Application (Concrete)">
+                <!-- Next find all of the portlets -->
+                <!-- Admin Portlets -->
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_ManagePortlet" name="Intelligent Notification Server Management" parentref="INS_Portlets.INS_ManagePortlet" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_SubscriptionAdminPortlet" name="Intelligent Notification Subscription Administration" parentref="INS_Portlets.INS_SubscriptionAdminPortlet" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_GatewayAdminPortlet" name="Intelligent Notification Gateway Administration" parentref="INS_Portlets.INS_GatewayAdminPortlet" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_UserDeletePortlet" name="Intelligent Notification User Preference Administration" parentref="INS_Portlets.INS_UserDeletePortlet" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_SIASendMessage" name="Intelligent Notification Server Initiated Actions" parentref="INS_Portlets.INS_SIASendMessage" remote="false">
+                </portlet>
+                <!-- User Portlets -->
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_MyDeliveryChannels" name="Intelligent Notification My Delivery Channels" parentref="INS_Portlets.INS_MyDeliveryChannels" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_AolDeliveryChannels" name="Intelligent Notification Aol Delivery Channels" parentref="INS_Portlets.INS_AolDeliveryChannels" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_SMTPDeliveryChannels" name="Intelligent Notification SMTP Delivery Channels" parentref="INS_Portlets.INS_SMTPDeliveryChannels" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_WAPDeliveryChannels" name="Intelligent Notification WAP Delivery Channels" parentref="INS_Portlets.INS_WAPDeliveryChannels" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_SMSDeliveryChannels" name="Intelligent Notification SMS Delivery Channels" parentref="INS_Portlets.INS_SMSDeliveryChannels" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_MessageCenterDeliveryChannels" name="Intelligent Notification Message Center Delivery Channels" parentref="INS_Portlets.INS_MessageCenterDeliveryChannels" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_ServerInitiatedActionsDeliveryChannels" name="Intelligent Notification Server Initiated Actions Delivery Channels" parentref="INS_Portlets.INS_ServerInitiatedActionsDeliveryChannels" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_MySubscriptions" name="Intelligent Notification My Subscriptions" parentref="INS_Portlets.INS_MySubscriptions" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_NewsSubscriptions" name="Intelligent Notification News Subscriptions" parentref="INS_Portlets.INS_NewsSubscriptions" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_StockSubscriptions" name="Intelligent Notification Stock Subscriptions" parentref="INS_Portlets.INS_StockSubscriptions" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_WeatherSubscriptions" name="Intelligent Notification Weather Subscriptions" parentref="INS_Portlets.INS_WeatherSubscriptions" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_RSSSubscriptions" name="Intelligent Notification RSS Subscriptions" parentref="INS_Portlets.INS_RSSSubscriptions" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_NotesEmailSubscriptions" name="Intelligent Notification Lotus Notes E-mail Subscriptions" parentref="INS_Portlets.INS_NotesEmailSubscriptions" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_ExchangeEmailSubscriptions" name="Intelligent Notification Microsoft Exchange E-mail Subscriptions" parentref="INS_Portlets.INS_ExchangeEmailSubscriptions" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_MessageRules" name="Intelligent Notification Message Rules" parentref="INS_Portlets.INS_MessageRules" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_NotificationGroup" name="Intelligent Notification User Groups" parentref="INS_Portlets.INS_NotificationGroup" remote="false">
+                </portlet>
+                <portlet action="locate" handle="INS_Portlets_Concrete.INS_MessageCenter" name="Intelligent Notification Message Center" parentref="INS_Portlets.INS_MessageCenter" remote="false">
+                </portlet>
+            </application>
+        </package>
+        <!-- Then do all of the pages -->
+        <!-- Admin Page -->
+        
+        <!-- Added the following 5 compositions for WP4.2 support -->
+        
+        <!-- Manage Servers Admin Page -->
+        <composition action="update" active="true" handle="INS_Manage_Servers" name="Intelligent Notification Services Manage Servers" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.manage@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Manage_Servers.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Manage_Servers.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Manage_Servers.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Manage_Servers.x-1.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_ManagePortlet">
+                        </portletinstance>                                                                                      
+                    </component>
+                </component>
+            </component>
+        </composition>
+        
+        <!-- Remove User Preferences Admin Page -->
+        <composition action="update" active="true" handle="INS_Remove_User_Preferences" name="Intelligent Notification Services Remove User Preferences" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.userdelete@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Remove_User_Preferences.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Remove_User_Preferences.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Remove_User_Preferences.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Remove_User_Preferences.x-1.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_UserDeletePortlet">
+                        </portletinstance>                                                                                      
+                    </component>
+                </component>
+            </component>
+        </composition>
+        
+        <!-- Configure Gateways Admin Page -->
+        <composition action="update" active="true" handle="INS_Configure_Gateways" name="Intelligent Notification Services Configure Gateways" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.gatewayadapter@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Configure_Gateways.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Configure_Gateways.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Configure_Gateways.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Configure_Gateways.x-1.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_GatewayAdminPortlet">
+                        </portletinstance>                                                                                      
+                    </component>
+                </component>
+            </component>
+        </composition>
+        
+        <!-- Configure Subscriptions Admin Page -->
+        <composition action="update" active="true" handle="INS_Configure_Subscriptions" name="Intelligent Notification Services Configure Subscriptions" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.subscriptionadmin@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Configure_Subscriptions.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Configure_Subscriptions.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Configure_Subscriptions.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Configure_Subscriptions.x-1.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_SubscriptionAdminPortlet">
+                        </portletinstance>                                                                                      
+                    </component>
+                </component>
+            </component>
+        </composition>
+        
+        <!-- Send Actions Admin Page -->
+        <composition action="update" active="true" handle="INS_Send_Actions" name="Intelligent Notification Services Send Actions" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <!--@Portlet_com.ibm.pvc.we.ins.portlets.siaSendMessage@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Send_Actions.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Send_Actions.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Send_Actions.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Send_Actions.x-1.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_SIASendMessage">
+                        </portletinstance>                                                                                      
+                    </component>
+                </component>
+            </component>
+        </composition>
+        
+        <!-- Admininistration Page/Label/Menu -->
+        <!-- WP 4.2 support: changed system to "true" in following line -->
+        <composition action="update" active="true" handle="INS_Administration" name="Intelligent Notification Services Administration" owner="$adminid$" skinref="NoSkin" system="true">
+            <supported-markup markup="html" update="set"/>
+            <!--@Page_com.ibm.pvc.we.ins.portlets.admin@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Administration.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Administration.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Administration.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Administration.x-1.x100.x100.portletinstance" portletref="com.ibm.wps.portlets.install.1.Install_Portlets"/>
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Administration.x-1.x100.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Administration.x-1.x100.x200.portletinstance" portletref="INS_Portlets_Concrete.INS_ManagePortlet">
+                        </portletinstance>
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Administration.x-1.x100.x300" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="300" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Administration.x-1.x100.x300.portletinstance" portletref="INS_Portlets_Concrete.INS_UserDeletePortlet">
+                        </portletinstance>
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Administration.x-1.x100.x400" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="400" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Administration.x-1.x100.x400.portletinstance" portletref="INS_Portlets_Concrete.INS_GatewayAdminPortlet">
+                        </portletinstance>
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Administration.x-1.x100.x500" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="500" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Administration.x-1.x100.x500.portletinstance" portletref="INS_Portlets_Concrete.INS_SubscriptionAdminPortlet">
+                        </portletinstance>
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Administration.x-1.x100.x600" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="600" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Administration.x-1.x100.x600.portletinstance" portletref="INS_Portlets_Concrete.INS_SIASendMessage">
+                        </portletinstance>
+                    </component>
+                </component>
+            </component>
+        </composition>
+        <!-- My Delivery Channels Page -->
+        <composition action="update" active="true" handle="INS_My_Delivery_Channels" name="Intelligent Notification Services My Delivery Channels" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <supported-markup markup="wml" update="set"/>
+            <supported-markup markup="pda" update="set"/>
+            <!--@Page_com.ibm.pvc.we.ins.portlets.userdeliverychannels@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x100.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="NoSkin" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Delivery_Channels.x-1.x100.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_MyDeliveryChannels">
+                            </portletinstance>
+                        </component>
+                    </component>
+                </component>
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x200.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x200.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Delivery_Channels.x-1.x200.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_AolDeliveryChannels">
+                            </portletinstance>
+                        </component>
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x200.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x200.x200.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Delivery_Channels.x-1.x100.x200.x200.portletinstance" portletref="INS_Portlets_Concrete.INS_SMTPDeliveryChannels">
+                            </portletinstance>
+                        </component>
+                    </component>
+                </component>
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x300" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="300" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x300.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x300.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Delivery_Channels.x-1.x300.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_MessageCenterDeliveryChannels">
+                            </portletinstance>
+                        </component>
+                    </component>             
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x300.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x300.x200.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <!-- a portletinstance could go here -->
+                            <portletinstance action="update" handle="INS_My_Delivery_Channels.x-1.x300.x200.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_WAPDeliveryChannels">
+                            </portletinstance>
+                        </component>
+                    </component>
+                </component>
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x400" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="400" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x400.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x400.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Delivery_Channels.x-1.x400.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_SMSDeliveryChannels">
+                            </portletinstance>
+                        </component>
+                    </component>             
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x400.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="400" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Delivery_Channels.x-1.x400.x200.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <!-- a portletinstance could go here -->
+                            <portletinstance action="update" handle="INS_My_Delivery_Channels.x-1.x400.x200.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_ServerInitiatedActionsDeliveryChannels">
+                            </portletinstance>
+                        </component>
+                    </component>
+                </component>
+            </component>
+        </composition>
+        <!-- My Notification Groups Page -->
+        <composition action="update" active="true" handle="INS_My_Notification_Groups" name="Intelligent Notification Services My User Groups" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <supported-markup markup="wml" update="set"/>
+            <supported-markup markup="pda" update="set"/>
+            <!--@Page_com.ibm.pvc.we.ins.portlets.usernotificationgroups@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Notification_Groups.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Notification_Groups.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Notification_Groups.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_My_Notification_Groups.x-1.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_NotificationGroup">
+                        </portletinstance>
+                    </component>
+                </component>
+            </component>
+        </composition>
+        <!-- My Message Rules Page -->
+        <composition action="update" active="true" handle="INS_My_Message_Rules" name="Intelligent Notification Services My Message Rules" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <supported-markup markup="wml" update="set"/>
+            <supported-markup markup="pda" update="set"/>
+            <!--@Page_com.ibm.pvc.we.ins.portlets.usermessagepriorities@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Message_Rules.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Message_Rules.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Message_Rules.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_My_Message_Rules.x-1.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_MessageRules">
+                        </portletinstance>
+                    </component>
+                </component>
+            </component>
+        </composition>
+        <!-- My Subscriptions Page -->
+        <composition action="update" active="true" handle="INS_My_Subscriptions" name="Intelligent Notification Services My Subscriptions" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <supported-markup markup="wml" update="set"/>
+            <supported-markup markup="pda" update="set"/>
+            <!--@Page_com.ibm.pvc.we.ins.portlets.usersubscriptions@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x100.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="NoSkin" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Subscriptions.x-1.x100.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_MySubscriptions">
+                            </portletinstance>
+                        </component>
+                    </component>
+                </component>
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x200.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x200.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Subscriptions.x-1.x200.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_WeatherSubscriptions">
+                            </portletinstance>
+                        </component>
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x200.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x200.x200.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Subscriptions.x-1.x100.x200.x200.portletinstance" portletref="INS_Portlets_Concrete.INS_StockSubscriptions">
+                            </portletinstance>
+                        </component>                      
+                    </component>
+                </component>
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x300" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="300" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x300.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x300.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Subscriptions.x-1.x300.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_NewsSubscriptions">
+                            </portletinstance>
+                        </component>                    
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x300.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x300.x200.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Subscriptions.x-1.x300.x200.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_RSSSubscriptions">
+                            </portletinstance>
+                        </component>                     
+                    </component>
+                </component>                
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x400" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="400" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x400.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x400.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Subscriptions.x-1.x400.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_NotesEmailSubscriptions">
+                            </portletinstance>
+                        </component>                 
+                    </component>
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x400.x200" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="200" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="50%">
+                        <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_My_Subscriptions.x-1.x400.x200.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                            <portletinstance action="update" handle="INS_My_Subscriptions.x-1.x400.x200.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_ExchangeEmailSubscriptions">
+                            </portletinstance>
+                        </component>                     
+                    </component>
+                </component>
+            </component>
+        </composition>
+        <!-- Message Center Page -->
+        <composition action="update" active="true" handle="INS_Message_Center" name="Intelligent Notification Services Message Center" owner="$adminid$" skinref="undefined" system="false">
+            <supported-markup markup="html" update="set"/>
+            <supported-markup markup="wml" update="set"/>
+            <supported-markup markup="pda" update="set"/>
+            <!--@Page_com.ibm.pvc.we.ins.portlets.messageCenter@-->
+            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Message_Center.x-1" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="-1" nestable="undefined" skinref="undefined" type="unlayered" orientation="H" width="undefined">
+                <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Message_Center.x-1.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="unlayered" orientation="V" width="undefined"> 
+                    <component action="update" active="true" deletable="undefined" editable="undefined" handle="INS_Message_Center.x-1.x100.x100" maxsize="undefined" modifiable="undefined" movable="undefined" ordinal="100" nestable="undefined" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" handle="INS_Message_Center.x-1.x100.x100.portletinstance" portletref="INS_Portlets_Concrete.INS_MessageCenter">
+                        </portletinstance>
+                    </component>                  
+                </component>
+            </component>
+        </composition>
+
+        <!-- Intelligent Notification Page Group -->
+        <composition name="Root.Composition" action="locate">
+          <component ordinal="0" action="locate">
+            <component orientation="V" type="layered" active="true" action="update" name="IBM Intelligent Notification" ordinal="9000">
+                <supported-markup markup="html" update="set"/>
+                <supported-markup markup="wml" update="set"/>
+                <supported-markup markup="pda" update="set"/>
+                <!--@Pagegroup_com.ibm.pvc.we.ins.portlets@-->
+                <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                
+                
+                <!-- WP4.2 support: removed orientation=v from the following line -->
+                <!-- WP4.2 support: changed compositionref="INS_Administration" to compositionref="undefined" -->
+                <component compositionref="undefined" type="layered" active="true" action="update" ordinal="100" name="IBM INS Administration">
+                    <supported-markup markup="html" update="set"/>
+                    <!--@Page_com.ibm.pvc.we.ins.portlets.admin@-->
+                    <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                    <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                    <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                    <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                    <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                    <!-- added the following 5 components for WP 4.2 support -->
+                    <component action="update" active="true" compositionref="INS_Manage_Servers" deletable="undefined" editable="undefined" handle="INS_Administration_Manage_Servers" maxsize="undefined" modifiable="undefined" movable="undefined" name="IBM INS Manage Servers" nestable="undefined" ordinal="100" skinref="undefined" themeref="undefined" type="layered" width="undefined">
+                            <!--@Portlet_com.ibm.pvc.we.ins.portlets.manage@-->
+                            <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                    </component>
+                    <component action="update" active="true" allmarkupsallowed="true" compositionref="INS_Remove_User_Preferences" deletable="undefined" editable="undefined" handle="Administration_Remove_User_Preferences" maxsize="undefined" modifiable="undefined" movable="undefined" name="IBM INS Remove User Preferences" nestable="undefined" ordinal="200" skinref="undefined" themeref="undefined" type="layered" width="undefined">
+                            <!--@Portlet_com.ibm.pvc.we.ins.portlets.userdelete@-->
+                            <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                    </component>
+                    <component action="update" active="true" allmarkupsallowed="true" compositionref="INS_Configure_Gateways" deletable="undefined" editable="undefined" handle="Administration_Configure_Gateways" maxsize="undefined" modifiable="undefined" movable="undefined" name="IBM INS Configure Gateways" nestable="undefined" ordinal="300" skinref="undefined" themeref="undefined" type="layered" width="undefined">
+                            <!--@Portlet_com.ibm.pvc.we.ins.portlets.gatewayadapter@-->
+                            <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                    </component>
+                    <component action="update" active="true" allmarkupsallowed="true" compositionref="INS_Configure_Subscriptions" deletable="undefined" editable="undefined" handle="Administration_Configure_Subscriptions" maxsize="undefined" modifiable="undefined" movable="undefined" name="IBM INS Configure Subscriptions" nestable="undefined" ordinal="400" skinref="undefined" themeref="undefined" type="layered" width="undefined">
+                            <!--@Portlet_com.ibm.pvc.we.ins.portlets.subscriptionadmin@-->
+                            <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                    </component>
+                    <component action="update" active="true" allmarkupsallowed="true" compositionref="INS_Send_Actions" deletable="undefined" editable="undefined" handle="Administration_Send_Actions" maxsize="undefined" modifiable="undefined" movable="undefined" name="IBM INS Send Actions" nestable="undefined" ordinal="500" skinref="undefined" themeref="undefined" type="layered" width="undefined">
+                            <!--@Portlet_com.ibm.pvc.we.ins.portlets.siaSendMessage@-->
+                            <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                            <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                            <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                            <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                    </component>
+
+            </component>
+            <component compositionref="INS_My_Delivery_Channels" orientation="V" type="layered" active="true" action="update" ordinal="200" name="IBM INS My Delivery Channels">
+                <supported-markup markup="html" update="set"/>
+                <supported-markup markup="wml" update="set"/>
+                <supported-markup markup="pda" update="set"/>
+                <!--@Page_com.ibm.pvc.we.ins.portlets.userdeliverychannels@-->
+                <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            </component>
+            <component compositionref="INS_My_Notification_Groups" orientation="V" type="layered" active="true" action="update" ordinal="300" name="IBM INS My User Groups">
+                <supported-markup markup="html" update="set"/>
+                <supported-markup markup="wml" update="set"/>
+                <supported-markup markup="pda" update="set"/>
+                <!--@Page_com.ibm.pvc.we.ins.portlets.usernotificationgroups@-->
+                <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            </component>
+            <component compositionref="INS_My_Message_Rules" orientation="V" type="layered" active="true" action="update" ordinal="400" name="IBM INS My Message Rules">
+                <supported-markup markup="html" update="set"/>
+                <supported-markup markup="wml" update="set"/>
+                <supported-markup markup="pda" update="set"/>
+                <!--@Page_com.ibm.pvc.we.ins.portlets.usermessagepriorities@-->
+                <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            </component>
+            <component compositionref="INS_My_Subscriptions" orientation="V" type="layered" active="true" action="update" ordinal="500" name="IBM INS My Subscriptions">
+                <supported-markup markup="html" update="set"/>
+                <supported-markup markup="wml" update="set"/>
+                <supported-markup markup="pda" update="set"/>
+                <!--@Page_com.ibm.pvc.we.ins.portlets.usersubscriptions@-->
+                <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            </component>
+            <component compositionref="INS_Message_Center" orientation="V" type="layered" active="true" action="update" ordinal="600" name="IBM INS Message Center">
+                <supported-markup markup="html" update="set"/>
+                <supported-markup markup="wml" update="set"/>
+                <supported-markup markup="pda" update="set"/>
+                <!--@Page_com.ibm.pvc.we.ins.portlets.messageCenter@-->
+                <parameter name="bookmarkable" type="string" update="set">Yes</parameter>
+                <access-right permission="delegate" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="manage" subjectid="$adminid$" subjecttype="user" update="set"/>
+                <access-right permission="delegate" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+                <access-right permission="manage" subjectid="$adminGroupId$" subjecttype="user-group" update="set"/>
+            </component>
+          </component>
+    </component>
+</composition>
+        
+        
+    </portal>
+    <status element="all" result="ok"/>
+</request>
