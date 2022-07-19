@@ -69,25 +69,34 @@ open(FH, '>', $filename);
 foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
 {
     my $cweid = $weakness_node->{ID};
+    if ($cweid eq "200") { $DEBUG=1; }
+    if ($cweid eq "668") { $DEBUG=1; }
     if ($DEBUG) { print "ID->$cweid\n"; }
 
-    my @CWEChildOf = ();
     my %CWDDetails = {};
     $CWDDetails{ 'name' } = $weakness_node->{Name}; 
+    if ($DEBUG) { print "ID->$CWDDetails{ 'name' }\n"; }
     $CWDDetails{ 'desc' } = $weakness_node->{Description}; 
+    if ($DEBUG) { print "ID->$CWDDetails{ 'desc' }\n"; }
 
     $CWEData{ $cweid } = \%CWDDetails;
 
     my $relatedWeaknesses = $weakness_node->{Related_Weaknesses};
     if ( $relatedWeaknesses != 0 )  {
+        if ($DEBUG) { print "ID->relatedWeaknesses not null\n"; }
+
         $cwes{$cweid} = $cweid;
         #https://stackoverflow.com/questions/3789284/how-can-i-test-that-something-is-a-hash-in-perl
         if (ref $relatedWeaknesses->{Related_Weakness} eq 'HASH' ) {
+            if ($DEBUG) { print "ID->Related_Weakness eq HASH\n"; }
+
             my $related_cwe = $relatedWeaknesses->{Related_Weakness}->{CWE_ID};
             if ($DEBUG) { print "Parent->$relatedWeaknesses->{Related_Weakness}->{Nature}:$related_cwe\n"; } 
             #add to CWEChildOf / remove duplicate entries
             addCWEChild($related_cwe, $cweid);
         } else {
+            if ($DEBUG) { print "ID->Related_Weakness not HASH\n"; }
+
             foreach my $related_weakness_node (@{$relatedWeaknesses->{Related_Weakness}} )
             {
                 my $nature = $related_weakness_node->{Nature};
@@ -99,22 +108,26 @@ foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
                 }
             }
         }
-        if ($DEBUG) { print Dumper(@CWEChildOf) };
-        $CWEChildren{$cweid} = \@CWEChildOf;
     } else {
+        if ($DEBUG) { print "ID->relatedWeaknesses null\n"; }
         #its a root - no ChildOf, add to root array
         push(@rootCWES, $cweid);
     }
+    if ($cweid eq "200") { $DEBUG=0; }
+    if ($cweid eq "668") { $DEBUG=0; }
 }
 
 sub  addCWEChild {
     my ($in_parent, $in_child) = @_;
+    if ($in_parent eq "668") { $DEBUG=1; }
     if ($DEBUG) {
-        print "addCWEChild:in_parent:$in_parent\n";
-        print "addCWEChild:in_child:$in_child\n";
+        print "addCWEChild:in_parent:$in_parent:\n";
+        print "addCWEChild:in_child:$in_child:\n";
     }
     my @children = @{$CWEChildren{$in_parent}};
     if (@children) {
+        if ($DEBUG) { print "addCWEChild:children not null\n"; }
+
         my $found = 0;
 
         my @sorted_children = sort { int($a) <=> int($b) } @children;
@@ -124,14 +137,19 @@ sub  addCWEChild {
             }
         }
         if (!$found) {
+            if ($DEBUG) { print "addCWEChild:not found\n"; }
             push(@sorted_children, $in_child);
             $CWEChildren{$in_parent} = \@sorted_children;
+            my $sorted_children = @sorted_children;
+            if ($DEBUG) { print "addCWEChild:[$sorted_children] @sorted_children\n"; }
         }
     } else {
-       my @children = ();
-       push(@children, $in_child);
-       $CWEChildren{$in_parent} = \@children;
+        if ($DEBUG) { print "addCWEChild:children null\n"; }
+        my @newchildren = ();
+        push(@newchildren, $in_child);
+        $CWEChildren{$in_parent} = \@newchildren;
     }
+    if ($in_parent eq "668") { $DEBUG=0; }
 }
 
 sub getCWEDetails {
@@ -143,6 +161,7 @@ sub getCWEDetails {
 
 sub  getCWEChildren {
     my ($in_id) = @_;
+    if ($in_id eq "668") { $DEBUG=1; }
     if ($DEBUG) { print "getCWEChildren:in_id:$in_id\n"; }
     if (!$in_id) {
         return;
@@ -165,6 +184,7 @@ sub  getCWEChildren {
         print FH "</ul>\n";
         print FH "</li>\n";
     }
+    if ($in_id eq "668") { $DEBUG=0; }
     return;
 }
 
@@ -173,11 +193,18 @@ sub printTree {
     print FH "<ul id=\"myUL\">\n";
     foreach my $root_id (@in_roots) {
         my ($c_name, $c_desc) = getCWEDetails($root_id);
+
+        if ($c_name =~ /^DEPRECATED/){
+            print FH "<div class=\"deprecated\">\n";
+        }
         print FH "<li><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">$root_id</a>:$c_name</span>\n";
         print FH "<ul class=\"nested\">\n";
         getCWEChildren($root_id);
         print FH "</ul>\n";
-        print FH "</li>\n";           
+        print FH "</li>\n";
+        if ($c_name =~ /^DEPRECATED/){
+            print FH "</div>\n";
+        }           
     }
     print FH "</ul>\n";
 }
@@ -257,11 +284,36 @@ sub printTopPage {
                 document.getElementById("expander").value = cvalue;
                 document.getElementById("expanderBTN").value = ctext;
             }
+            function hideDeprecated () {
+                var deprecated = document.getElementById( "deprecated" ).value;
+                var elements = document.querySelectorAll('.deprecated')
+                for (index = 0; index < elements.length; index++) {
+                    element = elements[index];
+                    if (deprecated == "0") {
+                        element.style.display = 'none';
+                    } else {
+                        element.style.display = '';
+                    }
+                }
+
+                if (deprecated == "0") {
+                    cvalue = "1";
+                    ctext = "Show Deprecated";
+                } else {
+                    cvalue = "0";
+                    ctext = "Hide Deprecated";
+                
+                }
+                document.getElementById("deprecated").value = cvalue;
+                document.getElementById("deprecatedBTN").value = ctext;
+            }
         </script>
     </head>
     <body>
     <input type="hidden" id="expander" value="1"/>
+    <input type="hidden" id="deprecated" value="0"/>
     <input type="button" onclick="expandAll();" id="expanderBTN" value="Expand All"/>
+    <input type="button" onclick="hideDeprecated();" id="deprecatedBTN" value="Hide Deprecated"/>
 ENDTOPPAGE
     print FH "$topPage\n";
 }

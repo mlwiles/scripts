@@ -70,53 +70,132 @@
                 document.getElementById("expander").value = cvalue;
                 document.getElementById("expanderBTN").value = ctext;
             }
+            function hideDeprecated () {
+                var deprecated = document.getElementById( "deprecated" ).value;
+                var elements = document.querySelectorAll('.deprecated')
+                for (index = 0; index < elements.length; index++) {
+                    element = elements[index];
+                    if (deprecated == "0") {
+                        element.style.display = 'none';
+                    } else {
+                        element.style.display = '';
+                    }
+                }
+
+                if (deprecated == "0") {
+                    cvalue = "1";
+                    ctext = "Show Deprecated";
+                } else {
+                    cvalue = "0";
+                    ctext = "Hide Deprecated";
+                
+                }
+                document.getElementById("deprecated").value = cvalue;
+                document.getElementById("deprecatedBTN").value = ctext;
+            }
         </script>
     </head>
     <body>
     <input type="hidden" id="expander" value="1"/>
+    <input type="hidden" id="deprecated" value="0"/>
     <input type="button" onclick="expandAll();" id="expanderBTN" value="Expand All"/>
+    <input type="button" onclick="hideDeprecated();" id="deprecatedBTN" value="Hide Deprecated"/>
 
 <ul id="myUL">
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/71.html" target="_blank">71</a>:DEPRECATED: Apple '.DS_Store'</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/92.html" target="_blank">92</a>:DEPRECATED: Improper Sanitization of Custom Special Characters</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/132.html" target="_blank">132</a>:DEPRECATED: Miscalculated Null Termination</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/216.html" target="_blank">216</a>:DEPRECATED: Containment Errors (Container Errors)</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/217.html" target="_blank">217</a>:DEPRECATED: Failure to Protect Stored Data from Modification</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/218.html" target="_blank">218</a>:DEPRECATED: Failure to provide confidentiality for stored data</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/225.html" target="_blank">225</a>:DEPRECATED: General Information Management Problems</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/247.html" target="_blank">247</a>:DEPRECATED: Reliance on DNS Lookups in a Security Decision</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/249.html" target="_blank">249</a>:DEPRECATED: Often Misused: Path Manipulation</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/284.html" target="_blank">284</a>:Improper Access Control</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/269.html" target="_blank">269</a>:Improper Privilege Management</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/250.html" target="_blank">250</a>:Execution with Unnecessary Privileges</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/266.html" target="_blank">266</a>:Incorrect Privilege Assignment</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/9.html" target="_blank">9</a>:J2EE Misconfiguration: Weak Access Permissions for EJB Methods</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/520.html" target="_blank">520</a>:.NET Misconfiguration: Use of Impersonation</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/556.html" target="_blank">556</a>:ASP.NET Misconfiguration: Use of Identity Impersonation</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1022.html" target="_blank">1022</a>:Use of Web Link to Untrusted Target with window.opener Access</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/267.html" target="_blank">267</a>:Privilege Defined With Unsafe Actions</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/623.html" target="_blank">623</a>:Unsafe ActiveX Control Marked Safe For Scripting</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/268.html" target="_blank">268</a>:Privilege Chaining</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/270.html" target="_blank">270</a>:Privilege Context Switching Error</span>
 <ul class="nested">
 </ul>
@@ -159,6 +238,38 @@
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/552.html" target="_blank">552</a>:Files or Directories Accessible to External Parties</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/219.html" target="_blank">219</a>:Storage of File with Sensitive Data Under Web Root</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/433.html" target="_blank">433</a>:Unparsed Raw Web Content Delivery</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/220.html" target="_blank">220</a>:Storage of File With Sensitive Data Under FTP Root</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/527.html" target="_blank">527</a>:Exposure of Version-Control Repository to an Unauthorized Control Sphere</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/528.html" target="_blank">528</a>:Exposure of Core Dump File to an Unauthorized Control Sphere</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/529.html" target="_blank">529</a>:Exposure of Access Control List Files to an Unauthorized Control Sphere</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/530.html" target="_blank">530</a>:Exposure of Backup File to an Unauthorized Control Sphere</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/539.html" target="_blank">539</a>:Use of Persistent Cookies Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/553.html" target="_blank">553</a>:Command Shell in Externally Accessible Directory</span>
 <ul class="nested">
 </ul>
@@ -167,11 +278,55 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/732.html" target="_blank">732</a>:Incorrect Permission Assignment for Critical Resource</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/276.html" target="_blank">276</a>:Incorrect Default Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/277.html" target="_blank">277</a>:Insecure Inherited Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/278.html" target="_blank">278</a>:Insecure Preserved Inherited Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/279.html" target="_blank">279</a>:Incorrect Execution-Assigned Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/281.html" target="_blank">281</a>:Improper Preservation of Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1004.html" target="_blank">1004</a>:Sensitive Cookie Without 'HttpOnly' Flag</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/862.html" target="_blank">862</a>:Missing Authorization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/425.html" target="_blank">425</a>:Direct Request ('Forced Browsing')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/638.html" target="_blank">638</a>:Not Using Complete Mediation</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/424.html" target="_blank">424</a>:Improper Protection of Alternate Path</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/425.html" target="_blank">425</a>:Direct Request ('Forced Browsing')</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/939.html" target="_blank">939</a>:Improper Authorization in Handler for Custom URL Scheme</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1314.html" target="_blank">1314</a>:Missing Write Protection for Parametric Data Values</span>
 <ul class="nested">
 </ul>
 </li>
@@ -179,6 +334,30 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/863.html" target="_blank">863</a>:Incorrect Authorization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/551.html" target="_blank">551</a>:Incorrect Behavior Order: Authorization Before Parsing and Canonicalization</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/639.html" target="_blank">639</a>:Authorization Bypass Through User-Controlled Key</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/566.html" target="_blank">566</a>:Authorization Bypass Through User-Controlled SQL Primary Key</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/647.html" target="_blank">647</a>:Use of Non-Canonical URL Paths for Authorization Decisions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/804.html" target="_blank">804</a>:Guessable CAPTCHA</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1244.html" target="_blank">1244</a>:Internal Asset Exposed to Unsafe Debug Access Level or State</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/926.html" target="_blank">926</a>:Improper Export of Android Application Components</span>
@@ -186,6 +365,30 @@
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/927.html" target="_blank">927</a>:Use of Implicit Intent for Sensitive Communication</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1230.html" target="_blank">1230</a>:Exposure of Sensitive Information Through Metadata</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/202.html" target="_blank">202</a>:Exposure of Sensitive Information Through Data Queries</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/612.html" target="_blank">612</a>:Improper Authorization of Index Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1256.html" target="_blank">1256</a>:Improper Restriction of Software Interfaces to Hardware Features</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1297.html" target="_blank">1297</a>:Unprotected Confidential Information on Device is Accessible by OSAT Vendors</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1328.html" target="_blank">1328</a>:Security Version Number Mutable to Older Versions</span>
 <ul class="nested">
 </ul>
 </li>
@@ -201,9 +404,25 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/287.html" target="_blank">287</a>:Improper Authentication</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/261.html" target="_blank">261</a>:Weak Encoding for Password</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/262.html" target="_blank">262</a>:Not Using Password Aging</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/263.html" target="_blank">263</a>:Password Aging with Long Expiration</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/288.html" target="_blank">288</a>:Authentication Bypass Using an Alternate Path or Channel</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/425.html" target="_blank">425</a>:Direct Request ('Forced Browsing')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1299.html" target="_blank">1299</a>:Missing Protection Mechanism for Alternate Hardware Interface</span>
 <ul class="nested">
 </ul>
 </li>
@@ -299,10 +518,38 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/521.html" target="_blank">521</a>:Weak Password Requirements</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/258.html" target="_blank">258</a>:Empty Password in Configuration File</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/522.html" target="_blank">522</a>:Insufficiently Protected Credentials</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/256.html" target="_blank">256</a>:Plaintext Storage of a Password</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/257.html" target="_blank">257</a>:Storing Passwords in a Recoverable Format</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/260.html" target="_blank">260</a>:Password in Configuration File</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/13.html" target="_blank">13</a>:ASP.NET Misconfiguration: Password in Configuration File</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/258.html" target="_blank">258</a>:Empty Password in Configuration File</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/555.html" target="_blank">555</a>:J2EE Misconfiguration: Plaintext Password in Configuration File</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/523.html" target="_blank">523</a>:Unprotected Transport of Credentials</span>
 <ul class="nested">
 </ul>
@@ -335,6 +582,14 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/798.html" target="_blank">798</a>:Use of Hard-coded Credentials</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/259.html" target="_blank">259</a>:Use of Hard-coded Password</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/321.html" target="_blank">321</a>:Use of Hard-coded Cryptographic Key</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/804.html" target="_blank">804</a>:Guessable CAPTCHA</span>
@@ -353,19 +608,51 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1299.html" target="_blank">1299</a>:Missing Protection Mechanism for Alternate Hardware Interface</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/346.html" target="_blank">346</a>:Origin Validation Error</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1385.html" target="_blank">1385</a>:Missing Origin Validation in WebSockets</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/639.html" target="_blank">639</a>:Authorization Bypass Through User-Controlled Key</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/566.html" target="_blank">566</a>:Authorization Bypass Through User-Controlled SQL Primary Key</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/862.html" target="_blank">862</a>:Missing Authorization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/425.html" target="_blank">425</a>:Direct Request ('Forced Browsing')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/638.html" target="_blank">638</a>:Not Using Complete Mediation</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/424.html" target="_blank">424</a>:Improper Protection of Alternate Path</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/425.html" target="_blank">425</a>:Direct Request ('Forced Browsing')</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/939.html" target="_blank">939</a>:Improper Authorization in Handler for Custom URL Scheme</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1314.html" target="_blank">1314</a>:Missing Write Protection for Parametric Data Values</span>
 <ul class="nested">
 </ul>
 </li>
@@ -373,10 +660,78 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/863.html" target="_blank">863</a>:Incorrect Authorization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/551.html" target="_blank">551</a>:Incorrect Behavior Order: Authorization Before Parsing and Canonicalization</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/639.html" target="_blank">639</a>:Authorization Bypass Through User-Controlled Key</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/566.html" target="_blank">566</a>:Authorization Bypass Through User-Controlled SQL Primary Key</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/647.html" target="_blank">647</a>:Use of Non-Canonical URL Paths for Authorization Decisions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/804.html" target="_blank">804</a>:Guessable CAPTCHA</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1244.html" target="_blank">1244</a>:Internal Asset Exposed to Unsafe Debug Access Level or State</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/923.html" target="_blank">923</a>:Improper Restriction of Communication Channel to Intended Endpoints</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/291.html" target="_blank">291</a>:Reliance on IP Address for Authentication</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/297.html" target="_blank">297</a>:Improper Validation of Certificate with Host Mismatch</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/300.html" target="_blank">300</a>:Channel Accessible by Non-Endpoint</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1324.html" target="_blank">1324</a>:Sensitive Information Accessible by Physical Probing of JTAG Interface</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/322.html" target="_blank">322</a>:Key Exchange without Entity Authentication</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/350.html" target="_blank">350</a>:Reliance on Reverse DNS Resolution for a Security-Critical Action</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/419.html" target="_blank">419</a>:Unprotected Primary Channel</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/420.html" target="_blank">420</a>:Unprotected Alternate Channel</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/421.html" target="_blank">421</a>:Race Condition During Access to Alternate Channel</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/422.html" target="_blank">422</a>:Unprotected Windows Messaging Channel ('Shatter')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1299.html" target="_blank">1299</a>:Missing Protection Mechanism for Alternate Hardware Interface</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/925.html" target="_blank">925</a>:Improper Verification of Intent by Broadcast Receiver</span>
 <ul class="nested">
 </ul>
@@ -445,6 +800,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1263.html" target="_blank">1263</a>:Improper Physical Access Control</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1243.html" target="_blank">1243</a>:Sensitive Non-Volatile Information Not Protected During Debug</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1267.html" target="_blank">1267</a>:Policy Uses Obsolete Encoding</span>
@@ -489,6 +848,22 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1294.html" target="_blank">1294</a>:Insecure Security Identifier Mechanism</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1259.html" target="_blank">1259</a>:Improper Restriction of Security Token Assignment</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1270.html" target="_blank">1270</a>:Generation of Incorrect Security Tokens</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1290.html" target="_blank">1290</a>:Incorrect Decoding of Security Identifiers </span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1292.html" target="_blank">1292</a>:Incorrect Conversion of Security Identifiers</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1302.html" target="_blank">1302</a>:Missing Security Identifier</span>
 <ul class="nested">
 </ul>
@@ -541,22 +916,30 @@
 </li>
 </ul>
 </li>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/292.html" target="_blank">292</a>:DEPRECATED: Trusting Self-reported DNS Name</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/365.html" target="_blank">365</a>:DEPRECATED: Race Condition in Switch</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/373.html" target="_blank">373</a>:DEPRECATED: State Synchronization Error</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/423.html" target="_blank">423</a>:DEPRECATED: Proxied Trusted Channel</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/435.html" target="_blank">435</a>:Improper Interaction Between Multiple Correctly-Behaving Entities</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/188.html" target="_blank">188</a>:Reliance on Data/Memory Layout</span>
@@ -570,6 +953,14 @@
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/436.html" target="_blank">436</a>:Interpretation Conflict</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/86.html" target="_blank">86</a>:Improper Neutralization of Invalid Characters in Identifiers in Web Pages</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/113.html" target="_blank">113</a>:Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/115.html" target="_blank">115</a>:Misinterpretation of Input</span>
 <ul class="nested">
 </ul>
 </li>
@@ -599,48 +990,74 @@
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/733.html" target="_blank">733</a>:Compiler Optimization Removal or Modification of Security-critical Code</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/14.html" target="_blank">14</a>:Compiler Removal of Code to Clear Buffers</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1037.html" target="_blank">1037</a>:Processor Optimization Removal or Modification of Security-critical Code</span>
+<ul class="nested">
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/443.html" target="_blank">443</a>:DEPRECATED: HTTP response splitting</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/458.html" target="_blank">458</a>:DEPRECATED: Incorrect Initialization</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/516.html" target="_blank">516</a>:DEPRECATED: Covert Timing Channel</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/533.html" target="_blank">533</a>:DEPRECATED: Information Exposure Through Server Log Files</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/534.html" target="_blank">534</a>:DEPRECATED: Information Exposure Through Debug Log Files</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/542.html" target="_blank">542</a>:DEPRECATED: Information Exposure Through Cleanup Log Files</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/545.html" target="_blank">545</a>:DEPRECATED: Use of Dynamic Class Loading</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/592.html" target="_blank">592</a>:DEPRECATED: Authentication Bypass Issues</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/596.html" target="_blank">596</a>:DEPRECATED: Incorrect Semantic Object Comparison</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/664.html" target="_blank">664</a>:Improper Control of a Resource Through its Lifetime</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/118.html" target="_blank">118</a>:Incorrect Access of Indexable Resource ('Range Error')</span>
@@ -685,14 +1102,50 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/786.html" target="_blank">786</a>:Access of Memory Location Before Start of Buffer</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/124.html" target="_blank">124</a>:Buffer Underwrite ('Buffer Underflow')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/127.html" target="_blank">127</a>:Buffer Under-read</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/787.html" target="_blank">787</a>:Out-of-bounds Write</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/121.html" target="_blank">121</a>:Stack-based Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/122.html" target="_blank">122</a>:Heap-based Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/123.html" target="_blank">123</a>:Write-what-where Condition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/124.html" target="_blank">124</a>:Buffer Underwrite ('Buffer Underflow')</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/788.html" target="_blank">788</a>:Access of Memory Location After End of Buffer</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/121.html" target="_blank">121</a>:Stack-based Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/122.html" target="_blank">122</a>:Heap-based Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/126.html" target="_blank">126</a>:Buffer Over-read</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/805.html" target="_blank">805</a>:Buffer Access with Incorrect Length Value</span>
@@ -717,6 +1170,14 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/825.html" target="_blank">825</a>:Expired Pointer Dereference</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/415.html" target="_blank">415</a>:Double Free</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/416.html" target="_blank">416</a>:Use After Free</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -755,6 +1216,14 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/451.html" target="_blank">451</a>:User Interface (UI) Misrepresentation of Critical Information</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1007.html" target="_blank">1007</a>:Insufficient Visual Distinction of Homoglyphs Presented to User</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1021.html" target="_blank">1021</a>:Improper Restriction of Rendered UI Layers or Frames</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -772,6 +1241,10 @@
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/789.html" target="_blank">789</a>:Memory Allocation with Excessive Size Value</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1325.html" target="_blank">1325</a>:Improperly Controlled Sequential Memory Allocation</span>
 <ul class="nested">
 </ul>
 </li>
@@ -793,12 +1266,64 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1235.html" target="_blank">1235</a>:Incorrect Use of Autoboxing and Unboxing for Performance Critical Operations</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/404.html" target="_blank">404</a>:Improper Resource Shutdown or Release</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/262.html" target="_blank">262</a>:Not Using Password Aging</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/263.html" target="_blank">263</a>:Password Aging with Long Expiration</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/299.html" target="_blank">299</a>:Improper Check for Certificate Revocation</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/370.html" target="_blank">370</a>:Missing Check for Certificate Revocation after Initial Check</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/401.html" target="_blank">401</a>:Missing Release of Memory after Effective Lifetime</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/459.html" target="_blank">459</a>:Incomplete Cleanup</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/226.html" target="_blank">226</a>:Sensitive Information in Resource Not Removed Before Reuse</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/244.html" target="_blank">244</a>:Improper Clearing of Heap Memory Before Release ('Heap Inspection')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1239.html" target="_blank">1239</a>:Improper Zeroization of Hardware Register</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1272.html" target="_blank">1272</a>:Sensitive Information Uncleared Before Debug/Power State Transition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1301.html" target="_blank">1301</a>:Insufficient or Incomplete Data Removal within Hardware Component</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1330.html" target="_blank">1330</a>:Remanent Data Readable after Memory Erase</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1342.html" target="_blank">1342</a>:Information Exposure through Microarchitectural State after Transient Execution</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/460.html" target="_blank">460</a>:Improper Cleanup on Thrown Exception</span>
 <ul class="nested">
 </ul>
@@ -815,21 +1340,49 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/762.html" target="_blank">762</a>:Mismatched Memory Management Routines</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/590.html" target="_blank">590</a>:Free of Memory not on the Heap</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/763.html" target="_blank">763</a>:Release of Invalid Pointer or Reference</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/761.html" target="_blank">761</a>:Free of Pointer not at Start of Buffer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/762.html" target="_blank">762</a>:Mismatched Memory Management Routines</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/590.html" target="_blank">590</a>:Free of Memory not on the Heap</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/772.html" target="_blank">772</a>:Missing Release of Resource after Effective Lifetime</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/401.html" target="_blank">401</a>:Missing Release of Memory after Effective Lifetime</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/775.html" target="_blank">775</a>:Missing Release of File Descriptor or Handle after Effective Lifetime</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1091.html" target="_blank">1091</a>:Use of Object without Invoking Destructor Method</span>
 <ul class="nested">
 </ul>
 </li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/775.html" target="_blank">775</a>:Missing Release of File Descriptor or Handle after Effective Lifetime</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1266.html" target="_blank">1266</a>:Improper Scrubbing of Sensitive Data from Decommissioned Device</span>
 <ul class="nested">
 </ul>
 </li>
@@ -843,6 +1396,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/407.html" target="_blank">407</a>:Inefficient Algorithmic Complexity</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1333.html" target="_blank">1333</a>:Inefficient Regular Expression Complexity</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/408.html" target="_blank">408</a>:Incorrect Behavior Order: Early Amplification</span>
@@ -857,6 +1414,54 @@
 </li>
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1050.html" target="_blank">1050</a>:Excessive Platform Resource Consumption within a Loop</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1072.html" target="_blank">1072</a>:Data Resource Access without Use of Connection Pooling</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1073.html" target="_blank">1073</a>:Non-SQL Invokable Control Element with Excessive Number of Data Resource Accesses</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1084.html" target="_blank">1084</a>:Invokable Control Element with Excessive File or Data Access Operations</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1089.html" target="_blank">1089</a>:Large Data Table with Excessive Number of Indices</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1094.html" target="_blank">1094</a>:Excessive Index Range Scan for a Data Resource</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1176.html" target="_blank">1176</a>:Inefficient CPU Computation</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1042.html" target="_blank">1042</a>:Static Member Data Element outside of a Singleton Class Element</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1046.html" target="_blank">1046</a>:Creation of Immutable Text Using String Concatenation</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1049.html" target="_blank">1049</a>:Excessive Data Query Operations in a Large Data Table</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1063.html" target="_blank">1063</a>:Creation of Class Instance within a Static Code Block</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1067.html" target="_blank">1067</a>:Excessive Execution of Sequential Searches of Data Resource</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/410.html" target="_blank">410</a>:Insufficient Resource Pool</span>
@@ -865,6 +1470,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/471.html" target="_blank">471</a>:Modification of Assumed-Immutable Data (MAID)</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/291.html" target="_blank">291</a>:Reliance on IP Address for Authentication</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/472.html" target="_blank">472</a>:External Control of Assumed-Immutable Web Parameter</span>
 <ul class="nested">
 </ul>
@@ -901,7 +1510,39 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/610.html" target="_blank">610</a>:Externally Controlled Reference to a Resource in Another Sphere</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/15.html" target="_blank">15</a>:External Control of System or Configuration Setting</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/73.html" target="_blank">73</a>:External Control of File Name or Path</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/114.html" target="_blank">114</a>:Process Control</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/384.html" target="_blank">384</a>:Session Fixation</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/441.html" target="_blank">441</a>:Unintended Proxy or Intermediary ('Confused Deputy')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/918.html" target="_blank">918</a>:Server-Side Request Forgery (SSRF)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1021.html" target="_blank">1021</a>:Improper Restriction of Rendered UI Layers or Frames</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/470.html" target="_blank">470</a>:Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/601.html" target="_blank">601</a>:URL Redirection to Untrusted Site ('Open Redirect')</span>
 <ul class="nested">
 </ul>
 </li>
@@ -913,16 +1554,60 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1021.html" target="_blank">1021</a>:Improper Restriction of Rendered UI Layers or Frames</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/662.html" target="_blank">662</a>:Improper Synchronization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/366.html" target="_blank">366</a>:Race Condition within a Thread</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/543.html" target="_blank">543</a>:Use of Singleton Pattern Without Synchronization in a Multithreaded Context</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/567.html" target="_blank">567</a>:Unsynchronized Access to Shared Data in a Multithreaded Context</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/663.html" target="_blank">663</a>:Use of a Non-reentrant Function in a Concurrent Context</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/479.html" target="_blank">479</a>:Signal Handler Use of a Non-reentrant Function</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/558.html" target="_blank">558</a>:Use of getlogin() in Multithreaded Application</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/667.html" target="_blank">667</a>:Improper Locking</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/412.html" target="_blank">412</a>:Unrestricted Externally Accessible Lock</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/413.html" target="_blank">413</a>:Improper Resource Locking</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/591.html" target="_blank">591</a>:Sensitive Data Storage in Improperly Locked Memory</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/414.html" target="_blank">414</a>:Missing Lock Check</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/609.html" target="_blank">609</a>:Double-Checked Locking</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/764.html" target="_blank">764</a>:Multiple Locks of a Critical Resource</span>
 <ul class="nested">
 </ul>
@@ -939,6 +1624,18 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1232.html" target="_blank">1232</a>:Improper Lock Behavior After Power State Transition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1233.html" target="_blank">1233</a>:Security-Sensitive Hardware Controls with Missing Lock Bit Protection</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1234.html" target="_blank">1234</a>:Hardware Internal or Debug Modes Allow Override of Locks</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/764.html" target="_blank">764</a>:Multiple Locks of a Critical Resource</span>
@@ -947,13 +1644,49 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/820.html" target="_blank">820</a>:Missing Synchronization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/543.html" target="_blank">543</a>:Use of Singleton Pattern Without Synchronization in a Multithreaded Context</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/567.html" target="_blank">567</a>:Unsynchronized Access to Shared Data in a Multithreaded Context</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1096.html" target="_blank">1096</a>:Singleton Class Instance Creation without Proper Locking or Synchronization</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/821.html" target="_blank">821</a>:Incorrect Synchronization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/572.html" target="_blank">572</a>:Call to Thread run() instead of start()</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/574.html" target="_blank">574</a>:EJB Bad Practices: Use of Synchronization Primitives</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1088.html" target="_blank">1088</a>:Synchronous Access of Remote Resource without Timeout</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1264.html" target="_blank">1264</a>:Hardware Logic with Insecure De-Synchronization between Control and Data Channels</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/833.html" target="_blank">833</a>:Deadlock</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1058.html" target="_blank">1058</a>:Invokable Control Element in Multi-Thread Context with non-Final Static Storable or Member Element</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1096.html" target="_blank">1096</a>:Singleton Class Instance Creation without Proper Locking or Synchronization</span>
 <ul class="nested">
 </ul>
 </li>
@@ -961,6 +1694,22 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/665.html" target="_blank">665</a>:Improper Initialization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/454.html" target="_blank">454</a>:External Initialization of Trusted Variables or Data Stores</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/455.html" target="_blank">455</a>:Non-exit on Failed Initialization</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/456.html" target="_blank">456</a>:Missing Initialization of a Variable</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/457.html" target="_blank">457</a>:Use of Uninitialized Variable</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/770.html" target="_blank">770</a>:Allocation of Resources Without Limits or Throttling</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/774.html" target="_blank">774</a>:Allocation of File Descriptors or Handles Without Limits or Throttling</span>
@@ -971,13 +1720,53 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1325.html" target="_blank">1325</a>:Improperly Controlled Sequential Memory Allocation</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/908.html" target="_blank">908</a>:Use of Uninitialized Resource</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/457.html" target="_blank">457</a>:Use of Uninitialized Variable</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/909.html" target="_blank">909</a>:Missing Initialization of Resource</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/456.html" target="_blank">456</a>:Missing Initialization of a Variable</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1051.html" target="_blank">1051</a>:Initialization with Hard-Coded Network Resource Configuration Data</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1052.html" target="_blank">1052</a>:Excessive Use of Hard-Coded Literals in Initialization</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1188.html" target="_blank">1188</a>:Insecure Default Initialization of Resource</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/453.html" target="_blank">453</a>:Insecure Default Variable Initialization</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1221.html" target="_blank">1221</a>:Incorrect Register Defaults or Module Parameters</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1271.html" target="_blank">1271</a>:Uninitialized Value on Reset for Registers Holding Security Settings</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1279.html" target="_blank">1279</a>:Cryptographic Operations are run Before Supporting Units are Ready</span>
 <ul class="nested">
 </ul>
 </li>
@@ -985,10 +1774,50 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/666.html" target="_blank">666</a>:Operation on Resource in Wrong Phase of Lifetime</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/415.html" target="_blank">415</a>:Double Free</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/593.html" target="_blank">593</a>:Authentication Bypass: OpenSSL CTX Object Modified after SSL Objects are Created</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/605.html" target="_blank">605</a>:Multiple Binds to the Same Port</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/672.html" target="_blank">672</a>:Operation on a Resource after Expiration or Release</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/298.html" target="_blank">298</a>:Improper Validation of Certificate Expiration</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/324.html" target="_blank">324</a>:Use of a Key Past its Expiration Date</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/415.html" target="_blank">415</a>:Double Free</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/416.html" target="_blank">416</a>:Use After Free</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/613.html" target="_blank">613</a>:Insufficient Session Expiration</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/825.html" target="_blank">825</a>:Expired Pointer Dereference</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/415.html" target="_blank">415</a>:Double Free</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/416.html" target="_blank">416</a>:Use After Free</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/910.html" target="_blank">910</a>:Use of Expired File Descriptor</span>
@@ -1009,8 +1838,464 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/22.html" target="_blank">22</a>:Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/23.html" target="_blank">23</a>:Relative Path Traversal</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/24.html" target="_blank">24</a>:Path Traversal: '../filedir'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/25.html" target="_blank">25</a>:Path Traversal: '/../filedir'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/26.html" target="_blank">26</a>:Path Traversal: '/dir/../filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/27.html" target="_blank">27</a>:Path Traversal: 'dir/../../filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/28.html" target="_blank">28</a>:Path Traversal: '..\filedir'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/29.html" target="_blank">29</a>:Path Traversal: '\..\filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/30.html" target="_blank">30</a>:Path Traversal: '\dir\..\filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/31.html" target="_blank">31</a>:Path Traversal: 'dir\..\..\filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/32.html" target="_blank">32</a>:Path Traversal: '...' (Triple Dot)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/33.html" target="_blank">33</a>:Path Traversal: '....' (Multiple Dot)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/34.html" target="_blank">34</a>:Path Traversal: '....//'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/35.html" target="_blank">35</a>:Path Traversal: '.../...//'</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/36.html" target="_blank">36</a>:Absolute Path Traversal</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/37.html" target="_blank">37</a>:Path Traversal: '/absolute/pathname/here'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/38.html" target="_blank">38</a>:Path Traversal: '\absolute\pathname\here'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/39.html" target="_blank">39</a>:Path Traversal: 'C:dirname'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/40.html" target="_blank">40</a>:Path Traversal: '\\UNC\share\name\' (Windows UNC Share)</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/134.html" target="_blank">134</a>:Use of Externally-Controlled Format String</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank">200</a>:Exposure of Sensitive Information to an Unauthorized Actor</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/201.html" target="_blank">201</a>:Insertion of Sensitive Information Into Sent Data</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/598.html" target="_blank">598</a>:Use of GET Request Method With Sensitive Query Strings</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/203.html" target="_blank">203</a>:Observable Discrepancy</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/204.html" target="_blank">204</a>:Observable Response Discrepancy</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/205.html" target="_blank">205</a>:Observable Behavioral Discrepancy</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/206.html" target="_blank">206</a>:Observable Internal Behavioral Discrepancy</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/207.html" target="_blank">207</a>:Observable Behavioral Discrepancy With Equivalent Products</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/208.html" target="_blank">208</a>:Observable Timing Discrepancy</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1254.html" target="_blank">1254</a>:Incorrect Comparison Logic Granularity</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1300.html" target="_blank">1300</a>:Improper Protection of Physical Side Channels</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1255.html" target="_blank">1255</a>:Comparison Logic is Vulnerable to Power Side-Channel Attacks</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1303.html" target="_blank">1303</a>:Non-Transparent Sharing of Microarchitectural Resources</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/209.html" target="_blank">209</a>:Generation of Error Message Containing Sensitive Information</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/210.html" target="_blank">210</a>:Self-generated Error Message Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/211.html" target="_blank">211</a>:Externally-Generated Error Message Containing Sensitive Information</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/535.html" target="_blank">535</a>:Exposure of Information Through Shell Error Message</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/536.html" target="_blank">536</a>:Servlet Runtime Error Message Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/537.html" target="_blank">537</a>:Java Runtime Error Message Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/550.html" target="_blank">550</a>:Server-generated Error Message Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/213.html" target="_blank">213</a>:Exposure of Sensitive Information Due to Incompatible Policies</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/215.html" target="_blank">215</a>:Insertion of Sensitive Information Into Debugging Code</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/359.html" target="_blank">359</a>:Exposure of Private Personal Information to an Unauthorized Actor</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/497.html" target="_blank">497</a>:Exposure of Sensitive System Information to an Unauthorized Control Sphere</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/214.html" target="_blank">214</a>:Invocation of Process Using Visible Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/526.html" target="_blank">526</a>:Exposure of Sensitive Information Through Environmental Variables</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/548.html" target="_blank">548</a>:Exposure of Information Through Directory Listing</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/532.html" target="_blank">532</a>:Insertion of Sensitive Information into Log File</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/538.html" target="_blank">538</a>:Insertion of Sensitive Information into Externally-Accessible File or Directory</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/532.html" target="_blank">532</a>:Insertion of Sensitive Information into Log File</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/540.html" target="_blank">540</a>:Inclusion of Sensitive Information in Source Code</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/531.html" target="_blank">531</a>:Inclusion of Sensitive Information in Test Code</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/541.html" target="_blank">541</a>:Inclusion of Sensitive Information in an Include File</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/615.html" target="_blank">615</a>:Inclusion of Sensitive Information in Source Code Comments</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/651.html" target="_blank">651</a>:Exposure of WSDL File Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1258.html" target="_blank">1258</a>:Exposure of Sensitive System Information Due to Uncleared Debug Information</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1273.html" target="_blank">1273</a>:Device Unlock Credential Sharing</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1295.html" target="_blank">1295</a>:Debug Messages Revealing Unnecessary Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/374.html" target="_blank">374</a>:Passing Mutable Objects to an Untrusted Method</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/375.html" target="_blank">375</a>:Returning a Mutable Object to an Untrusted Caller</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">377</a>:Insecure Temporary File</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/378.html" target="_blank">378</a>:Creation of Temporary File With Insecure Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/379.html" target="_blank">379</a>:Creation of Temporary File in Directory with Insecure Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/402.html" target="_blank">402</a>:Transmission of Private Resources into a New Sphere ('Resource Leak')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/403.html" target="_blank">403</a>:Exposure of File Descriptor to Unintended Control Sphere ('File Descriptor Leak')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/619.html" target="_blank">619</a>:Dangling Database Cursor ('Cursor Injection')</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/426.html" target="_blank">426</a>:Untrusted Search Path</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/427.html" target="_blank">427</a>:Uncontrolled Search Path Element</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/428.html" target="_blank">428</a>:Unquoted Search Path or Element</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/488.html" target="_blank">488</a>:Exposure of Data Element to Wrong Session</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/491.html" target="_blank">491</a>:Public cloneable() Method Without Final ('Object Hijack')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/492.html" target="_blank">492</a>:Use of Inner Class Containing Sensitive Data</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/493.html" target="_blank">493</a>:Critical Public Variable Without Final Modifier</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/500.html" target="_blank">500</a>:Public Static Field Not Marked Final</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/498.html" target="_blank">498</a>:Cloneable Class Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/499.html" target="_blank">499</a>:Serializable Class Containing Sensitive Data</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/522.html" target="_blank">522</a>:Insufficiently Protected Credentials</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/256.html" target="_blank">256</a>:Plaintext Storage of a Password</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/257.html" target="_blank">257</a>:Storing Passwords in a Recoverable Format</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/260.html" target="_blank">260</a>:Password in Configuration File</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/13.html" target="_blank">13</a>:ASP.NET Misconfiguration: Password in Configuration File</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/258.html" target="_blank">258</a>:Empty Password in Configuration File</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/555.html" target="_blank">555</a>:J2EE Misconfiguration: Plaintext Password in Configuration File</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/523.html" target="_blank">523</a>:Unprotected Transport of Credentials</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/549.html" target="_blank">549</a>:Missing Password Field Masking</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/524.html" target="_blank">524</a>:Use of Cache Containing Sensitive Information</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/525.html" target="_blank">525</a>:Use of Web Browser Cache Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/552.html" target="_blank">552</a>:Files or Directories Accessible to External Parties</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/219.html" target="_blank">219</a>:Storage of File with Sensitive Data Under Web Root</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/433.html" target="_blank">433</a>:Unparsed Raw Web Content Delivery</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/220.html" target="_blank">220</a>:Storage of File With Sensitive Data Under FTP Root</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/527.html" target="_blank">527</a>:Exposure of Version-Control Repository to an Unauthorized Control Sphere</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/528.html" target="_blank">528</a>:Exposure of Core Dump File to an Unauthorized Control Sphere</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/529.html" target="_blank">529</a>:Exposure of Access Control List Files to an Unauthorized Control Sphere</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/530.html" target="_blank">530</a>:Exposure of Backup File to an Unauthorized Control Sphere</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/539.html" target="_blank">539</a>:Use of Persistent Cookies Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/553.html" target="_blank">553</a>:Command Shell in Externally Accessible Directory</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/582.html" target="_blank">582</a>:Array Declared Public, Final, and Static</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/583.html" target="_blank">583</a>:finalize() Method Declared Public</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/608.html" target="_blank">608</a>:Struts: Non-private Field in ActionForm Class</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/642.html" target="_blank">642</a>:External Control of Critical State Data</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/15.html" target="_blank">15</a>:External Control of System or Configuration Setting</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/73.html" target="_blank">73</a>:External Control of File Name or Path</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/114.html" target="_blank">114</a>:Process Control</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/426.html" target="_blank">426</a>:Untrusted Search Path</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/472.html" target="_blank">472</a>:External Control of Assumed-Immutable Web Parameter</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/565.html" target="_blank">565</a>:Reliance on Cookies without Validation and Integrity Checking</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/784.html" target="_blank">784</a>:Reliance on Cookies without Validation and Integrity Checking in a Security Decision</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/732.html" target="_blank">732</a>:Incorrect Permission Assignment for Critical Resource</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/276.html" target="_blank">276</a>:Incorrect Default Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/277.html" target="_blank">277</a>:Insecure Inherited Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/278.html" target="_blank">278</a>:Insecure Preserved Inherited Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/279.html" target="_blank">279</a>:Incorrect Execution-Assigned Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/281.html" target="_blank">281</a>:Improper Preservation of Permissions</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1004.html" target="_blank">1004</a>:Sensitive Cookie Without 'HttpOnly' Flag</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/767.html" target="_blank">767</a>:Access to Critical Private Variable via Public Method</span>
@@ -1021,13 +2306,109 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1189.html" target="_blank">1189</a>:Improper Isolation of Shared Resources on System-on-a-Chip (SoC)</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1303.html" target="_blank">1303</a>:Non-Transparent Sharing of Microarchitectural Resources</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1282.html" target="_blank">1282</a>:Assumed-Immutable Data is Stored in Writable Memory</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1327.html" target="_blank">1327</a>:Binding to an Unrestricted IP Address</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1331.html" target="_blank">1331</a>:Improper Isolation of Shared Resources in Network On Chip (NoC)</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/669.html" target="_blank">669</a>:Incorrect Resource Transfer Between Spheres</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/212.html" target="_blank">212</a>:Improper Removal of Sensitive Information Before Storage or Transfer</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/226.html" target="_blank">226</a>:Sensitive Information in Resource Not Removed Before Reuse</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/244.html" target="_blank">244</a>:Improper Clearing of Heap Memory Before Release ('Heap Inspection')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1239.html" target="_blank">1239</a>:Improper Zeroization of Hardware Register</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1272.html" target="_blank">1272</a>:Sensitive Information Uncleared Before Debug/Power State Transition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1301.html" target="_blank">1301</a>:Insufficient or Incomplete Data Removal within Hardware Component</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1330.html" target="_blank">1330</a>:Remanent Data Readable after Memory Erase</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1342.html" target="_blank">1342</a>:Information Exposure through Microarchitectural State after Transient Execution</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1258.html" target="_blank">1258</a>:Exposure of Sensitive System Information Due to Uncleared Debug Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/243.html" target="_blank">243</a>:Creation of chroot Jail Without Changing Working Directory</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/434.html" target="_blank">434</a>:Unrestricted Upload of File with Dangerous Type</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/494.html" target="_blank">494</a>:Download of Code Without Integrity Check</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/565.html" target="_blank">565</a>:Reliance on Cookies without Validation and Integrity Checking</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/784.html" target="_blank">784</a>:Reliance on Cookies without Validation and Integrity Checking in a Security Decision</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/602.html" target="_blank">602</a>:Client-Side Enforcement of Server-Side Security</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/565.html" target="_blank">565</a>:Reliance on Cookies without Validation and Integrity Checking</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/784.html" target="_blank">784</a>:Reliance on Cookies without Validation and Integrity Checking in a Security Decision</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/603.html" target="_blank">603</a>:Use of Client-Side Authentication</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/829.html" target="_blank">829</a>:Inclusion of Functionality from Untrusted Control Sphere</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/98.html" target="_blank">98</a>:Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/827.html" target="_blank">827</a>:Improper Control of Document Type Definition</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1041,10 +2422,42 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/673.html" target="_blank">673</a>:External Influence of Sphere Definition</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/426.html" target="_blank">426</a>:Untrusted Search Path</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/704.html" target="_blank">704</a>:Incorrect Type Conversion or Cast</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/588.html" target="_blank">588</a>:Attempt to Access Child of a Non-structure Pointer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/681.html" target="_blank">681</a>:Incorrect Conversion between Numeric Types</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/192.html" target="_blank">192</a>:Integer Coercion Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/194.html" target="_blank">194</a>:Unexpected Sign Extension</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/195.html" target="_blank">195</a>:Signed to Unsigned Conversion Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/196.html" target="_blank">196</a>:Unsigned to Signed Conversion Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/197.html" target="_blank">197</a>:Numeric Truncation Error</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/843.html" target="_blank">843</a>:Access of Resource Using Incompatible Type ('Type Confusion')</span>
 <ul class="nested">
 </ul>
@@ -1053,7 +2466,203 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/706.html" target="_blank">706</a>:Use of Incorrectly-Resolved Name or Reference</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/22.html" target="_blank">22</a>:Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/23.html" target="_blank">23</a>:Relative Path Traversal</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/24.html" target="_blank">24</a>:Path Traversal: '../filedir'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/25.html" target="_blank">25</a>:Path Traversal: '/../filedir'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/26.html" target="_blank">26</a>:Path Traversal: '/dir/../filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/27.html" target="_blank">27</a>:Path Traversal: 'dir/../../filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/28.html" target="_blank">28</a>:Path Traversal: '..\filedir'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/29.html" target="_blank">29</a>:Path Traversal: '\..\filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/30.html" target="_blank">30</a>:Path Traversal: '\dir\..\filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/31.html" target="_blank">31</a>:Path Traversal: 'dir\..\..\filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/32.html" target="_blank">32</a>:Path Traversal: '...' (Triple Dot)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/33.html" target="_blank">33</a>:Path Traversal: '....' (Multiple Dot)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/34.html" target="_blank">34</a>:Path Traversal: '....//'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/35.html" target="_blank">35</a>:Path Traversal: '.../...//'</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/36.html" target="_blank">36</a>:Absolute Path Traversal</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/37.html" target="_blank">37</a>:Path Traversal: '/absolute/pathname/here'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/38.html" target="_blank">38</a>:Path Traversal: '\absolute\pathname\here'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/39.html" target="_blank">39</a>:Path Traversal: 'C:dirname'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/40.html" target="_blank">40</a>:Path Traversal: '\\UNC\share\name\' (Windows UNC Share)</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/41.html" target="_blank">41</a>:Improper Resolution of Path Equivalence</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/42.html" target="_blank">42</a>:Path Equivalence: 'filename.' (Trailing Dot)</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/43.html" target="_blank">43</a>:Path Equivalence: 'filename....' (Multiple Trailing Dot)</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/44.html" target="_blank">44</a>:Path Equivalence: 'file.name' (Internal Dot)</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/45.html" target="_blank">45</a>:Path Equivalence: 'file...name' (Multiple Internal Dot)</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/46.html" target="_blank">46</a>:Path Equivalence: 'filename ' (Trailing Space)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/47.html" target="_blank">47</a>:Path Equivalence: ' filename' (Leading Space)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/48.html" target="_blank">48</a>:Path Equivalence: 'file name' (Internal Whitespace)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/49.html" target="_blank">49</a>:Path Equivalence: 'filename/' (Trailing Slash)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/50.html" target="_blank">50</a>:Path Equivalence: '//multiple/leading/slash'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/51.html" target="_blank">51</a>:Path Equivalence: '/multiple//internal/slash'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/52.html" target="_blank">52</a>:Path Equivalence: '/multiple/trailing/slash//'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/53.html" target="_blank">53</a>:Path Equivalence: '\multiple\\internal\backslash'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/54.html" target="_blank">54</a>:Path Equivalence: 'filedir\' (Trailing Backslash)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/55.html" target="_blank">55</a>:Path Equivalence: '/./' (Single Dot Directory)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/56.html" target="_blank">56</a>:Path Equivalence: 'filedir*' (Wildcard)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/57.html" target="_blank">57</a>:Path Equivalence: 'fakedir/../realdir/filename'</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/58.html" target="_blank">58</a>:Path Equivalence: Windows 8.3 Filename</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/59.html" target="_blank">59</a>:Improper Link Resolution Before File Access ('Link Following')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/61.html" target="_blank">61</a>:UNIX Symbolic Link (Symlink) Following</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/62.html" target="_blank">62</a>:UNIX Hard Link</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/64.html" target="_blank">64</a>:Windows Shortcut Following (.LNK)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/65.html" target="_blank">65</a>:Windows Hard Link</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1386.html" target="_blank">1386</a>:Insecure Operation on Windows Junction / Mount Point</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/66.html" target="_blank">66</a>:Improper Handling of File Names that Identify Virtual Resources</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/67.html" target="_blank">67</a>:Improper Handling of Windows Device Names</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/69.html" target="_blank">69</a>:Improper Handling of Windows ::DATA Alternate Data Stream</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/72.html" target="_blank">72</a>:Improper Handling of Apple HFS+ Alternate Data Stream Path</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/98.html" target="_blank">98</a>:Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/178.html" target="_blank">178</a>:Improper Handling of Case Sensitivity</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/386.html" target="_blank">386</a>:Symbolic Name not Mapping to Correct Object</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1065,6 +2674,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/749.html" target="_blank">749</a>:Exposed Dangerous Method or Function</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/618.html" target="_blank">618</a>:Exposed Unsafe ActiveX Method</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/782.html" target="_blank">782</a>:Exposed IOCTL with Insufficient Access Control</span>
 <ul class="nested">
 </ul>
@@ -1091,13 +2704,41 @@
 </li>
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1336.html" target="_blank">1336</a>:Improper Neutralization of Special Elements Used in a Template Engine</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/470.html" target="_blank">470</a>:Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/502.html" target="_blank">502</a>:Deserialization of Untrusted Data</span>
+<ul class="nested">
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/914.html" target="_blank">914</a>:Improper Control of Dynamically-Identified Variables</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/621.html" target="_blank">621</a>:Variable Extraction Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/627.html" target="_blank">627</a>:Dynamic Variable Evaluation</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/915.html" target="_blank">915</a>:Improperly Controlled Modification of Dynamically-Determined Object Attributes</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1321.html" target="_blank">1321</a>:Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1321.html" target="_blank">1321</a>:Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1105,12 +2746,48 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/922.html" target="_blank">922</a>:Insecure Storage of Sensitive Information</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/312.html" target="_blank">312</a>:Cleartext Storage of Sensitive Information</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/313.html" target="_blank">313</a>:Cleartext Storage in a File or on Disk</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/314.html" target="_blank">314</a>:Cleartext Storage in the Registry</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/315.html" target="_blank">315</a>:Cleartext Storage of Sensitive Information in a Cookie</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/316.html" target="_blank">316</a>:Cleartext Storage of Sensitive Information in Memory</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/317.html" target="_blank">317</a>:Cleartext Storage of Sensitive Information in GUI</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/318.html" target="_blank">318</a>:Cleartext Storage of Sensitive Information in Executable</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/921.html" target="_blank">921</a>:Storage of Sensitive Data in a Mechanism without Access Control</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1229.html" target="_blank">1229</a>:Creation of Emergent Resource</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/514.html" target="_blank">514</a>:Covert Channel</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/385.html" target="_blank">385</a>:Covert Timing Channel</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/515.html" target="_blank">515</a>:Covert Storage Channel</span>
 <ul class="nested">
 </ul>
@@ -1125,6 +2802,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1250.html" target="_blank">1250</a>:Improper Preservation of Consistency Between Independent Representations of Shared State</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1249.html" target="_blank">1249</a>:Application-Level Admin Tool with Inconsistent View of Underlying Operating System</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1251.html" target="_blank">1251</a>:Mirrored Regions with Different Values</span>
 <ul class="nested">
 </ul>
@@ -1133,6 +2814,14 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1329.html" target="_blank">1329</a>:Reliance on Component That is Not Updateable</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1277.html" target="_blank">1277</a>:Firmware Not Updateable</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1310.html" target="_blank">1310</a>:Missing Ability to Patch ROM Code</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1153,6 +2842,10 @@
 </li>
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1336.html" target="_blank">1336</a>:Improper Neutralization of Special Elements Used in a Template Engine</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/362.html" target="_blank">362</a>:Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')</span>
@@ -1165,6 +2858,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/828.html" target="_blank">828</a>:Signal Handler with Functionality that is not Asynchronous-Safe</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/479.html" target="_blank">479</a>:Signal Handler Use of a Non-reentrant Function</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/831.html" target="_blank">831</a>:Signal Handler Function Associated with Multiple Signals</span>
@@ -1179,6 +2876,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/367.html" target="_blank">367</a>:Time-of-check Time-of-use (TOCTOU) Race Condition</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/363.html" target="_blank">363</a>:Race Condition Enabling Link Following</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/368.html" target="_blank">368</a>:Context Switching Race Condition</span>
@@ -1190,6 +2891,14 @@
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/689.html" target="_blank">689</a>:Permission Race Condition During Resource Copy</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1223.html" target="_blank">1223</a>:Race Condition for Write-Once Attributes</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1298.html" target="_blank">1298</a>:Hardware Logic Contains Race Conditions</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1209,12 +2918,52 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/662.html" target="_blank">662</a>:Improper Synchronization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/366.html" target="_blank">366</a>:Race Condition within a Thread</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/543.html" target="_blank">543</a>:Use of Singleton Pattern Without Synchronization in a Multithreaded Context</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/567.html" target="_blank">567</a>:Unsynchronized Access to Shared Data in a Multithreaded Context</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/663.html" target="_blank">663</a>:Use of a Non-reentrant Function in a Concurrent Context</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/479.html" target="_blank">479</a>:Signal Handler Use of a Non-reentrant Function</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/558.html" target="_blank">558</a>:Use of getlogin() in Multithreaded Application</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/667.html" target="_blank">667</a>:Improper Locking</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/412.html" target="_blank">412</a>:Unrestricted Externally Accessible Lock</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/413.html" target="_blank">413</a>:Improper Resource Locking</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/591.html" target="_blank">591</a>:Sensitive Data Storage in Improperly Locked Memory</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/414.html" target="_blank">414</a>:Missing Lock Check</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/609.html" target="_blank">609</a>:Double-Checked Locking</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/764.html" target="_blank">764</a>:Multiple Locks of a Critical Resource</span>
 <ul class="nested">
 </ul>
@@ -1231,6 +2980,18 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1232.html" target="_blank">1232</a>:Improper Lock Behavior After Power State Transition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1233.html" target="_blank">1233</a>:Security-Sensitive Hardware Controls with Missing Lock Bit Protection</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1234.html" target="_blank">1234</a>:Hardware Internal or Debug Modes Allow Override of Locks</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/764.html" target="_blank">764</a>:Multiple Locks of a Critical Resource</span>
@@ -1239,13 +3000,49 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/820.html" target="_blank">820</a>:Missing Synchronization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/543.html" target="_blank">543</a>:Use of Singleton Pattern Without Synchronization in a Multithreaded Context</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/567.html" target="_blank">567</a>:Unsynchronized Access to Shared Data in a Multithreaded Context</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1096.html" target="_blank">1096</a>:Singleton Class Instance Creation without Proper Locking or Synchronization</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/821.html" target="_blank">821</a>:Incorrect Synchronization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/572.html" target="_blank">572</a>:Call to Thread run() instead of start()</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/574.html" target="_blank">574</a>:EJB Bad Practices: Use of Synchronization Primitives</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1088.html" target="_blank">1088</a>:Synchronous Access of Remote Resource without Timeout</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1264.html" target="_blank">1264</a>:Hardware Logic with Insecure De-Synchronization between Control and Data Channels</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/833.html" target="_blank">833</a>:Deadlock</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1058.html" target="_blank">1058</a>:Invokable Control Element in Multi-Thread Context with non-Final Static Storable or Member Element</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1096.html" target="_blank">1096</a>:Singleton Class Instance Creation without Proper Locking or Synchronization</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1253,6 +3050,34 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/670.html" target="_blank">670</a>:Always-Incorrect Control Flow Implementation</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/480.html" target="_blank">480</a>:Use of Incorrect Operator</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/481.html" target="_blank">481</a>:Assigning instead of Comparing</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/482.html" target="_blank">482</a>:Comparing instead of Assigning</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/597.html" target="_blank">597</a>:Use of Wrong Operator in String Comparison</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/483.html" target="_blank">483</a>:Incorrect Block Delimitation</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/484.html" target="_blank">484</a>:Omitted Break Statement in Switch</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/617.html" target="_blank">617</a>:Reachable Assertion</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/698.html" target="_blank">698</a>:Execution After Redirect (EAR)</span>
 <ul class="nested">
 </ul>
@@ -1273,14 +3098,86 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/696.html" target="_blank">696</a>:Incorrect Behavior Order</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/179.html" target="_blank">179</a>:Incorrect Behavior Order: Early Validation</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/180.html" target="_blank">180</a>:Incorrect Behavior Order: Validate Before Canonicalize</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/181.html" target="_blank">181</a>:Incorrect Behavior Order: Validate Before Filter</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/408.html" target="_blank">408</a>:Incorrect Behavior Order: Early Amplification</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/551.html" target="_blank">551</a>:Incorrect Behavior Order: Authorization Before Parsing and Canonicalization</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1190.html" target="_blank">1190</a>:DMA Device Enabled Too Early in Boot Phase</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1193.html" target="_blank">1193</a>:Power-On of Untrusted Execution Core Before Enabling Fabric Access Control</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1280.html" target="_blank">1280</a>:Access Control Check Implemented After Asset is Accessed</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/705.html" target="_blank">705</a>:Incorrect Control Flow Scoping</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/248.html" target="_blank">248</a>:Uncaught Exception</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/600.html" target="_blank">600</a>:Uncaught Exception in Servlet </span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/382.html" target="_blank">382</a>:J2EE Bad Practices: Use of System.exit()</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/395.html" target="_blank">395</a>:Use of NullPointerException Catch to Detect NULL Pointer Dereference</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/396.html" target="_blank">396</a>:Declaration of Catch for Generic Exception</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/397.html" target="_blank">397</a>:Declaration of Throws for Generic Exception</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/455.html" target="_blank">455</a>:Non-exit on Failed Initialization</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/584.html" target="_blank">584</a>:Return Inside Finally Block</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/698.html" target="_blank">698</a>:Execution After Redirect (EAR)</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/749.html" target="_blank">749</a>:Exposed Dangerous Method or Function</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/618.html" target="_blank">618</a>:Exposed Unsafe ActiveX Method</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/782.html" target="_blank">782</a>:Exposed IOCTL with Insufficient Access Control</span>
 <ul class="nested">
 </ul>
@@ -1293,6 +3190,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/799.html" target="_blank">799</a>:Improper Control of Interaction Frequency</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/307.html" target="_blank">307</a>:Improper Restriction of Excessive Authentication Attempts</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/837.html" target="_blank">837</a>:Improper Enforcement of a Single, Unique Action</span>
 <ul class="nested">
 </ul>
@@ -1302,6 +3203,10 @@
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/834.html" target="_blank">834</a>:Excessive Iteration</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/835.html" target="_blank">835</a>:Loop with Unreachable Exit Condition ('Infinite Loop')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1322.html" target="_blank">1322</a>:Use of Blocking Code in Single-threaded, Non-blocking Context</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1377,6 +3282,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/326.html" target="_blank">326</a>:Inadequate Encryption Strength</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/261.html" target="_blank">261</a>:Weak Encoding for Password</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/328.html" target="_blank">328</a>:Use of Weak Hash</span>
 <ul class="nested">
 </ul>
@@ -1394,6 +3303,18 @@
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/916.html" target="_blank">916</a>:Use of Password Hash With Insufficient Computational Effort</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/759.html" target="_blank">759</a>:Use of a One-Way Hash without a Salt</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/760.html" target="_blank">760</a>:Use of a One-Way Hash with a Predictable Salt</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1240.html" target="_blank">1240</a>:Use of a Cryptographic Primitive with a Risky Implementation</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1459,17 +3380,41 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/344.html" target="_blank">344</a>:Use of Invariant Value in Dynamically Changing Context</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/323.html" target="_blank">323</a>:Reusing a Nonce, Key Pair in Encryption</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/587.html" target="_blank">587</a>:Assignment of a Fixed Address to a Pointer</span>
 <ul class="nested">
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/798.html" target="_blank">798</a>:Use of Hard-coded Credentials</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/259.html" target="_blank">259</a>:Use of Hard-coded Password</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/321.html" target="_blank">321</a>:Use of Hard-coded Cryptographic Key</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/804.html" target="_blank">804</a>:Guessable CAPTCHA</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1204.html" target="_blank">1204</a>:Generation of Weak Initialization Vector (IV)</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/329.html" target="_blank">329</a>:Generation of Predictable IV with CBC Mode</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1241.html" target="_blank">1241</a>:Use of Predictable Algorithm in Random Number Generator</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1479,6 +3424,10 @@
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/346.html" target="_blank">346</a>:Origin Validation Error</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1385.html" target="_blank">1385</a>:Missing Origin Validation in WebSockets</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/347.html" target="_blank">347</a>:Improper Verification of Cryptographic Signature</span>
@@ -1537,6 +3486,10 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1293.html" target="_blank">1293</a>:Missing Source Correlation of Multiple Independent Data</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/357.html" target="_blank">357</a>:Insufficient UI Warning of Dangerous Operations</span>
@@ -1561,6 +3514,14 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/602.html" target="_blank">602</a>:Client-Side Enforcement of Server-Side Security</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/565.html" target="_blank">565</a>:Reliance on Cookies without Validation and Integrity Checking</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/784.html" target="_blank">784</a>:Reliance on Cookies without Validation and Integrity Checking in a Security Decision</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/603.html" target="_blank">603</a>:Use of Client-Side Authentication</span>
 <ul class="nested">
 </ul>
@@ -1569,10 +3530,30 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/653.html" target="_blank">653</a>:Improper Isolation or Compartmentalization</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1189.html" target="_blank">1189</a>:Improper Isolation of Shared Resources on System-on-a-Chip (SoC)</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1303.html" target="_blank">1303</a>:Non-Transparent Sharing of Microarchitectural Resources</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1331.html" target="_blank">1331</a>:Improper Isolation of Shared Resources in Network On Chip (NoC)</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/654.html" target="_blank">654</a>:Reliance on a Single Factor in a Security Decision</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/308.html" target="_blank">308</a>:Use of Single-factor Authentication</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/309.html" target="_blank">309</a>:Use of Password System for Primary Authentication</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/655.html" target="_blank">655</a>:Insufficient Psychological Acceptability</span>
@@ -1593,6 +3574,18 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/807.html" target="_blank">807</a>:Reliance on Untrusted Inputs in a Security Decision</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/302.html" target="_blank">302</a>:Authentication Bypass by Assumed-Immutable Data</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/350.html" target="_blank">350</a>:Reliance on Reverse DNS Resolution for a Security-Critical Action</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/784.html" target="_blank">784</a>:Reliance on Cookies without Validation and Integrity Checking in a Security Decision</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1039.html" target="_blank">1039</a>:Automated Recognition Mechanism with Inadequate Detection or Handling of Adversarial Input Perturbations</span>
@@ -1661,6 +3654,10 @@
 </li>
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1333.html" target="_blank">1333</a>:Inefficient Regular Expression Complexity</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/581.html" target="_blank">581</a>:Object Model Violation: Just One of Equals and Hashcode Defined</span>
@@ -1700,6 +3697,10 @@
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/595.html" target="_blank">595</a>:Comparison of Object References Instead of Object Contents</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/597.html" target="_blank">597</a>:Use of Wrong Operator in String Comparison</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1097.html" target="_blank">1097</a>:Persistent Storable Data Element without Associated Comparison Control Element</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1781,6 +3782,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/240.html" target="_blank">240</a>:Improper Handling of Inconsistent Structural Elements</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/130.html" target="_blank">130</a>:Improper Handling of Length Parameter Inconsistency</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1825,18 +3830,134 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/754.html" target="_blank">754</a>:Improper Check for Unusual or Exceptional Conditions</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/252.html" target="_blank">252</a>:Unchecked Return Value</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/253.html" target="_blank">253</a>:Incorrect Check of Function Return Value</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/273.html" target="_blank">273</a>:Improper Check for Dropped Privileges</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/354.html" target="_blank">354</a>:Improper Validation of Integrity Check Value</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/391.html" target="_blank">391</a>:Unchecked Error Condition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/394.html" target="_blank">394</a>:Unexpected Status Code or Return Value</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/476.html" target="_blank">476</a>:NULL Pointer Dereference</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/690.html" target="_blank">690</a>:Unchecked Return Value to NULL Pointer Dereference</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/755.html" target="_blank">755</a>:Improper Handling of Exceptional Conditions</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/209.html" target="_blank">209</a>:Generation of Error Message Containing Sensitive Information</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/210.html" target="_blank">210</a>:Self-generated Error Message Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/211.html" target="_blank">211</a>:Externally-Generated Error Message Containing Sensitive Information</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/535.html" target="_blank">535</a>:Exposure of Information Through Shell Error Message</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/536.html" target="_blank">536</a>:Servlet Runtime Error Message Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/537.html" target="_blank">537</a>:Java Runtime Error Message Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/550.html" target="_blank">550</a>:Server-generated Error Message Containing Sensitive Information</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/280.html" target="_blank">280</a>:Improper Handling of Insufficient Permissions or Privileges </span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/390.html" target="_blank">390</a>:Detection of Error Condition Without Action</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/395.html" target="_blank">395</a>:Use of NullPointerException Catch to Detect NULL Pointer Dereference</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/396.html" target="_blank">396</a>:Declaration of Catch for Generic Exception</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/460.html" target="_blank">460</a>:Improper Cleanup on Thrown Exception</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/544.html" target="_blank">544</a>:Missing Standardized Error Handling Mechanism</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/636.html" target="_blank">636</a>:Not Failing Securely ('Failing Open')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/455.html" target="_blank">455</a>:Non-exit on Failed Initialization</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/756.html" target="_blank">756</a>:Missing Custom Error Page</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/7.html" target="_blank">7</a>:J2EE Misconfiguration: Missing Custom Error Page</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/12.html" target="_blank">12</a>:ASP.NET Misconfiguration: Missing Custom Error Page</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1384.html" target="_blank">1384</a>:Improper Handling of Physical or Environmental Conditions</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1247.html" target="_blank">1247</a>:Improper Protection Against Voltage and Clock Glitches</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1261.html" target="_blank">1261</a>:Improper Handling of Single Event Upsets</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1332.html" target="_blank">1332</a>:Improper Handling of Faults that Lead to Instruction Skips</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1351.html" target="_blank">1351</a>:Improper Handling of Hardware Behavior in Exceptionally Cold Environments</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1845,7 +3966,279 @@
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/20.html" target="_blank">20</a>:Improper Input Validation</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/15.html" target="_blank">15</a>:External Control of System or Configuration Setting</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/73.html" target="_blank">73</a>:External Control of File Name or Path</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/114.html" target="_blank">114</a>:Process Control</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/102.html" target="_blank">102</a>:Struts: Duplicate Validation Forms</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/103.html" target="_blank">103</a>:Struts: Incomplete validate() Method Definition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/104.html" target="_blank">104</a>:Struts: Form Bean Does Not Extend Validation Class</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/105.html" target="_blank">105</a>:Struts: Form Field Without Validator</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/106.html" target="_blank">106</a>:Struts: Plug-in Framework not in Use</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/107.html" target="_blank">107</a>:Struts: Unused Validation Form</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/108.html" target="_blank">108</a>:Struts: Unvalidated Action Form</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/109.html" target="_blank">109</a>:Struts: Validator Turned Off</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/110.html" target="_blank">110</a>:Struts: Validator Without Form Field</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/111.html" target="_blank">111</a>:Direct Use of Unsafe JNI</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/112.html" target="_blank">112</a>:Missing XML Validation</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/113.html" target="_blank">113</a>:Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/114.html" target="_blank">114</a>:Process Control</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/117.html" target="_blank">117</a>:Improper Output Neutralization for Logs</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/119.html" target="_blank">119</a>:Improper Restriction of Operations within the Bounds of a Memory Buffer</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/120.html" target="_blank">120</a>:Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/785.html" target="_blank">785</a>:Use of Path Manipulation Function without Maximum-sized Buffer</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/123.html" target="_blank">123</a>:Write-what-where Condition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/125.html" target="_blank">125</a>:Out-of-bounds Read</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/126.html" target="_blank">126</a>:Buffer Over-read</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/127.html" target="_blank">127</a>:Buffer Under-read</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/130.html" target="_blank">130</a>:Improper Handling of Length Parameter Inconsistency</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/466.html" target="_blank">466</a>:Return of Pointer Value Outside of Expected Range</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/680.html" target="_blank">680</a>:Integer Overflow to Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/786.html" target="_blank">786</a>:Access of Memory Location Before Start of Buffer</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/124.html" target="_blank">124</a>:Buffer Underwrite ('Buffer Underflow')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/127.html" target="_blank">127</a>:Buffer Under-read</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/787.html" target="_blank">787</a>:Out-of-bounds Write</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/121.html" target="_blank">121</a>:Stack-based Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/122.html" target="_blank">122</a>:Heap-based Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/123.html" target="_blank">123</a>:Write-what-where Condition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/124.html" target="_blank">124</a>:Buffer Underwrite ('Buffer Underflow')</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/788.html" target="_blank">788</a>:Access of Memory Location After End of Buffer</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/121.html" target="_blank">121</a>:Stack-based Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/122.html" target="_blank">122</a>:Heap-based Buffer Overflow</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/126.html" target="_blank">126</a>:Buffer Over-read</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/805.html" target="_blank">805</a>:Buffer Access with Incorrect Length Value</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/806.html" target="_blank">806</a>:Buffer Access Using Size of Source Buffer</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/822.html" target="_blank">822</a>:Untrusted Pointer Dereference</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/823.html" target="_blank">823</a>:Use of Out-of-range Pointer Offset</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/824.html" target="_blank">824</a>:Access of Uninitialized Pointer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/825.html" target="_blank">825</a>:Expired Pointer Dereference</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/415.html" target="_blank">415</a>:Double Free</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/416.html" target="_blank">416</a>:Use After Free</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/120.html" target="_blank">120</a>:Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/785.html" target="_blank">785</a>:Use of Path Manipulation Function without Maximum-sized Buffer</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/129.html" target="_blank">129</a>:Improper Validation of Array Index</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/134.html" target="_blank">134</a>:Use of Externally-Controlled Format String</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/170.html" target="_blank">170</a>:Improper Null Termination</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/682.html" target="_blank">682</a>:Incorrect Calculation</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/128.html" target="_blank">128</a>:Wrap-around Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/131.html" target="_blank">131</a>:Incorrect Calculation of Buffer Size</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/135.html" target="_blank">135</a>:Incorrect Calculation of Multi-Byte String Length</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/190.html" target="_blank">190</a>:Integer Overflow or Wraparound</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/191.html" target="_blank">191</a>:Integer Underflow (Wrap or Wraparound)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/193.html" target="_blank">193</a>:Off-by-one Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/369.html" target="_blank">369</a>:Divide By Zero</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/467.html" target="_blank">467</a>:Use of sizeof() on a Pointer Type</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/468.html" target="_blank">468</a>:Incorrect Pointer Scaling</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/469.html" target="_blank">469</a>:Use of Pointer Subtraction to Determine Size</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1335.html" target="_blank">1335</a>:Incorrect Bitwise Shift of Integer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1339.html" target="_blank">1339</a>:Insufficient Precision or Accuracy of a Real Number</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/179.html" target="_blank">179</a>:Incorrect Behavior Order: Early Validation</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/180.html" target="_blank">180</a>:Incorrect Behavior Order: Validate Before Canonicalize</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/181.html" target="_blank">181</a>:Incorrect Behavior Order: Validate Before Filter</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/190.html" target="_blank">190</a>:Integer Overflow or Wraparound</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1862,6 +4255,82 @@
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/785.html" target="_blank">785</a>:Use of Path Manipulation Function without Maximum-sized Buffer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1173.html" target="_blank">1173</a>:Improper Use of Validation Framework</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/102.html" target="_blank">102</a>:Struts: Duplicate Validation Forms</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/105.html" target="_blank">105</a>:Struts: Form Field Without Validator</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/106.html" target="_blank">106</a>:Struts: Plug-in Framework not in Use</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/108.html" target="_blank">108</a>:Struts: Unvalidated Action Form</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/109.html" target="_blank">109</a>:Struts: Validator Turned Off</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/554.html" target="_blank">554</a>:ASP.NET Misconfiguration: Not Using Input Validation Framework</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1174.html" target="_blank">1174</a>:ASP.NET Misconfiguration: Improper Model Validation</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1284.html" target="_blank">1284</a>:Improper Validation of Specified Quantity in Input</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/606.html" target="_blank">606</a>:Unchecked Input for Loop Condition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/789.html" target="_blank">789</a>:Memory Allocation with Excessive Size Value</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1285.html" target="_blank">1285</a>:Improper Validation of Specified Index, Position, or Offset in Input</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/129.html" target="_blank">129</a>:Improper Validation of Array Index</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/781.html" target="_blank">781</a>:Improper Address Validation in IOCTL with METHOD_NEITHER I/O Control Code</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1286.html" target="_blank">1286</a>:Improper Validation of Syntactic Correctness of Input</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/112.html" target="_blank">112</a>:Missing XML Validation</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1287.html" target="_blank">1287</a>:Improper Validation of Specified Type of Input</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1288.html" target="_blank">1288</a>:Improper Validation of Consistency within Input</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1289.html" target="_blank">1289</a>:Improper Validation of Unsafe Equivalence in Input</span>
 <ul class="nested">
 </ul>
 </li>
@@ -1887,6 +4356,10 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/624.html" target="_blank">624</a>:Executable Regular Expression Error</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/917.html" target="_blank">917</a>:Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')</span>
 <ul class="nested">
 </ul>
@@ -1909,6 +4382,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/83.html" target="_blank">83</a>:Improper Neutralization of Script in Attributes in a Web Page</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/82.html" target="_blank">82</a>:Improper Neutralization of Script in Attributes of IMG Tags in a Web Page</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/84.html" target="_blank">84</a>:Improper Neutralization of Encoded URI Schemes in a Web Page</span>
@@ -1927,6 +4404,10 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/692.html" target="_blank">692</a>:Incomplete Denylist to Cross-Site Scripting</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/88.html" target="_blank">88</a>:Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')</span>
@@ -1935,14 +4416,30 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">89</a>:Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/564.html" target="_blank">564</a>:SQL Injection: Hibernate</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/91.html" target="_blank">91</a>:XML Injection (aka Blind XPath Injection)</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/643.html" target="_blank">643</a>:Improper Neutralization of Data within XPath Expressions ('XPath Injection')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/652.html" target="_blank">652</a>:Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/93.html" target="_blank">93</a>:Improper Neutralization of CRLF Sequences ('CRLF Injection')</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/113.html" target="_blank">113</a>:Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/94.html" target="_blank">94</a>:Improper Control of Generation of Code ('Code Injection')</span>
@@ -1959,10 +4456,42 @@
 </li>
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1336.html" target="_blank">1336</a>:Improper Neutralization of Special Elements Used in a Template Engine</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/99.html" target="_blank">99</a>:Improper Control of Resource Identifiers ('Resource Injection')</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/641.html" target="_blank">641</a>:Improper Restriction of Names for Files and Other Resources</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/694.html" target="_blank">694</a>:Use of Multiple Resources with Duplicate Identifier</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/102.html" target="_blank">102</a>:Struts: Duplicate Validation Forms</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/462.html" target="_blank">462</a>:Duplicate Key in Associative List (Alist)</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/914.html" target="_blank">914</a>:Improper Control of Dynamically-Identified Variables</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/621.html" target="_blank">621</a>:Variable Extraction Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/627.html" target="_blank">627</a>:Dynamic Variable Evaluation</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/917.html" target="_blank">917</a>:Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')</span>
@@ -1970,6 +4499,30 @@
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/943.html" target="_blank">943</a>:Improper Neutralization of Special Elements in Data Query Logic</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">89</a>:Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/564.html" target="_blank">564</a>:SQL Injection: Hibernate</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/90.html" target="_blank">90</a>:Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/643.html" target="_blank">643</a>:Improper Neutralization of Data within XPath Expressions ('XPath Injection')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/652.html" target="_blank">652</a>:Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1236.html" target="_blank">1236</a>:Improper Neutralization of Formula Elements in a CSV File</span>
 <ul class="nested">
 </ul>
 </li>
@@ -2203,6 +4756,54 @@
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/682.html" target="_blank">682</a>:Incorrect Calculation</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/128.html" target="_blank">128</a>:Wrap-around Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/131.html" target="_blank">131</a>:Incorrect Calculation of Buffer Size</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/135.html" target="_blank">135</a>:Incorrect Calculation of Multi-Byte String Length</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/190.html" target="_blank">190</a>:Integer Overflow or Wraparound</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/191.html" target="_blank">191</a>:Integer Underflow (Wrap or Wraparound)</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/193.html" target="_blank">193</a>:Off-by-one Error</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/369.html" target="_blank">369</a>:Divide By Zero</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/467.html" target="_blank">467</a>:Use of sizeof() on a Pointer Type</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/468.html" target="_blank">468</a>:Incorrect Pointer Scaling</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/469.html" target="_blank">469</a>:Use of Pointer Subtraction to Determine Size</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1335.html" target="_blank">1335</a>:Incorrect Bitwise Shift of Integer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1339.html" target="_blank">1339</a>:Insufficient Precision or Accuracy of a Real Number</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2277,6 +4878,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/240.html" target="_blank">240</a>:Improper Handling of Inconsistent Structural Elements</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/130.html" target="_blank">130</a>:Improper Handling of Length Parameter Inconsistency</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2289,6 +4894,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/240.html" target="_blank">240</a>:Improper Handling of Inconsistent Structural Elements</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/130.html" target="_blank">130</a>:Improper Handling of Length Parameter Inconsistency</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/463.html" target="_blank">463</a>:Deletion of Data Structure Sentinel</span>
@@ -2317,6 +4926,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/489.html" target="_blank">489</a>:Active Debug Code</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/11.html" target="_blank">11</a>:ASP.NET Misconfiguration: Creating Debug Binary</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/570.html" target="_blank">570</a>:Expression is Always False</span>
@@ -2329,6 +4942,50 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/573.html" target="_blank">573</a>:Improper Following of Specification by Caller</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/103.html" target="_blank">103</a>:Struts: Incomplete validate() Method Definition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/104.html" target="_blank">104</a>:Struts: Form Bean Does Not Extend Validation Class</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/243.html" target="_blank">243</a>:Creation of chroot Jail Without Changing Working Directory</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/253.html" target="_blank">253</a>:Incorrect Check of Function Return Value</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/296.html" target="_blank">296</a>:Improper Following of a Certificate's Chain of Trust</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/304.html" target="_blank">304</a>:Missing Critical Step in Authentication</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/325.html" target="_blank">325</a>:Missing Cryptographic Step</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/329.html" target="_blank">329</a>:Generation of Predictable IV with CBC Mode</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/358.html" target="_blank">358</a>:Improperly Implemented Security Check for Standard</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/475.html" target="_blank">475</a>:Undefined Behavior for Input to API</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/568.html" target="_blank">568</a>:finalize() Method Without super.finalize()</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/577.html" target="_blank">577</a>:EJB Bad Practices: Use of Sockets</span>
 <ul class="nested">
 </ul>
@@ -2365,6 +5022,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/687.html" target="_blank">687</a>:Function Call With Incorrectly Specified Argument Value</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/560.html" target="_blank">560</a>:Use of umask() with chmod-style Argument</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/688.html" target="_blank">688</a>:Function Call With Incorrect Variable or Reference as Argument</span>
@@ -2375,6 +5036,14 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/675.html" target="_blank">675</a>:Multiple Operations on Resource in Single-Operation Context</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/174.html" target="_blank">174</a>:Double Decoding of the Same Data</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/605.html" target="_blank">605</a>:Multiple Binds to the Same Port</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/764.html" target="_blank">764</a>:Multiple Locks of a Critical Resource</span>
 <ul class="nested">
 </ul>
@@ -2383,14 +5052,58 @@
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1341.html" target="_blank">1341</a>:Multiple Releases of Same Resource or Handle</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/415.html" target="_blank">415</a>:Double Free</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/694.html" target="_blank">694</a>:Use of Multiple Resources with Duplicate Identifier</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/102.html" target="_blank">102</a>:Struts: Duplicate Validation Forms</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/462.html" target="_blank">462</a>:Duplicate Key in Associative List (Alist)</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/695.html" target="_blank">695</a>:Use of Low-Level Functionality</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/111.html" target="_blank">111</a>:Direct Use of Unsafe JNI</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/245.html" target="_blank">245</a>:J2EE Bad Practices: Direct Management of Connections</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/246.html" target="_blank">246</a>:J2EE Bad Practices: Direct Use of Sockets</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/383.html" target="_blank">383</a>:J2EE Bad Practices: Direct Use of Threads</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/574.html" target="_blank">574</a>:EJB Bad Practices: Use of Synchronization Primitives</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/575.html" target="_blank">575</a>:EJB Bad Practices: Use of AWT Swing</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/576.html" target="_blank">576</a>:EJB Bad Practices: Use of Java I/O</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2401,19 +5114,171 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/657.html" target="_blank">657</a>:Violation of Secure Design Principles</span>
 <ul class="nested">
-<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/671.html" target="_blank">671</a>:Lack of Administrator Control over Security</span>
-<ul class="nested">
-<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/798.html" target="_blank">798</a>:Use of Hard-coded Credentials</span>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/250.html" target="_blank">250</a>:Execution with Unnecessary Privileges</span>
 <ul class="nested">
 </ul>
 </li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/636.html" target="_blank">636</a>:Not Failing Securely ('Failing Open')</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/455.html" target="_blank">455</a>:Non-exit on Failed Initialization</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/637.html" target="_blank">637</a>:Unnecessary Complexity in Protection Mechanism (Not Using 'Economy of Mechanism')</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/638.html" target="_blank">638</a>:Not Using Complete Mediation</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/424.html" target="_blank">424</a>:Improper Protection of Alternate Path</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/425.html" target="_blank">425</a>:Direct Request ('Forced Browsing')</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/653.html" target="_blank">653</a>:Improper Isolation or Compartmentalization</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1189.html" target="_blank">1189</a>:Improper Isolation of Shared Resources on System-on-a-Chip (SoC)</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1303.html" target="_blank">1303</a>:Non-Transparent Sharing of Microarchitectural Resources</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1331.html" target="_blank">1331</a>:Improper Isolation of Shared Resources in Network On Chip (NoC)</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/654.html" target="_blank">654</a>:Reliance on a Single Factor in a Security Decision</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/308.html" target="_blank">308</a>:Use of Single-factor Authentication</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/309.html" target="_blank">309</a>:Use of Password System for Primary Authentication</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/655.html" target="_blank">655</a>:Insufficient Psychological Acceptability</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/656.html" target="_blank">656</a>:Reliance on Security Through Obscurity</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/671.html" target="_blank">671</a>:Lack of Administrator Control over Security</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/447.html" target="_blank">447</a>:Unimplemented or Unsupported Feature in UI</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/798.html" target="_blank">798</a>:Use of Hard-coded Credentials</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/259.html" target="_blank">259</a>:Use of Hard-coded Password</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/321.html" target="_blank">321</a>:Use of Hard-coded Cryptographic Key</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1192.html" target="_blank">1192</a>:System-on-Chip (SoC) Using Components without Unique, Immutable Identifiers</span>
+<ul class="nested">
 </ul>
 </li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/684.html" target="_blank">684</a>:Incorrect Provision of Specified Functionality</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/392.html" target="_blank">392</a>:Missing Report of Error Condition</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/393.html" target="_blank">393</a>:Return of Wrong Status Code</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/440.html" target="_blank">440</a>:Expected Behavior Violation</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/446.html" target="_blank">446</a>:UI Discrepancy for Security Feature</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/447.html" target="_blank">447</a>:Unimplemented or Unsupported Feature in UI</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/448.html" target="_blank">448</a>:Obsolete Feature in UI</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/449.html" target="_blank">449</a>:The UI Performs the Wrong Action</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/451.html" target="_blank">451</a>:User Interface (UI) Misrepresentation of Critical Information</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1007.html" target="_blank">1007</a>:Insufficient Visual Distinction of Homoglyphs Presented to User</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1021.html" target="_blank">1021</a>:Improper Restriction of Rendered UI Layers or Frames</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/912.html" target="_blank">912</a>:Hidden Functionality</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/506.html" target="_blank">506</a>:Embedded Malicious Code</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/507.html" target="_blank">507</a>:Trojan Horse</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/508.html" target="_blank">508</a>:Non-Replicating Malicious Code</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/509.html" target="_blank">509</a>:Replicating Malicious Code (Virus or Worm)</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/510.html" target="_blank">510</a>:Trapdoor</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/511.html" target="_blank">511</a>:Logic/Time Bomb</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/512.html" target="_blank">512</a>:Spyware</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1245.html" target="_blank">1245</a>:Improper Finite State Machines (FSMs) in Hardware Logic</span>
 <ul class="nested">
 </ul>
 </li>
@@ -2421,6 +5286,62 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/758.html" target="_blank">758</a>:Reliance on Undefined, Unspecified, or Implementation-Defined Behavior</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/474.html" target="_blank">474</a>:Use of Function with Inconsistent Implementations</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/589.html" target="_blank">589</a>:Call to Non-ubiquitous API</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/562.html" target="_blank">562</a>:Return of Stack Variable Address</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/587.html" target="_blank">587</a>:Assignment of a Fixed Address to a Pointer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/588.html" target="_blank">588</a>:Attempt to Access Child of a Non-structure Pointer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1038.html" target="_blank">1038</a>:Insecure Automated Optimizations</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/733.html" target="_blank">733</a>:Compiler Optimization Removal or Modification of Security-critical Code</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/14.html" target="_blank">14</a>:Compiler Removal of Code to Clear Buffers</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1037.html" target="_blank">1037</a>:Processor Optimization Removal or Modification of Security-critical Code</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1102.html" target="_blank">1102</a>:Reliance on Machine-Dependent Data Representation</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1103.html" target="_blank">1103</a>:Use of Platform-Dependent Third Party Components</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1105.html" target="_blank">1105</a>:Insufficient Encapsulation of Machine-Dependent Functionality</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/188.html" target="_blank">188</a>:Reliance on Data/Memory Layout</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/198.html" target="_blank">198</a>:Use of Incorrect Byte Ordering</span>
+<ul class="nested">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1041.html" target="_blank">1041</a>:Use of Redundant Code</span>
@@ -2437,6 +5358,10 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1059.html" target="_blank">1059</a>:Insufficient Technical Documentation</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1053.html" target="_blank">1053</a>:Missing Documentation for Design</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1110.html" target="_blank">1110</a>:Incomplete Design Documentation</span>
 <ul class="nested">
 </ul>
@@ -2458,6 +5383,14 @@
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1061.html" target="_blank">1061</a>:Insufficient Encapsulation</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/766.html" target="_blank">766</a>:Critical Data Element Declared Public</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1054.html" target="_blank">1054</a>:Invocation of a Control Element at an Unnecessarily Deep Horizontal Layer</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1057.html" target="_blank">1057</a>:Data Access Operations Outside of Expected Data Manager Component</span>
 <ul class="nested">
 </ul>
 </li>
@@ -2510,6 +5443,10 @@
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1076.html" target="_blank">1076</a>:Insufficient Adherence to Expected Conventions</span>
 <ul class="nested">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/586.html" target="_blank">586</a>:Explicit Call to Finalize()</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1045.html" target="_blank">1045</a>:Parent Class with a Virtual Destructor and a Child Class without a Virtual Destructor</span>
 <ul class="nested">
 </ul>
 </li>
@@ -2601,6 +5538,22 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1093.html" target="_blank">1093</a>:Excessively Complex Data Representation</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1043.html" target="_blank">1043</a>:Data Element Aggregating an Excessively Large Number of Non-Primitive Elements</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1055.html" target="_blank">1055</a>:Multiple Inheritance from Concrete Classes</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1074.html" target="_blank">1074</a>:Class with Excessively Deep Inheritance</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1086.html" target="_blank">1086</a>:Class with Excessive Number of Child Classes</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1101.html" target="_blank">1101</a>:Reliance on Runtime Component in Generated Code</span>
@@ -2609,6 +5562,38 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1120.html" target="_blank">1120</a>:Excessive Code Complexity</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1047.html" target="_blank">1047</a>:Modules with Circular Dependencies</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1056.html" target="_blank">1056</a>:Invokable Control Element with Variadic Parameters</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1060.html" target="_blank">1060</a>:Excessive Number of Inefficient Server-Side Data Accesses</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1064.html" target="_blank">1064</a>:Invokable Control Element with Signature Containing an Excessive Number of Parameters</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1075.html" target="_blank">1075</a>:Unconditional Control Flow Transfer outside of Switch Block</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1080.html" target="_blank">1080</a>:Source Code File with Excessive Number of Lines of Code</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1095.html" target="_blank">1095</a>:Loop Condition Value Update within the Loop</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1119.html" target="_blank">1119</a>:Excessive Use of Unconditional Branching</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1121.html" target="_blank">1121</a>:Excessive McCabe Cyclomatic Complexity</span>
 <ul class="nested">
 </ul>
@@ -2641,12 +5626,32 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1164.html" target="_blank">1164</a>:Irrelevant Code</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/107.html" target="_blank">107</a>:Struts: Unused Validation Form</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/110.html" target="_blank">110</a>:Struts: Validator Without Form Field</span>
+<ul class="nested">
+</ul>
+</li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/561.html" target="_blank">561</a>:Dead Code</span>
 <ul class="nested">
 </ul>
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/563.html" target="_blank">563</a>:Assignment to Variable without Use</span>
 <ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1071.html" target="_blank">1071</a>:Empty Code Block</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/585.html" target="_blank">585</a>:Empty Synchronized Block</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1069.html" target="_blank">1069</a>:Empty Exception Block</span>
+<ul class="nested">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2673,18 +5678,38 @@
 </li>
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1357.html" target="_blank">1357</a>:Reliance on Uncontrolled Component</span>
 <ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1104.html" target="_blank">1104</a>:Use of Unmaintained Third Party Components</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1329.html" target="_blank">1329</a>:Reliance on Component That is Not Updateable</span>
+<ul class="nested">
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1277.html" target="_blank">1277</a>:Firmware Not Updateable</span>
+<ul class="nested">
+</ul>
+</li>
+<li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1310.html" target="_blank">1310</a>:Missing Ability to Patch ROM Code</span>
+<ul class="nested">
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/769.html" target="_blank">769</a>:DEPRECATED: Uncontrolled File Descriptor Consumption</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
+<div class="deprecated">
 <li><span class="caret"><a href="https://cwe.mitre.org/data/definitions/1187.html" target="_blank">1187</a>:DEPRECATED: Use of Uninitialized Resource</span>
 <ul class="nested">
 </ul>
 </li>
+</div>
 </ul>
             <script>
         var toggler = document.getElementsByClassName("caret");
