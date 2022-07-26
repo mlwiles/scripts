@@ -62,6 +62,12 @@ my $simple = XML::Simple->new();
 my $data = $simple->XMLin($filename);
 #$data = $xml->XMLin($filename, ForceArray => 1, KeyAttr => [], KeepRoot => 1, );
 
+my $cveIDCount = 0;
+my $cveIDCountDeprecated = 0;
+my $cweVersion = $data->{Version};
+my $cweDate = $data->{Date};
+
+
 my $filename = 'cwe.html';
 open(FH, '>', $filename);
 
@@ -178,14 +184,23 @@ sub  getCWEChildren {
         } else {
             $newbreadcrumbs = "$breadcrumbs:$in_id";   
         }
+        if ($c_name =~ /^DEPRECATED/){
+            print FH "<div class=\"deprecated\">\n";
+            $cveIDCountDeprecated++;
+        }
+        
+        $cveIDCount++;
         print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">$child_id</a>:$c_name</span>\n";
         print FH "<ul class=\"nested\">\n";
-
         
         #print children recursively here
         getCWEChildren($child_id, $newbreadcrumbs);
         print FH "</ul>\n";
         print FH "</li>\n";
+
+        if ($c_name =~ /^DEPRECATED/){
+            print FH "</div>\n";
+        }
     }
 }
 
@@ -197,15 +212,18 @@ sub printTree {
 
         if ($c_name =~ /^DEPRECATED/){
             print FH "<div class=\"deprecated\">\n";
+            $cveIDCountDeprecated++;
         }
+        $cveIDCount++;
         print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">$root_id</a>:$c_name</span>\n";
         print FH "<ul class=\"nested\">\n";
         getCWEChildren($root_id,"");
         print FH "</ul>\n";
         print FH "</li>\n";
+        
         if ($c_name =~ /^DEPRECATED/){
             print FH "</div>\n";
-        }           
+        }  
     }
     print FH "</ul>\n";
 }
@@ -340,11 +358,28 @@ sub printTopPage {
                     }
                 }
             }
+            function loadCounts() {
+                var cveIDCount = document.getElementById('cveIDCountDisplay');
+                cveIDCount.innerHTML = document.getElementById('cveIDCountHidden').value;
+                cveIDCount.style.fontWeight = "bold";
+                var cveIDCountDeprecated = document.getElementById('cveIDCountDeprecatedDisplay');
+                cveIDCountDeprecated.innerHTML = document.getElementById('cveIDCountDeprecatedHidden').value;
+                cveIDCountDeprecated.style.fontWeight = "bold";
+            }
         </script>
     </head>
-    <body>
+    <body body onLoad="loadCounts();">
     <input type="hidden" id="expander" value="1"/>
     <input type="hidden" id="deprecated" value="0"/>
+
+    <table>
+    <tr><td>CWETree - Generated from CWE Version:</td><td td align="right"><b>$cweVersion ($cweDate)</b></td></tr>
+    <tr><td>Number of CWE Weaknesses:</td><td align="right" id="cveIDCountDisplay"></td></tr>
+<br>
+    <tr><td>Number of DEPRECATED CWE Weaknesss:</td><td align="right" id="cveIDCountDeprecatedDisplay"></td></tr>
+    </table>
+    <br><br>
+
     <input type="button" onclick="expandAll();" id="expanderBTN" value="Expand All"/>
     <input type="button" onclick="hideDeprecated();" id="deprecatedBTN" value="Hide Deprecated"/>
 ENDTOPPAGE
@@ -365,7 +400,8 @@ sub printBottomPage {
             });
         }
         </script>
-    
+        <input type="hidden" id="cveIDCountHidden" value="$cveIDCount">
+        <input type="hidden" id="cveIDCountDeprecatedHidden" value="$cveIDCountDeprecated">
     </body>
 </html>
 ENDBOTTOMPAGE

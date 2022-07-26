@@ -125,11 +125,28 @@
                     }
                 }
             }
+            function loadCounts() {
+                var cveIDCount = document.getElementById('cveIDCountDisplay');
+                cveIDCount.innerHTML = document.getElementById('cveIDCountHidden').value;
+                cveIDCount.style.fontWeight = "bold";
+                var cveIDCountDeprecated = document.getElementById('cveIDCountDeprecatedDisplay');
+                cveIDCountDeprecated.innerHTML = document.getElementById('cveIDCountDeprecatedHidden').value;
+                cveIDCountDeprecated.style.fontWeight = "bold";
+            }
         </script>
     </head>
-    <body>
+    <body body onLoad="loadCounts();">
     <input type="hidden" id="expander" value="1"/>
     <input type="hidden" id="deprecated" value="0"/>
+
+    <table>
+    <tr><td>CWETree - Generated from CWE Version:</td><td td align="right"><b>4.8 (2022-06-28)</b></td></tr>
+    <tr><td>Number of CWE Weaknesses:</td><td align="right" id="cveIDCountDisplay"></td></tr>
+<br>
+    <tr><td>Number of DEPRECATED CWE Weaknesss:</td><td align="right" id="cveIDCountDeprecatedDisplay"></td></tr>
+    </table>
+    <br><br>
+
     <input type="button" onclick="expandAll();" id="expanderBTN" value="Expand All"/>
     <input type="button" onclick="hideDeprecated();" id="deprecatedBTN" value="Hide Deprecated"/>
 
@@ -2147,10 +2164,6 @@
 </ul>
 </li>
 <li><input type="checkbox" id="664:668:488" name="664:668:488" value="664:668:488" onclick="checkTree('664:668:488');"><span class="caret"><a href="https://cwe.mitre.org/data/definitions/488.html" target="_blank">488</a>:Exposure of Data Element to Wrong Session</span>
-<ul class="nested">
-</ul>
-</li>
-<li><input type="checkbox" id="664:668:491" name="664:668:491" value="664:668:491" onclick="checkTree('664:668:491');"><span class="caret"><a href="https://cwe.mitre.org/data/definitions/491.html" target="_blank">491</a>:Public cloneable() Method Without Final ('Object Hijack')</span>
 <ul class="nested">
 </ul>
 </li>
@@ -5754,7 +5767,8 @@
             });
         }
         </script>
-    
+        <input type="hidden" id="cveIDCountHidden" value="1389">
+        <input type="hidden" id="cveIDCountDeprecatedHidden" value="24">
     </body>
 </html>
 
