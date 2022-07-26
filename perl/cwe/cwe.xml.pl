@@ -69,8 +69,6 @@ open(FH, '>', $filename);
 foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
 {
     my $cweid = $weakness_node->{ID};
-    if ($cweid eq "200") { $DEBUG=1; }
-    if ($cweid eq "668") { $DEBUG=1; }
     if ($DEBUG) { print "ID->$cweid\n"; }
 
     my %CWDDetails = {};
@@ -113,13 +111,10 @@ foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
         #its a root - no ChildOf, add to root array
         push(@rootCWES, $cweid);
     }
-    if ($cweid eq "200") { $DEBUG=0; }
-    if ($cweid eq "668") { $DEBUG=0; }
 }
 
 sub  addCWEChild {
     my ($in_parent, $in_child) = @_;
-    if ($in_parent eq "668") { $DEBUG=1; }
     if ($DEBUG) {
         print "addCWEChild:in_parent:$in_parent:\n";
         print "addCWEChild:in_child:$in_child:\n";
@@ -149,7 +144,6 @@ sub  addCWEChild {
         push(@newchildren, $in_child);
         $CWEChildren{$in_parent} = \@newchildren;
     }
-    if ($in_parent eq "668") { $DEBUG=0; }
 }
 
 sub getCWEDetails {
@@ -160,9 +154,9 @@ sub getCWEDetails {
 }
 
 sub  getCWEChildren {
-    my ($in_id) = @_;
-    if ($in_id eq "668") { $DEBUG=1; }
+    my ($in_id, $breadcrumbs) = @_;
     if ($DEBUG) { print "getCWEChildren:in_id:$in_id\n"; }
+    if ($DEBUG) { print "getCWEChildren:breadcrumbs:$breadcrumbs\n"; }
     if (!$in_id) {
         return;
     }
@@ -176,16 +170,23 @@ sub  getCWEChildren {
     }
 
     foreach my $child_id (@sorted_children) {
-        my ($c_name, $c_desc) = getCWEDetails($child_id);
-        print FH "<li><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">$child_id</a>:$c_name</span>\n";
+        my ($c_name, $c_desc) = getCWEDetails($child_id);        
+        #build the breadcrumbs
+        my $newbreadcrumbs = "";
+        if (length($breadcrumbs) < 1) {
+            $newbreadcrumbs = "$in_id";
+        } else {
+            $newbreadcrumbs = "$breadcrumbs:$in_id";   
+        }
+        print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">$child_id</a>:$c_name</span>\n";
         print FH "<ul class=\"nested\">\n";
+
+        
         #print children recursively here
-        getCWEChildren($child_id);
+        getCWEChildren($child_id, $newbreadcrumbs);
         print FH "</ul>\n";
         print FH "</li>\n";
     }
-    if ($in_id eq "668") { $DEBUG=0; }
-    return;
 }
 
 sub printTree {
@@ -197,9 +198,9 @@ sub printTree {
         if ($c_name =~ /^DEPRECATED/){
             print FH "<div class=\"deprecated\">\n";
         }
-        print FH "<li><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">$root_id</a>:$c_name</span>\n";
+        print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">$root_id</a>:$c_name</span>\n";
         print FH "<ul class=\"nested\">\n";
-        getCWEChildren($root_id);
+        getCWEChildren($root_id,"");
         print FH "</ul>\n";
         print FH "</li>\n";
         if ($c_name =~ /^DEPRECATED/){
@@ -306,6 +307,38 @@ sub printTopPage {
                 }
                 document.getElementById("deprecated").value = cvalue;
                 document.getElementById("deprecatedBTN").value = ctext;
+            }
+            function checkTree (id_in) {
+                var parent;
+                var count = 0;
+                var id = "";
+                var checked = document.getElementById(id_in).checked;
+                uncheckElements();
+
+                try {
+                    count = id_in.match(/:/g).length;
+                } catch (error) {
+                }
+                if (count > 0) { element
+                    count++;
+                    crumbs = id_in.split(":",count);
+                    for (let i = 0; i < count; i++) {
+                        id = id + crumbs[i];
+                        document.getElementById(id).checked = checked;
+                        id = id + ":";
+                    }
+                } else {
+                    document.getElementById(id_in).checked = checked;
+                }
+            }
+            function uncheckElements()
+            {
+                var uncheck=document.getElementsByTagName('input');
+                for(var i = 0; i < uncheck.length; i++) {
+                    if (uncheck[i].type == 'checkbox') {
+                        uncheck[i].checked = false;
+                    }
+                }
             }
         </script>
     </head>
