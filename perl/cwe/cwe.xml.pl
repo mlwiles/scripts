@@ -236,6 +236,10 @@ sub printTopPage {
     <head>
         <!-- <link rel="stylesheet" type="text/css" href="cwe.css" /> -->
         <style>
+            span, input, td {
+                font-family: Tahoma, Verdana, sans-serif;
+            }
+
             /* Remove default bullets */
             ul, #myUL {
                 list-style-type: none;
@@ -390,16 +394,19 @@ sub printTopPage {
             }
         </script>
     </head>
-    <body body onLoad="loadCounts();">
+    <body body onLoad="loadCounts();" bgcolor="lightblue">
     <input type="hidden" id="expander" value="1"/>
     <input type="hidden" id="deprecated" value="0"/>
 
+    <center>
     <table>
-    <tr><td>CWETree - Generated from CWE Version:</td><td td align="right"><b>$cweVersion ($cweDate)</b></td></tr>
+    <tr><td colspan="2" align="center"><b>CWETree</b></td></tr>
+    <tr><td>Generated from CWE Version:</td><td td align="right"><b>$cweVersion ($cweDate)</b></td></tr>
     <tr><td>Number of CWE Weaknesses:</td><td align="right" id="cveIDCountDisplay"></td></tr>
-<br>
     <tr><td>Number of DEPRECATED CWE Weaknesss:</td><td align="right" id="cveIDCountDeprecatedDisplay"></td></tr>
     </table>
+    </center>
+
     <br><br>
 
     <input type="button" onclick="expandAll();" id="expanderBTN" value="Expand All"/>
