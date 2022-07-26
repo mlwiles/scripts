@@ -190,7 +190,7 @@ sub  getCWEChildren {
         }
         
         $cveIDCount++;
-        print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">$child_id</a>:$c_name</span>\n";
+        print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><span id=\"div$newbreadcrumbs:$child_id\" class=\"highlighter\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">$child_id</a>:$c_name</span></span>\n";
         print FH "<ul class=\"nested\">\n";
         
         #print children recursively here
@@ -215,7 +215,7 @@ sub printTree {
             $cveIDCountDeprecated++;
         }
         $cveIDCount++;
-        print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">$root_id</a>:$c_name</span>\n";
+        print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><span id=\"div$root_id\" class=\"highlighter\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">$root_id</a>:$c_name</span></span>\n";
         print FH "<ul class=\"nested\">\n";
         getCWEChildren($root_id,"");
         print FH "</ul>\n";
@@ -275,6 +275,10 @@ sub printTopPage {
             .active {
                 display: block;
             }
+
+            .highlight {
+                background-color: yellow;
+            }
         </style>
         <script type = "text/javascript">  
             function expandAll () {
@@ -330,23 +334,34 @@ sub printTopPage {
                 var parent;
                 var count = 0;
                 var id = "";
+                var div = "";
+                var divid = "";
                 var checked = document.getElementById(id_in).checked;
                 uncheckElements();
+                unHighlightElements();
 
                 try {
                     count = id_in.match(/:/g).length;
                 } catch (error) {
                 }
-                if (count > 0) { element
-                    count++;
-                    crumbs = id_in.split(":",count);
-                    for (let i = 0; i < count; i++) {
-                        id = id + crumbs[i];
-                        document.getElementById(id).checked = checked;
-                        id = id + ":";
+                if (checked) {
+                    if (count > 0) { element
+                        count++;
+                        crumbs = id_in.split(":",count);
+                        for (let i = 0; i < count; i++) {
+                            id = id + crumbs[i];
+                            document.getElementById(id).checked = checked;
+                            divid = "div" + id
+                            div = document.getElementById(divid);
+                            div.className  = ' highlighter highlight';
+                            id = id + ":";
+                        }
+                    } else {
+                        document.getElementById(id_in).checked = checked;
+                        divid = "div" + id_in
+                        div = document.getElementById(divid);
+                        div.className  = 'highlighter highlight';
                     }
-                } else {
-                    document.getElementById(id_in).checked = checked;
                 }
             }
             function uncheckElements()
@@ -356,6 +371,13 @@ sub printTopPage {
                     if (uncheck[i].type == 'checkbox') {
                         uncheck[i].checked = false;
                     }
+                }
+            }
+            function unHighlightElements()
+            {
+                var div=document.getElementsByClassName('highlighter');
+                for(var i = 0; i < div.length; i++) {
+                    div[i].className  = 'highlighter';
                 }
             }
             function loadCounts() {
@@ -389,16 +411,16 @@ ENDTOPPAGE
 sub printBottomPage {
 
     my $bottomPage = <<"ENDBOTTOMPAGE";
-            <script>
-        var toggler = document.getElementsByClassName("caret");
-        var i;
-        
-        for (i = 0; i < toggler.length; i++) {
-            toggler[i].addEventListener("click", function() {
-            this.parentElement.querySelector(".nested").classList.toggle("active");
-            this.classList.toggle("caret-down");
-            });
-        }
+        <script>
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            
+            for (i = 0; i < toggler.length; i++) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
         </script>
         <input type="hidden" id="cveIDCountHidden" value="$cveIDCount">
         <input type="hidden" id="cveIDCountDeprecatedHidden" value="$cveIDCountDeprecated">
