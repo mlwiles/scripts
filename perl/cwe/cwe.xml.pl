@@ -379,7 +379,7 @@ sub printTopPage {
                 } catch (error) {
                 }
                 if (checked) {
-                    if (count > 0) { element
+                    if (count > 0) {
                         count++;
                         crumbs = id_in.split(":",count);
                         for (let i = 0; i < count; i++) {
@@ -400,6 +400,7 @@ sub printTopPage {
                         classnames = classnames + " highlight";
                         div.className  = classnames;
                     }
+                    document.getElementById("copytextBTN").disabled = false;
                 }
             }
             function uncheckElements()
@@ -410,6 +411,7 @@ sub printTopPage {
                         uncheck[i].checked = false;
                     }
                 }
+                document.getElementById("copytextBTN").disabled = true;
             }
             function unHighlightElements()
             {
@@ -452,6 +454,33 @@ sub printTopPage {
                 document.getElementById("hovertextBTN").value = ctext;
                 document.getElementById("hover").value = htext;
             }
+            function textToClipBoard() {
+                var count = 0;
+                var checked = document.querySelectorAll('input[type=checkbox]:checked');
+                var id = "";
+                var divid = "";
+                var div = "";
+                var cbtext = "";
+
+                if (checked) {
+                    for(var i = 0; i < checked.length; i++) {
+                        id = checked[i].id;
+                        document.getElementById(id).checked = checked;
+                        divid = "div" + id
+                        div = document.getElementById(divid);
+                        cbtext = cbtext + div.textContent + "\\n";
+                    }
+                    copyTextToClipboard(cbtext);
+                }
+            }
+            async function copyTextToClipboard(text) {
+                try {
+                    await navigator.clipboard.writeText(text);
+                        alert('Text copied to clipboard');
+                    } catch(err) {
+                        alert('Error in copying text: ', err);
+                }
+            }
         </script>
     </head>
     <body body onLoad="loadCounts();" bgcolor="lightblue">
@@ -473,6 +502,7 @@ sub printTopPage {
     <input type="button" onclick="expandAll();" id="expanderBTN" value="Expand All"/>
     <input type="button" onclick="hideDeprecated();" id="deprecatedBTN" value="Hide Deprecated"/>
     <input type="button" onclick="toggleHoverText();" id="hovertextBTN" value="Show HoverText"/>
+    <input type="button" onclick="textToClipBoard();" id="copytextBTN" value="Copy Selected to Clipboard" disabled="true"/>
 ENDTOPPAGE
     print FH "$topPage\n";
 }
