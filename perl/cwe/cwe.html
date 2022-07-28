@@ -154,7 +154,7 @@
                             document.getElementById(id).checked = checked;
                             divid = "div" + id
                             div = document.getElementById(divid);
-                            div.className  = ' highlighter highlight';
+                            classnames = div.className
                             classnames = classnames + " highlight";
                             div.className  = classnames;
                             id = id + ":";
@@ -163,7 +163,8 @@
                         document.getElementById(id_in).checked = checked;
                         divid = "div" + id_in
                         div = document.getElementById(divid);
-                        div.className  = 'highlighter highlight';
+                        classnames = div.className
+                        classnames = classnames + " highlight";
                         div.className  = classnames;
                     }
                 }
@@ -194,6 +195,29 @@
                 var cveIDCountDeprecated = document.getElementById('cveIDCountDeprecatedDisplay');
                 cveIDCountDeprecated.innerHTML = document.getElementById('cveIDCountDeprecatedHidden').value;
                 cveIDCountDeprecated.style.fontWeight = "bold";
+            }
+            function toggleHoverText() {
+                var hover = document.getElementById("hover").value;
+                var classnames = "";
+                var ctext = "";
+                var htext = hover;
+
+                var div=document.getElementsByClassName('cwedata');
+                for(var i = 0; i < div.length; i++) {
+                    classnames = div[i].className
+                    if (hover == "0") {
+                        classnames = classnames + " hovertext";
+                        ctext ="Hide HoverText";
+                        htext = "1";
+                    } else {
+                        classnames = classnames.replace("hovertext", "")
+                        ctext = "Show HoverText";
+                        htext = "0";
+                    }
+                    div[i].className  = classnames;
+                }        
+                document.getElementById("hovertextBTN").value = ctext;
+                document.getElementById("hover").value = htext;
             }
         </script>
     </head>
