@@ -190,7 +190,7 @@ sub  getCWEChildren {
         }
         
         $cveIDCount++;
-        print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><span id=\"div$newbreadcrumbs:$child_id\" class=\"highlighter\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">$child_id</a>:$c_name</span></span>\n";
+        print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><span id=\"div$newbreadcrumbs:$child_id\" class=\"cwedata\" data-hover=\"CWE-$child_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">CWE-$child_id</a>:$c_name</span></span>\n";
         print FH "<ul class=\"nested\">\n";
         
         #print children recursively here
@@ -215,7 +215,7 @@ sub printTree {
             $cveIDCountDeprecated++;
         }
         $cveIDCount++;
-        print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><span id=\"div$root_id\" class=\"highlighter\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">$root_id</a>:$c_name</span></span>\n";
+        print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><span id=\"div$root_id\" class=\"cwedata\" data-hover=\"CWE-$root_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">CWE-$root_id</a>:$c_name</span></span>\n";
         print FH "<ul class=\"nested\">\n";
         getCWEChildren($root_id,"");
         print FH "</ul>\n";
@@ -283,6 +283,35 @@ sub printTopPage {
             .highlight {
                 background-color: yellow;
             }
+
+            .hovertext {
+                position: relative;
+                border-bottom: 1px dotted black;
+            }
+
+            .hovertext:before {
+                content: attr(data-hover);
+                visibility: hidden;
+                opacity: 0;
+                width: 600px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                border-radius: 5px;
+                padding: 5px 0;
+                transition: opacity 1s ease-in-out;
+
+                position: absolute;
+                z-index: 1;
+                left: 0;
+                top: 110%;
+            }
+
+            .hovertext:hover:before {
+                opacity: 1;
+                visibility: visible;
+            }
+
         </style>
         <script type = "text/javascript">  
             function expandAll () {
@@ -341,6 +370,7 @@ sub printTopPage {
                 var div = "";
                 var divid = "";
                 var checked = document.getElementById(id_in).checked;
+                var classnames = "";
                 uncheckElements();
                 unHighlightElements();
 
@@ -357,14 +387,18 @@ sub printTopPage {
                             document.getElementById(id).checked = checked;
                             divid = "div" + id
                             div = document.getElementById(divid);
-                            div.className  = ' highlighter highlight';
+                            classnames = div.className
+                            classnames = classnames + " highlight";
+                            div.className  = classnames;
                             id = id + ":";
                         }
                     } else {
                         document.getElementById(id_in).checked = checked;
                         divid = "div" + id_in
                         div = document.getElementById(divid);
-                        div.className  = 'highlighter highlight';
+                        classnames = div.className
+                        classnames = classnames + " highlight";
+                        div.className  = classnames;
                     }
                 }
             }
@@ -379,9 +413,12 @@ sub printTopPage {
             }
             function unHighlightElements()
             {
-                var div=document.getElementsByClassName('highlighter');
+                var div=document.getElementsByClassName('cwedata');
+                var classnames = "";
                 for(var i = 0; i < div.length; i++) {
-                    div[i].className  = 'highlighter';
+                    classnames = div[i].className
+                    classnames = classnames.replace("highlight", "");
+                    div[i].className  = classnames;
                 }
             }
             function loadCounts() {
@@ -392,9 +429,33 @@ sub printTopPage {
                 cveIDCountDeprecated.innerHTML = document.getElementById('cveIDCountDeprecatedHidden').value;
                 cveIDCountDeprecated.style.fontWeight = "bold";
             }
+            function toggleHoverText() {
+                var hover = document.getElementById("hover").value;
+                var classnames = "";
+                var ctext = "";
+                var htext = hover;
+
+                var div=document.getElementsByClassName('cwedata');
+                for(var i = 0; i < div.length; i++) {
+                    classnames = div[i].className
+                    if (hover == "0") {
+                        classnames = classnames + " hovertext";
+                        ctext ="Hide HoverText";
+                        htext = "1";
+                    } else {
+                        classnames = classnames.replace("hovertext", "")
+                        ctext = "Show HoverText";
+                        htext = "0";
+                    }
+                    div[i].className  = classnames;
+                }        
+                document.getElementById("hovertextBTN").value = ctext;
+                document.getElementById("hover").value = htext;
+            }
         </script>
     </head>
     <body body onLoad="loadCounts();" bgcolor="lightblue">
+    <input type="hidden" id="hover" value="0"/>
     <input type="hidden" id="expander" value="1"/>
     <input type="hidden" id="deprecated" value="0"/>
 
@@ -411,6 +472,7 @@ sub printTopPage {
 
     <input type="button" onclick="expandAll();" id="expanderBTN" value="Expand All"/>
     <input type="button" onclick="hideDeprecated();" id="deprecatedBTN" value="Hide Deprecated"/>
+    <input type="button" onclick="toggleHoverText();" id="hovertextBTN" value="Show HoverText"/>
 ENDTOPPAGE
     print FH "$topPage\n";
 }
