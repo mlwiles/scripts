@@ -191,12 +191,24 @@
                 }
             }
             function loadCounts() {
-                var cveIDCount = document.getElementById('cveIDCountDisplay');
-                cveIDCount.innerHTML = document.getElementById('cveIDCountHidden').value;
-                cveIDCount.style.fontWeight = "bold";
-                var cveIDCountDeprecated = document.getElementById('cveIDCountDeprecatedDisplay');
-                cveIDCountDeprecated.innerHTML = document.getElementById('cveIDCountDeprecatedHidden').value;
-                cveIDCountDeprecated.style.fontWeight = "bold";
+                var cweIDCount = document.getElementById('cweIDCountDisplay');
+                cweIDCount.innerHTML = document.getElementById('cweIDCountHidden').value;
+                cweIDCount.style.fontWeight = "bold";
+                var cweIDCountStatusDeprecated = document.getElementById('cweIDCountStatusDeprecatedDisplay');
+                cweIDCountStatusDeprecated.innerHTML = document.getElementById('cweIDCountStatusDeprecatedHidden').value;
+                cweIDCountStatusDeprecated.style.fontWeight = "bold";
+                var cweIDCountStatusIncomplete = document.getElementById('cweIDCountStatusIncompleteDisplay');
+                cweIDCountStatusIncomplete.innerHTML = document.getElementById('cweIDCountStatusIncompleteHidden').value;
+                cweIDCountStatusIncomplete.style.fontWeight = "bold";
+                var cweIDCountStatusStable = document.getElementById('cweIDCountStatusStableDisplay');
+                cweIDCountStatusStable.innerHTML = document.getElementById('cweIDCountStatusStableHidden').value;
+                cweIDCountStatusStable.style.fontWeight = "bold";
+                var cweIDCountStatusDraft = document.getElementById('cweIDCountStatusDraftDisplay');
+                cweIDCountStatusDraft.innerHTML = document.getElementById('cweIDCountStatusDraftHidden').value;
+                cweIDCountStatusDraft.style.fontWeight = "bold";
+                var cweIDCountStatusOther = document.getElementById('cweIDCountStatusOtherDisplay');
+                cweIDCountStatusOther.innerHTML = document.getElementById('cweIDCountStatusOtherHidden').value;
+                cweIDCountStatusOther.style.fontWeight = "bold";
             }
             function toggleHoverText() {
                 var hover = document.getElementById("hover").value;
@@ -248,6 +260,15 @@
                         alert('Error in copying text: ', err);
                 }
             }
+            function checkVersion() {
+                var current = 4.8;
+                let xmlHttpReq = new XMLHttpRequest();
+                xmlHttpReq.open("GET", "https://cwe.mitre.org/data/index.html", false); 
+                xmlHttpReq.setRequestHeader("Access-Control-Allow-Origin", "*");
+                xmlHttpReq.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;");
+                xmlHttpReq.send(null);
+                alert(xmlHttpReq.responseText);
+            }
         </script>
     </head>
     <body body onLoad="loadCounts();" bgcolor="lightblue">
@@ -259,8 +280,13 @@
     <table>
     <tr><td colspan="2" align="center"><b>CWETree</b></td></tr>
     <tr><td>Generated from CWE Version:</td><td td align="right"><b>4.8 (2022-06-28)</b></td></tr>
-    <tr><td>Number of CWE Weaknesses:</td><td align="right" id="cveIDCountDisplay"></td></tr>
-    <tr><td>Number of DEPRECATED CWE Weaknesss:</td><td align="right" id="cveIDCountDeprecatedDisplay"></td></tr>
+    <!-- <tr><td>&nbsp;</td><td td align="right"><input type="button" onclick="checkVersion();" id="versionBTN" value="Check Version"/></td></tr> -->
+    <tr><td><b>TOTAL</b> Number of CWE Weaknesses:</td><td align="right" id="cweIDCountDisplay"></td></tr>
+    <tr><td>Number of Deprecated CWE Weaknesses:</td><td align="right" id="cweIDCountStatusDeprecatedDisplay"></td></tr>
+    <tr><td>Number of Incomplete CWE Weaknesses:</td><td align="right" id="cweIDCountStatusIncompleteDisplay"></td></tr>
+    <tr><td>Number of Stable CWE Weaknesses:</td><td align="right" id="cweIDCountStatusStableDisplay"></td></tr>
+    <tr><td>Number of Draft CWE Weaknesses:</td><td align="right" id="cweIDCountStatusDraftDisplay"></td></tr>
+    <tr><td>Number of Other CWE Weaknesses:</td><td align="right" id="cweIDCountStatusOtherDisplay"></td></tr>
     </table>
     </center>
 
@@ -6103,8 +6129,12 @@ intended arguments, options, or switches within that command string."><a href="h
                 });
             }
         </script>
-        <input type="hidden" id="cveIDCountHidden" value="1389">
-        <input type="hidden" id="cveIDCountDeprecatedHidden" value="24">
+        <input type="hidden" id="cweIDCountHidden" value="927">
+        <input type="hidden" id="cweIDCountStatusDraftHidden" value="432">
+        <input type="hidden" id="cweIDCountStatusIncompleteHidden" value="469">
+        <input type="hidden" id="cweIDCountStatusStableHidden" value="26">
+        <input type="hidden" id="cweIDCountStatusDeprecatedHidden" value="24">
+        <input type="hidden" id="cweIDCountStatusOtherHidden" value="0">
     </body>
 </html>
 

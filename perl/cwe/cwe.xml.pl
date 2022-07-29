@@ -62,11 +62,15 @@ my $simple = XML::Simple->new();
 my $data = $simple->XMLin($filename);
 #$data = $xml->XMLin($filename, ForceArray => 1, KeyAttr => [], KeepRoot => 1, );
 
-my $cveIDCount = 0;
-my $cveIDCountDeprecated = 0;
+my $cweIDCount = 0;
+my $cweIDCountStatusDeprecated = 0;
+my $cweIDCountStatusDraft = 0;
+my $cweIDCountStatusIncomplete = 0;
+my $cweIDCountStatusStable = 0;
+my $cweIDCountStatusOther = 0;
+
 my $cweVersion = $data->{Version};
 my $cweDate = $data->{Date};
-
 
 my $filename = 'cwe.html';
 open(FH, '>', $filename);
@@ -76,15 +80,27 @@ foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
 {
     my $cweid = $weakness_node->{ID};
     if ($DEBUG) { print "ID->$cweid\n"; }
-
+        
     my %CWDDetails = {};
     $CWDDetails{ 'name' } = $weakness_node->{Name}; 
     if ($DEBUG) { print "ID->$CWDDetails{ 'name' }\n"; }
     $CWDDetails{ 'desc' } = $weakness_node->{Description}; 
     if ($DEBUG) { print "ID->$CWDDetails{ 'desc' }\n"; }
-
     $CWEData{ $cweid } = \%CWDDetails;
 
+    if ($weakness_node->{Status} =~ /^Draft/) {
+        $cweIDCountStatusDraft++;
+    } elsif ($weakness_node->{Status} =~ /^Incomplete/) {
+        $cweIDCountStatusIncomplete++;
+    } elsif ($weakness_node->{Status} =~ /^Deprecated/) {
+        $cweIDCountStatusDeprecated++;
+    } elsif ($weakness_node->{Status} =~ /^Stable/) {
+        $cweIDCountStatusStable++;
+    } else {
+        if ($DEBUG) { print "weakness_node->{Status}=$weakness_node->{Status}\n" };
+        $cweIDCountStatusOther++;
+    }
+    
     my $relatedWeaknesses = $weakness_node->{Related_Weaknesses};
     if ( $relatedWeaknesses != 0 )  {
         if ($DEBUG) { print "ID->relatedWeaknesses not null\n"; }
@@ -186,10 +202,8 @@ sub  getCWEChildren {
         }
         if ($c_name =~ /^DEPRECATED/){
             print FH "<div class=\"deprecated\">\n";
-            $cveIDCountDeprecated++;
         }
         
-        $cveIDCount++;
         print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><span id=\"div$newbreadcrumbs:$child_id\" class=\"cwedata\" data-hover=\"CWE-$child_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">CWE-$child_id</a>:$c_name</span></span>\n";
         print FH "<ul class=\"nested\">\n";
         
@@ -212,9 +226,7 @@ sub printTree {
 
         if ($c_name =~ /^DEPRECATED/){
             print FH "<div class=\"deprecated\">\n";
-            $cveIDCountDeprecated++;
         }
-        $cveIDCount++;
         print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><span id=\"div$root_id\" class=\"cwedata\" data-hover=\"CWE-$root_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">CWE-$root_id</a>:$c_name</span></span>\n";
         print FH "<ul class=\"nested\">\n";
         getCWEChildren($root_id,"");
@@ -424,12 +436,24 @@ sub printTopPage {
                 }
             }
             function loadCounts() {
-                var cveIDCount = document.getElementById('cveIDCountDisplay');
-                cveIDCount.innerHTML = document.getElementById('cveIDCountHidden').value;
-                cveIDCount.style.fontWeight = "bold";
-                var cveIDCountDeprecated = document.getElementById('cveIDCountDeprecatedDisplay');
-                cveIDCountDeprecated.innerHTML = document.getElementById('cveIDCountDeprecatedHidden').value;
-                cveIDCountDeprecated.style.fontWeight = "bold";
+                var cweIDCount = document.getElementById('cweIDCountDisplay');
+                cweIDCount.innerHTML = document.getElementById('cweIDCountHidden').value;
+                cweIDCount.style.fontWeight = "bold";
+                var cweIDCountStatusDeprecated = document.getElementById('cweIDCountStatusDeprecatedDisplay');
+                cweIDCountStatusDeprecated.innerHTML = document.getElementById('cweIDCountStatusDeprecatedHidden').value;
+                cweIDCountStatusDeprecated.style.fontWeight = "bold";
+                var cweIDCountStatusIncomplete = document.getElementById('cweIDCountStatusIncompleteDisplay');
+                cweIDCountStatusIncomplete.innerHTML = document.getElementById('cweIDCountStatusIncompleteHidden').value;
+                cweIDCountStatusIncomplete.style.fontWeight = "bold";
+                var cweIDCountStatusStable = document.getElementById('cweIDCountStatusStableDisplay');
+                cweIDCountStatusStable.innerHTML = document.getElementById('cweIDCountStatusStableHidden').value;
+                cweIDCountStatusStable.style.fontWeight = "bold";
+                var cweIDCountStatusDraft = document.getElementById('cweIDCountStatusDraftDisplay');
+                cweIDCountStatusDraft.innerHTML = document.getElementById('cweIDCountStatusDraftHidden').value;
+                cweIDCountStatusDraft.style.fontWeight = "bold";
+                var cweIDCountStatusOther = document.getElementById('cweIDCountStatusOtherDisplay');
+                cweIDCountStatusOther.innerHTML = document.getElementById('cweIDCountStatusOtherHidden').value;
+                cweIDCountStatusOther.style.fontWeight = "bold";
             }
             function toggleHoverText() {
                 var hover = document.getElementById("hover").value;
@@ -481,6 +505,15 @@ sub printTopPage {
                         alert('Error in copying text: ', err);
                 }
             }
+            function checkVersion() {
+                var current = $cweVersion;
+                let xmlHttpReq = new XMLHttpRequest();
+                xmlHttpReq.open("GET", "https://cwe.mitre.org/data/index.html", false); 
+                xmlHttpReq.setRequestHeader("Access-Control-Allow-Origin", "*");
+                xmlHttpReq.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;");
+                xmlHttpReq.send(null);
+                alert(xmlHttpReq.responseText);
+            }
         </script>
     </head>
     <body body onLoad="loadCounts();" bgcolor="lightblue">
@@ -492,8 +525,13 @@ sub printTopPage {
     <table>
     <tr><td colspan="2" align="center"><b>CWETree</b></td></tr>
     <tr><td>Generated from CWE Version:</td><td td align="right"><b>$cweVersion ($cweDate)</b></td></tr>
-    <tr><td>Number of CWE Weaknesses:</td><td align="right" id="cveIDCountDisplay"></td></tr>
-    <tr><td>Number of DEPRECATED CWE Weaknesss:</td><td align="right" id="cveIDCountDeprecatedDisplay"></td></tr>
+    <!-- <tr><td>&nbsp;</td><td td align="right"><input type="button" onclick="checkVersion();" id="versionBTN" value="Check Version"/></td></tr> -->
+    <tr><td><b>TOTAL</b> Number of CWE Weaknesses:</td><td align="right" id="cweIDCountDisplay"></td></tr>
+    <tr><td>Number of Deprecated CWE Weaknesses:</td><td align="right" id="cweIDCountStatusDeprecatedDisplay"></td></tr>
+    <tr><td>Number of Incomplete CWE Weaknesses:</td><td align="right" id="cweIDCountStatusIncompleteDisplay"></td></tr>
+    <tr><td>Number of Stable CWE Weaknesses:</td><td align="right" id="cweIDCountStatusStableDisplay"></td></tr>
+    <tr><td>Number of Draft CWE Weaknesses:</td><td align="right" id="cweIDCountStatusDraftDisplay"></td></tr>
+    <tr><td>Number of Other CWE Weaknesses:</td><td align="right" id="cweIDCountStatusOtherDisplay"></td></tr>
     </table>
     </center>
 
@@ -521,8 +559,12 @@ sub printBottomPage {
                 });
             }
         </script>
-        <input type="hidden" id="cveIDCountHidden" value="$cveIDCount">
-        <input type="hidden" id="cveIDCountDeprecatedHidden" value="$cveIDCountDeprecated">
+        <input type="hidden" id="cweIDCountHidden" value="$cweIDCount">
+        <input type="hidden" id="cweIDCountStatusDraftHidden" value="$cweIDCountStatusDraft">
+        <input type="hidden" id="cweIDCountStatusIncompleteHidden" value="$cweIDCountStatusIncomplete">
+        <input type="hidden" id="cweIDCountStatusStableHidden" value="$cweIDCountStatusStable">
+        <input type="hidden" id="cweIDCountStatusDeprecatedHidden" value="$cweIDCountStatusDeprecated">
+        <input type="hidden" id="cweIDCountStatusOtherHidden" value="$cweIDCountStatusOther">
     </body>
 </html>
 ENDBOTTOMPAGE
@@ -557,8 +599,19 @@ if ($DUMPER) {
 if ($DEBUG) { print "$_\n" for sort keys %CWEChildren; }
 
 #print to file
+$cweIDCount = $cweIDCountStatusDraft;
+$cweIDCount += $cweIDCountStatusIncomplete;
+$cweIDCount += $cweIDCountStatusStable;
+
 printTopPage();
 printTree(@sorted_rootCWES);
 printBottomPage();
+
+print "cweIDCount=$cweIDCount\n";
+print "cweIDCountStatusDeprecated=$cweIDCountStatusDeprecated\n";
+print "cweIDCountStatusDraft=$cweIDCountStatusDraft\n";
+print "cweIDCountStatusIncomplete=$cweIDCountStatusIncomplete\n";
+print "cweIDCountStatusStable=$cweIDCountStatusStable\n";
+print "cweIDCountStatusOther=$cweIDCountStatusOther\n";
 
 close(FH);
