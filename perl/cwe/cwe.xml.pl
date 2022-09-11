@@ -45,6 +45,7 @@ package main;
 use List::MoreUtils qw(uniq);
 use Data::Dumper qw(Dumper);
 use XML::Simple;
+use File::Copy;
 
 # https://cwe.mitre.org/data/archive.html
 #my $filename = 'cwec_v4.6.xml';
@@ -615,3 +616,6 @@ print "cweIDCountStatusStable=$cweIDCountStatusStable\n";
 print "cweIDCountStatusOther=$cweIDCountStatusOther\n";
 
 close(FH);
+
+my $newfile = "..\\..\\..\\www\\cwe\\index.html";
+copy($filename, $newfile);
