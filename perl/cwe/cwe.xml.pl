@@ -49,7 +49,7 @@ use File::Copy;
 
 # https://cwe.mitre.org/data/archive.html
 #my $filename = 'cwec_v4.6.xml';
-my $filename = 'cwec_v4.8.xml';
+my $filename = 'cwec_v4.9.xml';
 
 #2dim array - key (CWEID) - data (NAME, DESC) 
 my %CWEData = {};
