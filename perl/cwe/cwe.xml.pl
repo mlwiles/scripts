@@ -517,7 +517,7 @@ sub printTopPage {
             }
         </script>
     </head>
-    <body body onLoad="loadCounts();" bgcolor="lightblue">
+    <body body onLoad="loadCounts();hideDeprecated();expandAll();" bgcolor="lightblue">
     <input type="hidden" id="hover" value="0"/>
     <input type="hidden" id="expander" value="1"/>
     <input type="hidden" id="deprecated" value="0"/>
