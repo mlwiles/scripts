@@ -1,0 +1,201 @@
+<!-- https://www.w3schools.com/howto/howto_js_treeview.asp -->
+<html>
+    <head>
+        <!-- <link rel="stylesheet" type="text/css" href="cwe.css" /> -->
+        <style>
+            span, input, td {
+                font-family: Tahoma, Verdana, sans-serif;
+            }   
+
+        </style>
+        <script type="text/javascript" src="cvsscalc31.js" ></script>
+        <script type = "text/javascript">  
+            function checkVectorValue(vectorin, vectorname, vectorabbr, vectorvalues) {
+                console.log("checkVectorValue:vectorin:" + vectorin);
+                console.log("checkVectorValue:vectorname:" + vectorname);
+                console.log("checkVectorValue:vectorabbr:" + vectorabbr);
+                console.log("checkVectorValue:vectorvalues:" + vectorvalues);
+                returnvalue = vectorin;
+                returnmessage = ""
+                splitvectorin = vectorin.split(":");
+                if (splitvectorin[0] == undefined) {
+                    badvector = true;
+                    returnmessage += "Unsupported " + vectorname + " " + returnvalue + "\n";
+                }
+                if (splitvectorin[1] == undefined) {
+                    badvector = true;
+                    returnmessage += "Unsupported " + vectorname + " " + returnvalue + "\n";
+                }
+                if (splitvectorin[0] != vectorabbr) {
+                    badvector = true;
+                    returnmessage += vectorname + " (" + vectorabbr +") entered: " + returnvalue + "\n";    
+                }
+                splitvectorvalues = vectorvalues.split("/")
+                vectorvaluefound = false;
+                vectorvalues = ""
+                for (let i = 0; i < splitvectorvalues.length; i++) {
+                    console.log("checkVectorValue:splitvectorvalues[" + i + "]:" + splitvectorvalues[i]);
+
+                    if (splitvectorvalues[i] == splitvectorin[1]) {
+                        vectorvaluefound = true;
+                    }
+                    if (vectorvalues.length) {
+                        vectorvalues += " or "
+                    }
+                    vectorvalues += splitvectorvalues[i];
+                    console.log("checkVectorValue:vectorvalues:" + vectorvalues);
+                }
+                if (vectorvaluefound)  {
+                    return splitvectorin[1]
+                } else {
+                    badvector = true;
+                    returnmessage += vectorname + " (" + vectorabbr + ") value " + vectorvalues + " expected: " + returnvalue + "\n";    
+                }
+                return returnmessage;
+            }
+            function validateCVSS() {
+                vector = document.getElementById("cvssvector").value
+                if (vector == null || vector == "" ) {
+                    alert("Vector is empty.");
+                    return
+                }
+                //CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
+                badvector = false;
+                message = "";
+
+                const vectorArray = vector.split("/");
+                if (vectorArray[0] == undefined) {
+                    badvector = true
+                    message = "Unsupported format: " + vector + "\n";
+                } else {
+                    version = vectorArray[0];
+                    if (version != "CVSS:3.1") {
+                        badvector = true
+                        message += "Unsupported CVSS Version: " + version + "\n";
+                    }
+                }
+                if (vectorArray[1] == undefined) {
+                    badvector = true
+                } else {
+                    attackvector = vectorArray[1];
+                    attackvector = checkVectorValue(attackvector, "Attack Vector", "AV", "N/A/L/P")
+                    if (attackvector.length > 1) {
+                        badvector = true;
+                        message += attackvector;
+                    }
+                }
+                if (vectorArray[2] == undefined) {
+                    badvector = true
+                } else {
+                    attackcomplexity = vectorArray[2];
+                    attackcomplexity = checkVectorValue(attackcomplexity, "Attack Complexity", "AC", "L/H")
+                    if (attackcomplexity.length > 1) {
+                        badvector = true;
+                        message += attackcomplexity;
+                    }
+                }
+                if (vectorArray[3] == undefined) {
+                    badvector = true
+                } else {
+                    privilegesrequired = vectorArray[3];
+                    privilegesrequired = checkVectorValue(privilegesrequired, "Privileges Required", "PR", "N/L/H")
+                    if (privilegesrequired.length > 1) {
+                        badvector = true;
+                        message += privilegesrequired;
+                    }
+                }
+                if (vectorArray[4] == undefined) {
+                    badvector = true
+                } else {
+                    userinteraction = vectorArray[4];
+                    userinteraction = checkVectorValue(userinteraction, "User Interaction", "UI", "N/R")
+                    if (userinteraction.length > 1) {
+                        badvector = true;
+                        message += userinteraction;
+                    }
+                }
+                if (vectorArray[5] == undefined) {
+                    badvector = true
+                } else {
+                    scope = vectorArray[5];
+                    scope = checkVectorValue(scope, "Scope", "S", "U/C")
+                    if (scope.length > 1) {
+                        badvector = true;
+                        message += scope;
+                    }
+                }
+                if (vectorArray[6] == undefined) {
+                    badvector = true
+                } else {
+                    confidentiality = vectorArray[6];
+                    confidentiality = checkVectorValue(confidentiality, "confidentiality", "C", "N/L/H")
+                    if (confidentiality.length > 1) {
+                        badvector = true;
+                        message += confidentiality;
+                    }
+                }
+                if (vectorArray[7] == undefined) {
+                    badvector = true
+                } else {
+                    intigrity = vectorArray[7];
+                    intigrity = checkVectorValue(intigrity, "Intigrity", "I", "N/L/H")
+                    if (intigrity.length > 1) {
+                        badvector = true;
+                        message += intigrity;
+                    }
+                }
+                if (vectorArray[8] == undefined) {
+                    badvector = true
+                } else {
+                    availability = vectorArray[8];
+                    availability = checkVectorValue(availability, "Availability", "A", "N/L/H")
+                    if (availability .length > 1) {
+                        badvector = true;
+                        message += availability;
+                    }
+                }
+
+                
+                parsed = "version:" + version + "\n" +
+                "attackvector:" + attackvector + "\n" +
+                "attackcomplexity:" + attackcomplexity + "\n" +
+                "privilegesrequired:" + privilegesrequired + "\n" +
+                "userinteraction:" + userinteraction + "\n" +
+                "scope:" + scope + "\n" +
+                "confidentiality:" + confidentiality + "\n" +
+                "intigrity:" + intigrity + "\n" +
+                "availability:" + availability; 
+                console.log("validateCVSS:parsed:" + parsed);     
+                
+                //#CVSS31.calculateCVSSFromVector(vector)
+                if (badvector) {
+                    alert("Vector is not valid:\n" + message);
+                }
+            }
+        </script>
+    </head>
+    <body body onLoad="" bgcolor="lightblue">
+
+
+    <center>
+    <table>
+    <tr><td colspan="3" align="center"><b>CVSS Vector Generator</b></td></tr>
+    <tr>
+        <td>CVSS Version</td>
+        <td>&nbsp;</td>
+        <td>
+            3.1<input type="radio" id="cvssversion" name="cvssversion" value="3.1" checked>
+            4.0 (coming soon)<input type="radio" id="cvssversion" name="cvssversion" value="4.0" disabled>
+        </td>
+    </tr>
+    <tr>
+        <td>CVSS Vector</td>
+        <td>&nbsp;</td>
+        <td><input type="text" id="cvssvector" name="cvssvector" maxlength="44" size="44" placeholder="CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"></td>
+    </tr>
+    <tr><td colspan="3" align="center"><button type="button" onclick="validateCVSS();">Generate</button></td></tr>
+    </table>
+    </center>
+
+    </body>
+</html>
