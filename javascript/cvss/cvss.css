@@ -16,6 +16,7 @@ fieldset legend {
     background-color: lightblue;
     color: #lightblue;
     margin: 0;
+    border: 1;
     width: 100%;
     padding: 0.5em 0px;
     text-indent: 1em;
