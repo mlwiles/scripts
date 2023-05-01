@@ -1,4 +1,4 @@
-Built from CWE Version 4.10|2023-01-31
+Built from CWE Version 4.11|2023-04-27
 DEPRECATED: Apple '.DS_Store'|CWE-71
 DEPRECATED: Improper Sanitization of Custom Special Characters|CWE-92
 DEPRECATED: Miscalculated Null Termination|CWE-132
@@ -1020,12 +1020,12 @@ Improper Null Termination|CWE-170
 Incorrect Calculation|CWE-682
 Wrap-around Error|CWE-128
 Incorrect Calculation of Buffer Size|CWE-131
+Use of sizeof() on a Pointer Type|CWE-467
 Incorrect Calculation of Multi-Byte String Length|CWE-135
 Integer Overflow or Wraparound|CWE-190
 Integer Underflow (Wrap or Wraparound)|CWE-191
 Off-by-one Error|CWE-193
 Divide By Zero|CWE-369
-Use of sizeof() on a Pointer Type|CWE-467
 Incorrect Pointer Scaling|CWE-468
 Use of Pointer Subtraction to Determine Size|CWE-469
 Incorrect Bitwise Shift of Integer|CWE-1335
@@ -1165,12 +1165,12 @@ Improper Null Termination|CWE-170
 Incorrect Calculation|CWE-682
 Wrap-around Error|CWE-128
 Incorrect Calculation of Buffer Size|CWE-131
+Use of sizeof() on a Pointer Type|CWE-467
 Incorrect Calculation of Multi-Byte String Length|CWE-135
 Integer Overflow or Wraparound|CWE-190
 Integer Underflow (Wrap or Wraparound)|CWE-191
 Off-by-one Error|CWE-193
 Divide By Zero|CWE-369
-Use of sizeof() on a Pointer Type|CWE-467
 Incorrect Pointer Scaling|CWE-468
 Use of Pointer Subtraction to Determine Size|CWE-469
 Incorrect Bitwise Shift of Integer|CWE-1335
