@@ -34,7 +34,6 @@ sub getDesc {
 }
 sub sanitize {
     my ( $instring ) = @_;
-    print "\$instring: $instring\n";
     my $outstring = $instring =~ s/\"/&quot;/rg;
     $outstring = $outstring =~ s/\>/&gt;/rg;
     $outstring = $outstring =~ s/\</&lt;/rg;
@@ -58,7 +57,6 @@ use File::Copy;
 
 sub sanitize {
     my ( $instring ) = @_;
-    print "\$instring: $instring\n";
     my $outstring = $instring =~ s/\"/&quot;/rg;
     $outstring = $outstring =~ s/\>/&gt;/rg;
     $outstring = $outstring =~ s/\</&lt;/rg;
