@@ -1,4 +1,4 @@
-Built from CWE Version 4.11|2023-04-27
+Built from CWE Version 4.12|2023-06-29
 DEPRECATED: Apple '.DS_Store'|CWE-71
 DEPRECATED: Improper Sanitization of Custom Special Characters|CWE-92
 DEPRECATED: Miscalculated Null Termination|CWE-132
@@ -45,6 +45,7 @@ Insecure Inherited Permissions|CWE-277
 Insecure Preserved Inherited Permissions|CWE-278
 Incorrect Execution-Assigned Permissions|CWE-279
 Improper Preservation of Permissions|CWE-281
+Critical Data Element Declared Public|CWE-766
 Sensitive Cookie Without 'HttpOnly' Flag|CWE-1004
 Missing Authorization|CWE-862
 Direct Request ('Forced Browsing')|CWE-425
@@ -59,6 +60,7 @@ Authorization Bypass Through User-Controlled Key|CWE-639
 Authorization Bypass Through User-Controlled SQL Primary Key|CWE-566
 Use of Non-Canonical URL Paths for Authorization Decisions|CWE-647
 Guessable CAPTCHA|CWE-804
+Permissive Cross-domain Policy with Untrusted Domains|CWE-942
 Internal Asset Exposed to Unsafe Debug Access Level or State|CWE-1244
 Improper Export of Android Application Components|CWE-926
 Use of Implicit Intent for Sensitive Communication|CWE-927
@@ -152,6 +154,8 @@ Authentication Bypass Using an Alternate Path or Channel|CWE-288
 Direct Request ('Forced Browsing')|CWE-425
 Missing Protection Mechanism for Alternate Hardware Interface|CWE-1299
 Origin Validation Error|CWE-346
+Improper Verification of Source of a Communication Channel|CWE-940
+Improper Verification of Intent by Broadcast Receiver|CWE-925
 Missing Origin Validation in WebSockets|CWE-1385
 Authorization Bypass Through User-Controlled Key|CWE-639
 Authorization Bypass Through User-Controlled SQL Primary Key|CWE-566
@@ -171,6 +175,7 @@ Authorization Bypass Through User-Controlled Key|CWE-639
 Authorization Bypass Through User-Controlled SQL Primary Key|CWE-566
 Use of Non-Canonical URL Paths for Authorization Decisions|CWE-647
 Guessable CAPTCHA|CWE-804
+Permissive Cross-domain Policy with Untrusted Domains|CWE-942
 Internal Asset Exposed to Unsafe Debug Access Level or State|CWE-1244
 Improper Restriction of Communication Channel to Intended Endpoints|CWE-923
 Reliance on IP Address for Authentication|CWE-291
@@ -266,7 +271,6 @@ Buffer Over-read|CWE-126
 Buffer Under-read|CWE-127
 Improper Handling of Length Parameter Inconsistency|CWE-130
 Return of Pointer Value Outside of Expected Range|CWE-466
-Integer Overflow to Buffer Overflow|CWE-680
 Access of Memory Location Before Start of Buffer|CWE-786
 Buffer Underwrite ('Buffer Underflow')|CWE-124
 Buffer Under-read|CWE-127
@@ -300,6 +304,25 @@ Insufficient Visual Distinction of Homoglyphs Presented to User|CWE-1007
 Improper Restriction of Rendered UI Layers or Frames|CWE-1021
 Incomplete Internal State Distinction|CWE-372
 Uncontrolled Resource Consumption|CWE-400
+Asymmetric Resource Consumption (Amplification)|CWE-405
+Insufficient Control of Network Message Volume (Network Amplification)|CWE-406
+Inefficient Algorithmic Complexity|CWE-407
+Inefficient Regular Expression Complexity|CWE-1333
+Incorrect Behavior Order: Early Amplification|CWE-408
+Improper Handling of Highly Compressed Data (Data Amplification)|CWE-409
+Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')|CWE-776
+Excessive Platform Resource Consumption within a Loop|CWE-1050
+Data Resource Access without Use of Connection Pooling|CWE-1072
+Non-SQL Invokable Control Element with Excessive Number of Data Resource Accesses|CWE-1073
+Invokable Control Element with Excessive File or Data Access Operations|CWE-1084
+Large Data Table with Excessive Number of Indices|CWE-1089
+Excessive Index Range Scan for a Data Resource|CWE-1094
+Inefficient CPU Computation|CWE-1176
+Static Member Data Element outside of a Singleton Class Element|CWE-1042
+Creation of Immutable Text Using String Concatenation|CWE-1046
+Excessive Data Query Operations in a Large Data Table|CWE-1049
+Creation of Class Instance within a Static Code Block|CWE-1063
+Excessive Execution of Sequential Searches of Data Resource|CWE-1067
 Allocation of Resources Without Limits or Throttling|CWE-770
 Allocation of File Descriptors or Handles Without Limits or Throttling|CWE-774
 Memory Allocation with Excessive Size Value|CWE-789
@@ -337,25 +360,6 @@ Missing Release of File Descriptor or Handle after Effective Lifetime|CWE-775
 Use of Object without Invoking Destructor Method|CWE-1091
 Missing Release of File Descriptor or Handle after Effective Lifetime|CWE-775
 Improper Scrubbing of Sensitive Data from Decommissioned Device|CWE-1266
-Asymmetric Resource Consumption (Amplification)|CWE-405
-Insufficient Control of Network Message Volume (Network Amplification)|CWE-406
-Inefficient Algorithmic Complexity|CWE-407
-Inefficient Regular Expression Complexity|CWE-1333
-Incorrect Behavior Order: Early Amplification|CWE-408
-Improper Handling of Highly Compressed Data (Data Amplification)|CWE-409
-Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')|CWE-776
-Excessive Platform Resource Consumption within a Loop|CWE-1050
-Data Resource Access without Use of Connection Pooling|CWE-1072
-Non-SQL Invokable Control Element with Excessive Number of Data Resource Accesses|CWE-1073
-Invokable Control Element with Excessive File or Data Access Operations|CWE-1084
-Large Data Table with Excessive Number of Indices|CWE-1089
-Excessive Index Range Scan for a Data Resource|CWE-1094
-Inefficient CPU Computation|CWE-1176
-Static Member Data Element outside of a Singleton Class Element|CWE-1042
-Creation of Immutable Text Using String Concatenation|CWE-1046
-Excessive Data Query Operations in a Large Data Table|CWE-1049
-Creation of Class Instance within a Static Code Block|CWE-1063
-Excessive Execution of Sequential Searches of Data Resource|CWE-1067
 Insufficient Resource Pool|CWE-410
 Modification of Assumed-Immutable Data (MAID)|CWE-471
 Reliance on IP Address for Authentication|CWE-291
@@ -564,6 +568,7 @@ Insecure Inherited Permissions|CWE-277
 Insecure Preserved Inherited Permissions|CWE-278
 Incorrect Execution-Assigned Permissions|CWE-279
 Improper Preservation of Permissions|CWE-281
+Critical Data Element Declared Public|CWE-766
 Sensitive Cookie Without 'HttpOnly' Flag|CWE-1004
 Access to Critical Private Variable via Public Method|CWE-767
 Use of Implicit Intent for Sensitive Communication|CWE-927
@@ -784,6 +789,7 @@ Sequence of Processor Instructions Leads to Unexpected Behavior|CWE-1281
 Protection Mechanism Failure|CWE-693
 Collapse of Data into Unsafe Value|CWE-182
 Incomplete List of Disallowed Inputs|CWE-184
+Incomplete Denylist to Cross-Site Scripting|CWE-692
 Missing Encryption of Sensitive Data|CWE-311
 Cleartext Storage of Sensitive Information|CWE-312
 Cleartext Storage in a File or on Disk|CWE-313
@@ -798,8 +804,14 @@ J2EE Misconfiguration: Data Transmission Without Encryption|CWE-5
 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute|CWE-614
 Inadequate Encryption Strength|CWE-326
 Use of Weak Hash|CWE-328
+Use of Password Hash With Insufficient Computational Effort|CWE-916
+Use of a One-Way Hash without a Salt|CWE-759
+Use of a One-Way Hash with a Predictable Salt|CWE-760
 Use of a Broken or Risky Cryptographic Algorithm|CWE-327
 Use of Weak Hash|CWE-328
+Use of Password Hash With Insufficient Computational Effort|CWE-916
+Use of a One-Way Hash without a Salt|CWE-759
+Use of a One-Way Hash with a Predictable Salt|CWE-760
 Use of RSA Algorithm without OAEP|CWE-780
 Use of Password Hash With Insufficient Computational Effort|CWE-916
 Use of a One-Way Hash without a Salt|CWE-759
@@ -831,6 +843,8 @@ Generation of Predictable IV with CBC Mode|CWE-329
 Use of Predictable Algorithm in Random Number Generator|CWE-1241
 Insufficient Verification of Data Authenticity|CWE-345
 Origin Validation Error|CWE-346
+Improper Verification of Source of a Communication Channel|CWE-940
+Improper Verification of Intent by Broadcast Receiver|CWE-925
 Missing Origin Validation in WebSockets|CWE-1385
 Improper Verification of Cryptographic Signature|CWE-347
 Use of Less Trusted Source|CWE-348
@@ -891,6 +905,7 @@ Regular Expression without Anchors|CWE-777
 Object Model Violation: Just One of Equals and Hashcode Defined|CWE-581
 Incomplete Comparison with Missing Factors|CWE-1023
 Incomplete List of Disallowed Inputs|CWE-184
+Incomplete Denylist to Cross-Site Scripting|CWE-692
 Partial String Comparison|CWE-187
 Missing Default Case in Multiple Condition Expression|CWE-478
 Numeric Range Comparison Without Minimum Check|CWE-839
@@ -931,13 +946,13 @@ Return of Wrong Status Code|CWE-393
 Declaration of Throws for Generic Exception|CWE-397
 Improper Check for Unusual or Exceptional Conditions|CWE-754
 Unchecked Return Value|CWE-252
+Unchecked Return Value to NULL Pointer Dereference|CWE-690
 Incorrect Check of Function Return Value|CWE-253
 Improper Check for Dropped Privileges|CWE-273
 Improper Validation of Integrity Check Value|CWE-354
 Unchecked Error Condition|CWE-391
 Unexpected Status Code or Return Value|CWE-394
 NULL Pointer Dereference|CWE-476
-Unchecked Return Value to NULL Pointer Dereference|CWE-690
 Improper Handling of Exceptional Conditions|CWE-755
 Generation of Error Message Containing Sensitive Information|CWE-209
 Self-generated Error Message Containing Sensitive Information|CWE-210
@@ -946,9 +961,12 @@ Exposure of Information Through Shell Error Message|CWE-535
 Servlet Runtime Error Message Containing Sensitive Information|CWE-536
 Java Runtime Error Message Containing Sensitive Information|CWE-537
 Server-generated Error Message Containing Sensitive Information|CWE-550
+Uncaught Exception|CWE-248
+Uncaught Exception in Servlet |CWE-600
 Improper Handling of Insufficient Privileges|CWE-274
 Improper Handling of Insufficient Permissions or Privileges |CWE-280
 Detection of Error Condition Without Action|CWE-390
+Missing Report of Error Condition|CWE-392
 Use of NullPointerException Catch to Detect NULL Pointer Dereference|CWE-395
 Declaration of Catch for Generic Exception|CWE-396
 Improper Cleanup on Thrown Exception|CWE-460
@@ -991,7 +1009,6 @@ Buffer Over-read|CWE-126
 Buffer Under-read|CWE-127
 Improper Handling of Length Parameter Inconsistency|CWE-130
 Return of Pointer Value Outside of Expected Range|CWE-466
-Integer Overflow to Buffer Overflow|CWE-680
 Access of Memory Location Before Start of Buffer|CWE-786
 Buffer Underwrite ('Buffer Underflow')|CWE-124
 Buffer Under-read|CWE-127
@@ -1023,6 +1040,7 @@ Incorrect Calculation of Buffer Size|CWE-131
 Use of sizeof() on a Pointer Type|CWE-467
 Incorrect Calculation of Multi-Byte String Length|CWE-135
 Integer Overflow or Wraparound|CWE-190
+Integer Overflow to Buffer Overflow|CWE-680
 Integer Underflow (Wrap or Wraparound)|CWE-191
 Off-by-one Error|CWE-193
 Divide By Zero|CWE-369
@@ -1034,6 +1052,7 @@ Incorrect Behavior Order: Early Validation|CWE-179
 Incorrect Behavior Order: Validate Before Canonicalize|CWE-180
 Incorrect Behavior Order: Validate Before Filter|CWE-181
 Integer Overflow or Wraparound|CWE-190
+Integer Overflow to Buffer Overflow|CWE-680
 Return of Pointer Value Outside of Expected Range|CWE-466
 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')|CWE-470
 Improper Validation of Function Hook Arguments|CWE-622
@@ -1048,7 +1067,6 @@ ASP.NET Misconfiguration: Not Using Input Validation Framework|CWE-554
 ASP.NET Misconfiguration: Improper Model Validation|CWE-1174
 Improper Validation of Specified Quantity in Input|CWE-1284
 Unchecked Input for Loop Condition|CWE-606
-Memory Allocation with Excessive Size Value|CWE-789
 Improper Validation of Specified Index, Position, or Offset in Input|CWE-1285
 Improper Validation of Array Index|CWE-129
 Improper Address Validation in IOCTL with METHOD_NEITHER I/O Control Code|CWE-781
@@ -1075,7 +1093,6 @@ Improper Neutralization of Encoded URI Schemes in a Web Page|CWE-84
 Doubled Character XSS Manipulations|CWE-85
 Improper Neutralization of Invalid Characters in Identifiers in Web Pages|CWE-86
 Improper Neutralization of Alternate XSS Syntax|CWE-87
-Incomplete Denylist to Cross-Site Scripting|CWE-692
 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')|CWE-88
 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')|CWE-89
 SQL Injection: Hibernate|CWE-564
@@ -1168,6 +1185,7 @@ Incorrect Calculation of Buffer Size|CWE-131
 Use of sizeof() on a Pointer Type|CWE-467
 Incorrect Calculation of Multi-Byte String Length|CWE-135
 Integer Overflow or Wraparound|CWE-190
+Integer Overflow to Buffer Overflow|CWE-680
 Integer Underflow (Wrap or Wraparound)|CWE-191
 Off-by-one Error|CWE-193
 Divide By Zero|CWE-369
@@ -1201,7 +1219,6 @@ Improper Handling of Length Parameter Inconsistency|CWE-130
 Deletion of Data Structure Sentinel|CWE-463
 Improper Adherence to Coding Standards|CWE-710
 NULL Pointer Dereference|CWE-476
-Unchecked Return Value to NULL Pointer Dereference|CWE-690
 Use of Obsolete Function|CWE-477
 Omitted Break Statement in Switch|CWE-484
 Active Debug Code|CWE-489

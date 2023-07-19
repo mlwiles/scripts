@@ -13,7 +13,7 @@ sub new {
    my $class = shift;
    my $self = {
         _id => shift,
-        _desc => shift,
+        _desc => $self->sanitize(shift),
    };
    bless $self, $class;
    return $self;
@@ -32,11 +32,20 @@ sub setId {
 sub getDesc {
    return $self->{_desc};
 }
+sub sanitize {
+    my ( $instring ) = @_;
+    print "\$instring: $instring\n";
+    my $outstring = $instring =~ s/\"/&quot;/rg;
+    $outstring = $outstring =~ s/\>/&gt;/rg;
+    $outstring = $outstring =~ s/\</&lt;/rg;
+    return $outstring;
+}
 sub setDesc {
    my ( $self, $desc ) = @_;
-   $self->{_desc} = $desc if defined($desc);
+   $self->{_desc} = $self->sanitize($desc) if defined($desc);
    return $self->{_desc};
 }
+
 #################################
 
 # main program - there is where the magic starts (in my Shia Labeouf voice)
@@ -47,9 +56,18 @@ use Data::Dumper qw(Dumper);
 use XML::Simple;
 use File::Copy;
 
+sub sanitize {
+    my ( $instring ) = @_;
+    print "\$instring: $instring\n";
+    my $outstring = $instring =~ s/\"/&quot;/rg;
+    $outstring = $outstring =~ s/\>/&gt;/rg;
+    $outstring = $outstring =~ s/\</&lt;/rg;
+    return $outstring;
+}
+
 # https://cwe.mitre.org/data/archive.html
 #my $filename = 'cwec_v4.6.xml';
-my $filename = 'cwec_v4.11.xml';
+my $filename = 'cwec_v4.12.xml';
 
 #2dim array - key (CWEID) - data (NAME, DESC) 
 my %CWEData = {};
@@ -83,12 +101,12 @@ print FH2 "Built from CWE Version $cweVersion|$cweDate\n";
 foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
 {
     my $cweid = $weakness_node->{ID};
-    if ($DEBUG) { print "ID->$cweid\n"; }
+    if ($DEBUG) { print "ID->$cweid\n"; }  
         
     my %CWDDetails = {};
     $CWDDetails{ 'name' } = $weakness_node->{Name}; 
     if ($DEBUG) { print "ID->$CWDDetails{ 'name' }\n"; }
-    $CWDDetails{ 'desc' } = $weakness_node->{Description}; 
+    $CWDDetails{ 'desc' } = sanitize($weakness_node->{Description}); 
     if ($DEBUG) { print "ID->$CWDDetails{ 'desc' }\n"; }
     $CWEData{ $cweid } = \%CWDDetails;
 
