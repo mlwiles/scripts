@@ -3,6 +3,8 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="cvss.css" />
+        <link rel="stylesheet" type="text/css" href="cvss40.css" />
+        <script type="text/javascript" async="async" src="cvss31.js"></script>
         <script type="text/javascript" async="async" src="cvss.js"></script>
     </head>
 
@@ -10,16 +12,16 @@
         <center>
             <table>
                 <tr>
-                    <td colspan="4" align="center"><b>CVSS Base Score Reason Generator</b>
+                    <td colspan="3" align="center"><b>CVSS Base Score Reason Generator</b>
                     </td>
                 </tr>
                 <tr>
-                    <td>CVSS Version</td>
-                    <td colspan="1">&nbsp;</td>
-                    <td>
-                        <input type="radio" id="cvssversion" name="cvssversion" value="3.1" checked>3.1<br />
-                        <input type="radio" id="cvssversion" name="cvssversion" value="4.0" disabled />4.0 (coming soon)
+                    <td style="width:450px">CVSS Version</td>
+                    <td style="width:50px">
+                        <input type="radio" id="cvssversion" name="cvssversion" value="3.1" checked onclick="show31();">3.1<br />
+                        <input type="radio" id="cvssversion" name="cvssversion" value="4.0" onclick="show40();" />4.0
                     </td>
+                    <td style="width:600px"></td>
                 </tr>
                 <tr>
                     <td>CVSS Vector (Base Score) <input type="text" id="cvssvector" name="cvssvector" maxlength="44" size="44" placeholder="CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H" onchange="setMetricsFromVector(document.getElementById('cvssvector').value);"></td>
@@ -31,7 +33,7 @@
 
                             <div class="column column-left">
                                 <div class="metric">
-                                    Attack Vector (AV)<br/>
+                                    Attack Vector (AV)<br />
                                     <input name="AV" value="N" id="AV_N" type="radio" onclick="updateScores()"><label for="AV_N" id="AV_N_Label" title="The vulnerable component is bound to the network stack and the set of possible attackers extends beyond the other options listed, up to and including the entire Internet. Such a vulnerability is often termed 'remotely exploitable' and can be thought of as an attack being exploitable at the protocol level one or more network hops away (e.g., across one or more routers).">Network (N)</label>
                                     <input name="AV" value="A" id="AV_A" type="radio" onclick="updateScores()"><label for="AV_A" id="AV_A_Label" title="The vulnerable component is bound to the network stack, but the attack is limited at the protocol level to a logically adjacent topology. This can mean an attack must be launched from the same shared physical (e.g., Bluetooth or IEEE 802.11) or logical (e.g., local IP subnet) network, or from within a secure or otherwise limited administrative domain (e.g., MPLS, secure VPN to an administrative network zone).">Adjacent (A)</label>
                                     <input name="AV" value="L" id="AV_L" type="radio" onclick="updateScores()"><label for="AV_L" id="AV_L_Label" title="The vulnerable component is not bound to the network stack and the attacker’s path is via read/write/execute capabilities. Either: the attacker exploits the vulnerability by accessing the target system locally (e.g., keyboard, console), or remotely (e.g., SSH); or the attacker relies on User Interaction by another person to perform actions required to exploit the vulnerability (e.g., tricking a legitimate user into opening a malicious document).">Local (L)</label>
@@ -39,20 +41,20 @@
                                 </div>
 
                                 <div class="metric">
-                                    Attack Complexity (AC)<br/>
+                                    Attack Complexity (AC)<br />
                                     <input name="AC" value="L" id="AC_L" type="radio" onclick="updateScores()"><label for="AC_L" id="AC_L_Label" title="Specialized access conditions or extenuating circumstances do not exist. An attacker can expect repeatable success against the vulnerable component.">Low (L)</label>
                                     <input name="AC" value="H" id="AC_H" type="radio" onclick="updateScores()"><label for="AC_H" id="AC_H_Label" title="A successful attack depends on conditions beyond the attacker's control. That is, a successful attack cannot be accomplished at will, but requires the attacker to invest in some measurable amount of effort in preparation or execution against the vulnerable component before a successful attack can be expected. For example, a successful attack may require an attacker to: gather knowledge about the environment in which the vulnerable target/component exists; prepare the target environment to improve exploit reliability; or inject themselves into the logical network path between the target and the resource requested by the victim in order to read and/or modify network communications (e.g., a man in the middle attack).">High (H)</label>
                                 </div>
 
                                 <div class="metric">
-                                    Privileges Required (PR)<br/>
+                                    Privileges Required (PR)<br />
                                     <input name="PR" value="N" id="PR_N" type="radio" onclick="updateScores()"><label for="PR_N" id="PR_N_Label" title="The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files to carry out an attack.">None (N)</label>
                                     <input name="PR" value="L" id="PR_L" type="radio" onclick="updateScores()"><label for="PR_L" id="PR_L_Label" title="The attacker is authorized with (i.e., requires) privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges may have the ability to cause an impact only to non-sensitive resources.">Low (L)</label>
                                     <input name="PR" value="H" id="PR_H" type="radio" onclick="updateScores()"><label for="PR_H" id="PR_H_Label" title="The attacker is authorized with (i.e., requires) privileges that provide significant (e.g., administrative) control over the vulnerable component that could affect component-wide settings and files.">High (H)</label>
                                 </div>
 
                                 <div class="metric">
-                                    User Interaction (UI)<br/>
+                                    User Interaction (UI)<br />
                                     <input name="UI" value="N" id="UI_N" type="radio" onclick="updateScores()"><label for="UI_N" id="UI_N_Label" title="The vulnerable system can be exploited without any interaction from any user.">None (N)</label>
                                     <input name="UI" value="R" id="UI_R" type="radio" onclick="updateScores()"><label for="UI_R" id="UI_R_Label" title="Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited.">Required (R)</label>
                                 </div>
@@ -63,27 +65,27 @@
                             <div class="column column-right">
 
                                 <div class="metric">
-                                    Scope (S)<br/>
+                                    Scope (S)<br />
                                     <input name="S" value="U" id="S_U" type="radio" onclick="updateScores()"><label for="S_U" id="S_U_Label" title="An exploited vulnerability can only affect resources managed by the same security authority. In this case, the vulnerable component and the impacted component are either the same, or both are managed by the same security authority.">Unchanged (U)</label>
                                     <input name="S" value="C" id="S_C" type="radio" onclick="updateScores()"><label for="S_C" id="S_C_Label" title="An exploited vulnerability can affect resources beyond the security scope managed by the security authority of the vulnerable component. In this case, the vulnerable component and the impacted component are different and managed by different security authorities.">Changed (C)</label>
                                 </div>
 
                                 <div class="metric">
-                                    Confidentiality (C)<br/>
+                                    Confidentiality (C)<br />
                                     <input name="C" value="N" id="C_N" type="radio" onclick="updateScores()"><label for="C_N" id="C_N_Label" title="There is no loss of confidentiality within the impacted component.">None (N)</label>
                                     <input name="C" value="L" id="C_L" type="radio" onclick="updateScores()"><label for="C_L" id="C_L_Label" title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the impacted component.">Low (L)</label>
                                     <input name="C" value="H" id="C_H" type="radio" onclick="updateScores()"><label for="C_H" id="C_H_Label" title="There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</label>
                                 </div>
 
                                 <div class="metric">
-                                    Integrity (I)<br/>
+                                    Integrity (I)<br />
                                     <input name="I" value="N" id="I_N" type="radio" onclick="updateScores()"><label for="I_N" id="I_N_Label" title="There is no loss of integrity within the impacted component.">None (N)</label>
                                     <input name="I" value="L" id="I_L" type="radio" onclick="updateScores()"><label for="I_L" id="I_L_Label" title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact on the impacted component.">Low (L)</label>
                                     <input name="I" value="H" id="I_H" type="radio" onclick="updateScores()"><label for="I_H" id="I_H_Label" title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component.">High (H)</label>
                                 </div>
 
                                 <div class="metric">
-                                    Availability (A)<br/>
+                                    Availability (A)<br />
                                     <input name="A" value="N" id="A_N" type="radio" onclick="updateScores()"><label for="A_N" id="A_N_Label" title="There is no impact to availability within the impacted component.">None (N)</label>
                                     <input name="A" value="L" id="A_L" type="radio" onclick="updateScores()"><label for="A_L" id="A_L_Label" title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the impacted component are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the impacted component.">Low (L)</label>
                                     <input name="A" value="H" id="A_H" type="radio" onclick="updateScores()"><label for="A_H" id="A_H_Label" title="There is total loss of availability, resulting in the attacker being able to fully deny access to resources in the impacted component; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the impacted component (e.g., the attacker cannot disrupt existing connections, but can prevent new connections; the attacker can repeatedly exploit a vulnerability that, in each instance of a successful attack, leaks a only small amount of memory, but after repeated exploitation causes a service to become completely unavailable).">High (H)</label>
@@ -92,11 +94,491 @@
                             </div>
 
                             <div class="scoreRating">
-                                <p class="needBaseMetrics">Select values for all base metrics to generate score</p>
-                                <span id="baseMetricScore"></span>
-                                <span id="baseSeverity"></span>
-                            </div>
+                                <div class="metric-type">
+                                    <h4 class="text-center">Base Metrics <span class="tooltip tooltip-left c-hand text-small" data-tooltip="This category is usually filled p class=" needBaseMetrics">Select values for all base metrics to generate score</p>
+                                            <span id="baseMetricScore"></span>
+                                            <span id="baseSeverity"></span>
+                                </div>
                         </fieldset>
+
+                        <fieldset id="baseMetricGroup40" class="hide">
+
+                            <div class="metric-group">
+                                <h5 class="text-center">Exploitability Metrics</h5>
+                                <div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric reflects the context by which vulnerability exploitation is possible. This metric value (and consequently the Base Score) will be larger the more remote (logically, and physically) an attacker can be in order to exploit the vulnerable system.">Attack Vector (AV)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The vulnerable system is bound to the network stack and the set of possible attackers extends beyond the other options listed below, up to and including the entire Internet.">Network (N)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The vulnerable system is bound to the network stack, but the attack is limited at the protocol level to a logically adjacent topology. This can mean an attack must be launched from the same shared physical (e.g., Bluetooth or IEEE 802.11) or logical (e.g., local IP subnet) network, or from within a secure or otherwise limited administrative domain (e.g., MPLS, secure VPN to an administrative network zone).">Adjacent (A)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The vulnerable system is not bound to the network stack and the attacker’s path is via read/write/execute capabilities. Either the attacker exploits the vulnerability by accessing the target system locally (e.g., keyboard, console) or remotely (e.g., SSH), or the attacker relies on User Interaction by another person to perform actions required to exploit the vulnerability">Local (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The attack requires the attacker to physically touch or manipulate the vulnerable system.">Physical (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric reflects the context by which vulnerability exploitation is possible. This metric value (and consequently the Base Score) will be larger the more remote (logically, and physically) an attacker can be in order to exploit the vulnerable system.">Attack Vector (AV)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The vulnerable system is bound to the network stack and the set of possible attackers extends beyond the other options listed below, up to and including the entire Internet.">Network (N)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The vulnerable system is bound to the network stack, but the attack is limited at the protocol level to a logically adjacent topology. This can mean an attack must be launched from the same shared physical (e.g., Bluetooth or IEEE 802.11) or logical (e.g., local IP subnet) network, or from within a secure or otherwise limited administrative domain (e.g., MPLS, secure VPN to an administrative network zone).">Adjacent (A)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The vulnerable system is not bound to the network stack and the attacker’s path is via read/write/execute capabilities. Either the attacker exploits the vulnerability by accessing the target system locally (e.g., keyboard, console) or remotely (e.g., SSH), or the attacker relies on User Interaction by another person to perform actions required to exploit the vulnerability">Local (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The attack requires the attacker to physically touch or manipulate the vulnerable system.">Physical (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric reflects the context by which vulnerability exploitation is possible. This metric value (and consequently the Base Score) will be larger the more remote (logically, and physically) an attacker can be in order to exploit the vulnerable system.">Attack Vector (AV)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The vulnerable system is bound to the network stack and the set of possible attackers extends beyond the other options listed below, up to and including the entire Internet.">Network (N)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The vulnerable system is bound to the network stack, but the attack is limited at the protocol level to a logically adjacent topology. This can mean an attack must be launched from the same shared physical (e.g., Bluetooth or IEEE 802.11) or logical (e.g., local IP subnet) network, or from within a secure or otherwise limited administrative domain (e.g., MPLS, secure VPN to an administrative network zone).">Adjacent (A)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The vulnerable system is not bound to the network stack and the attacker’s path is via read/write/execute capabilities. Either the attacker exploits the vulnerability by accessing the target system locally (e.g., keyboard, console) or remotely (e.g., SSH), or the attacker relies on User Interaction by another person to perform actions required to exploit the vulnerability">Local (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The attack requires the attacker to physically touch or manipulate the vulnerable system.">Physical (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric reflects the context by which vulnerability exploitation is possible. This metric value (and consequently the Base Score) will be larger the more remote (logically, and physically) an attacker can be in order to exploit the vulnerable system.">Attack Vector (AV)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The vulnerable system is bound to the network stack and the set of possible attackers extends beyond the other options listed below, up to and including the entire Internet.">Network (N)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The vulnerable system is bound to the network stack, but the attack is limited at the protocol level to a logically adjacent topology. This can mean an attack must be launched from the same shared physical (e.g., Bluetooth or IEEE 802.11) or logical (e.g., local IP subnet) network, or from within a secure or otherwise limited administrative domain (e.g., MPLS, secure VPN to an administrative network zone).">Adjacent (A)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The vulnerable system is not bound to the network stack and the attacker’s path is via read/write/execute capabilities. Either the attacker exploits the vulnerability by accessing the target system locally (e.g., keyboard, console) or remotely (e.g., SSH), or the attacker relies on User Interaction by another person to perform actions required to exploit the vulnerability">Local (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The attack requires the attacker to physically touch or manipulate the vulnerable system.">Physical (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric reflects the context by which vulnerability exploitation is possible. This metric value (and consequently the Base Score) will be larger the more remote (logically, and physically) an attacker can be in order to exploit the vulnerable system.">Attack Vector (AV)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="The vulnerable system is bound to the network stack and the set of possible attackers extends beyond the other options listed below, up to and including the entire Internet.">Network (N)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="The vulnerable system is bound to the network stack, but the attack is limited at the protocol level to a logically adjacent topology. This can mean an attack must be launched from the same shared physical (e.g., Bluetooth or IEEE 802.11) or logical (e.g., local IP subnet) network, or from within a secure or otherwise limited administrative domain (e.g., MPLS, secure VPN to an administrative network zone).">Adjacent (A)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="The vulnerable system is not bound to the network stack and the attacker’s path is via read/write/execute capabilities. Either the attacker exploits the vulnerability by accessing the target system locally (e.g., keyboard, console) or remotely (e.g., SSH), or the attacker relies on User Interaction by another person to perform actions required to exploit the vulnerability">Local (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="The attack requires the attacker to physically touch or manipulate the vulnerable system.">Physical (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric captures measurable actions that must be taken by the attacker to actively evade or circumvent existing security-enhancing conditions in order to obtain a working exploit. These are conditions whose primary purpose is to increase security and/or increase exploit engineering complexity.">Attack Complexity (AC)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The attacker must take no measurable action to exploit the vulnerability. The attack requires no target-specific circumvention to exploit the vulnerability.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The successful attack depends on the evasion or circumvention of security-enhancing techniques in place that would otherwise hinder the attack. These include evasion of exploit mitigation techniques and/or obtaining target-specific secrets.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric captures measurable actions that must be taken by the attacker to actively evade or circumvent existing security-enhancing conditions in order to obtain a working exploit. These are conditions whose primary purpose is to increase security and/or increase exploit engineering complexity.">Attack Complexity (AC)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The attacker must take no measurable action to exploit the vulnerability. The attack requires no target-specific circumvention to exploit the vulnerability.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The successful attack depends on the evasion or circumvention of security-enhancing techniques in place that would otherwise hinder the attack. These include evasion of exploit mitigation techniques and/or obtaining target-specific secrets.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric captures measurable actions that must be taken by the attacker to actively evade or circumvent existing security-enhancing conditions in order to obtain a working exploit. These are conditions whose primary purpose is to increase security and/or increase exploit engineering complexity.">Attack Complexity (AC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The attacker must take no measurable action to exploit the vulnerability. The attack requires no target-specific circumvention to exploit the vulnerability.">Low (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The successful attack depends on the evasion or circumvention of security-enhancing techniques in place that would otherwise hinder the attack. These include evasion of exploit mitigation techniques and/or obtaining target-specific secrets.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric captures measurable actions that must be taken by the attacker to actively evade or circumvent existing security-enhancing conditions in order to obtain a working exploit. These are conditions whose primary purpose is to increase security and/or increase exploit engineering complexity.">Attack Complexity (AC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The attacker must take no measurable action to exploit the vulnerability. The attack requires no target-specific circumvention to exploit the vulnerability.">Low (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The successful attack depends on the evasion or circumvention of security-enhancing techniques in place that would otherwise hinder the attack. These include evasion of exploit mitigation techniques and/or obtaining target-specific secrets.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric captures measurable actions that must be taken by the attacker to actively evade or circumvent existing security-enhancing conditions in order to obtain a working exploit. These are conditions whose primary purpose is to increase security and/or increase exploit engineering complexity.">Attack Complexity (AC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="The attacker must take no measurable action to exploit the vulnerability. The attack requires no target-specific circumvention to exploit the vulnerability.">Low (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="The successful attack depends on the evasion or circumvention of security-enhancing techniques in place that would otherwise hinder the attack. These include evasion of exploit mitigation techniques and/or obtaining target-specific secrets.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric captures the prerequisite deployment and execution conditions or variables of the vulnerable component that enable the attack. These differ from security-enhancing techniques/technologies (ref Attack Complexity) as the primary purpose of these conditions is not to explicitly mitigate attacks, but rather, emerge naturally as a consequence of the deployment and execution of the vulnerable component. If the attacker does not take action to overcome these conditions, the attack may succeed only occasionally or not succeed at all.">Attack Requirements (AT)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The successful attack does not depend on the deployment and execution conditions of the vulnerable software. The attacker can expect to be able to reach the vulnerability and execute the exploitation code under all or most instances of the vulnerability.">None (N)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The successful attack depends on the presence of specific deployment and execution conditions of the vulnerable software that enable the attack.">Present (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric captures the prerequisite deployment and execution conditions or variables of the vulnerable component that enable the attack. These differ from security-enhancing techniques/technologies (ref Attack Complexity) as the primary purpose of these conditions is not to explicitly mitigate attacks, but rather, emerge naturally as a consequence of the deployment and execution of the vulnerable component. If the attacker does not take action to overcome these conditions, the attack may succeed only occasionally or not succeed at all.">Attack Requirements (AT)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The successful attack does not depend on the deployment and execution conditions of the vulnerable software. The attacker can expect to be able to reach the vulnerability and execute the exploitation code under all or most instances of the vulnerability.">None (N)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The successful attack depends on the presence of specific deployment and execution conditions of the vulnerable software that enable the attack.">Present (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric captures the prerequisite deployment and execution conditions or variables of the vulnerable component that enable the attack. These differ from security-enhancing techniques/technologies (ref Attack Complexity) as the primary purpose of these conditions is not to explicitly mitigate attacks, but rather, emerge naturally as a consequence of the deployment and execution of the vulnerable component. If the attacker does not take action to overcome these conditions, the attack may succeed only occasionally or not succeed at all.">Attack Requirements (AT)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The successful attack does not depend on the deployment and execution conditions of the vulnerable software. The attacker can expect to be able to reach the vulnerability and execute the exploitation code under all or most instances of the vulnerability.">None (N)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The successful attack depends on the presence of specific deployment and execution conditions of the vulnerable software that enable the attack.">Present (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric captures the prerequisite deployment and execution conditions or variables of the vulnerable component that enable the attack. These differ from security-enhancing techniques/technologies (ref Attack Complexity) as the primary purpose of these conditions is not to explicitly mitigate attacks, but rather, emerge naturally as a consequence of the deployment and execution of the vulnerable component. If the attacker does not take action to overcome these conditions, the attack may succeed only occasionally or not succeed at all.">Attack Requirements (AT)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The successful attack does not depend on the deployment and execution conditions of the vulnerable software. The attacker can expect to be able to reach the vulnerability and execute the exploitation code under all or most instances of the vulnerability.">None (N)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The successful attack depends on the presence of specific deployment and execution conditions of the vulnerable software that enable the attack.">Present (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric captures the prerequisite deployment and execution conditions or variables of the vulnerable component that enable the attack. These differ from security-enhancing techniques/technologies (ref Attack Complexity) as the primary purpose of these conditions is not to explicitly mitigate attacks, but rather, emerge naturally as a consequence of the deployment and execution of the vulnerable component. If the attacker does not take action to overcome these conditions, the attack may succeed only occasionally or not succeed at all.">Attack Requirements (AT)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="The successful attack does not depend on the deployment and execution conditions of the vulnerable software. The attacker can expect to be able to reach the vulnerability and execute the exploitation code under all or most instances of the vulnerability.">None (N)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="The successful attack depends on the presence of specific deployment and execution conditions of the vulnerable software that enable the attack.">Present (P)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric describes the level of privileges an attacker must possess before successfully exploiting the vulnerability.">Privileges Required (PR)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files of the vulnerable system to carry out an attack.">None (N)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The attacker requires privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges has the ability to access only non-sensitive resources.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The attacker requires privileges that provide significant (e.g., administrative) control over the vulnerable system allowing full access to the vulnerable system’s settings and files.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric describes the level of privileges an attacker must possess before successfully exploiting the vulnerability.">Privileges Required (PR)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files of the vulnerable system to carry out an attack.">None (N)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The attacker requires privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges has the ability to access only non-sensitive resources.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="The attacker requires privileges that provide significant (e.g., administrative) control over the vulnerable system allowing full access to the vulnerable system’s settings and files.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric describes the level of privileges an attacker must possess before successfully exploiting the vulnerability.">Privileges Required (PR)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files of the vulnerable system to carry out an attack.">None (N)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The attacker requires privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges has the ability to access only non-sensitive resources.">Low (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The attacker requires privileges that provide significant (e.g., administrative) control over the vulnerable system allowing full access to the vulnerable system’s settings and files.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric describes the level of privileges an attacker must possess before successfully exploiting the vulnerability.">Privileges Required (PR)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files of the vulnerable system to carry out an attack.">None (N)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The attacker requires privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges has the ability to access only non-sensitive resources.">Low (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="The attacker requires privileges that provide significant (e.g., administrative) control over the vulnerable system allowing full access to the vulnerable system’s settings and files.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric describes the level of privileges an attacker must possess before successfully exploiting the vulnerability.">Privileges Required (PR)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files of the vulnerable system to carry out an attack.">None (N)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="The attacker requires privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges has the ability to access only non-sensitive resources.">Low (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="The attacker requires privileges that provide significant (e.g., administrative) control over the vulnerable system allowing full access to the vulnerable system’s settings and files.">High (H)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric captures the requirement for a human user, other than the attacker, to participate in the successful compromise of the vulnerable system. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner.">User Interaction (UI)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The vulnerable system can be exploited without interaction from any human user, other than the attacker.">None (N)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Successful exploitation of this vulnerability requires limited interaction by the targeted user with the vulnerable component and the attacker’s payload. These interactions would be considered involuntary and do not require that the user actively subvert protections built into the vulnerable component.">Passive (P)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Successful exploitation of this vulnerability requires a targeted user to perform specific, conscious interactions with the vulnerable component and the attacker’s payload, or the user’s interactions would actively subvert protection mechanisms which would lead to exploitation of the vulnerability.">Active (A)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric captures the requirement for a human user, other than the attacker, to participate in the successful compromise of the vulnerable system. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner.">User Interaction (UI)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The vulnerable system can be exploited without interaction from any human user, other than the attacker.">None (N)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Successful exploitation of this vulnerability requires limited interaction by the targeted user with the vulnerable component and the attacker’s payload. These interactions would be considered involuntary and do not require that the user actively subvert protections built into the vulnerable component.">Passive (P)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Successful exploitation of this vulnerability requires a targeted user to perform specific, conscious interactions with the vulnerable component and the attacker’s payload, or the user’s interactions would actively subvert protection mechanisms which would lead to exploitation of the vulnerability.">Active (A)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric captures the requirement for a human user, other than the attacker, to participate in the successful compromise of the vulnerable system. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner.">User Interaction (UI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The vulnerable system can be exploited without interaction from any human user, other than the attacker.">None (N)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Successful exploitation of this vulnerability requires limited interaction by the targeted user with the vulnerable component and the attacker’s payload. These interactions would be considered involuntary and do not require that the user actively subvert protections built into the vulnerable component.">Passive (P)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Successful exploitation of this vulnerability requires a targeted user to perform specific, conscious interactions with the vulnerable component and the attacker’s payload, or the user’s interactions would actively subvert protection mechanisms which would lead to exploitation of the vulnerability.">Active (A)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric captures the requirement for a human user, other than the attacker, to participate in the successful compromise of the vulnerable system. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner.">User Interaction (UI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="The vulnerable system can be exploited without interaction from any human user, other than the attacker.">None (N)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Successful exploitation of this vulnerability requires limited interaction by the targeted user with the vulnerable component and the attacker’s payload. These interactions would be considered involuntary and do not require that the user actively subvert protections built into the vulnerable component.">Passive (P)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Successful exploitation of this vulnerability requires a targeted user to perform specific, conscious interactions with the vulnerable component and the attacker’s payload, or the user’s interactions would actively subvert protection mechanisms which would lead to exploitation of the vulnerability.">Active (A)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric captures the requirement for a human user, other than the attacker, to participate in the successful compromise of the vulnerable system. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner.">User Interaction (UI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="The vulnerable system can be exploited without interaction from any human user, other than the attacker.">None (N)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="Successful exploitation of this vulnerability requires limited interaction by the targeted user with the vulnerable component and the attacker’s payload. These interactions would be considered involuntary and do not require that the user actively subvert protections built into the vulnerable component.">Passive (P)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="Successful exploitation of this vulnerability requires a targeted user to perform specific, conscious interactions with the vulnerable component and the attacker’s payload, or the user’s interactions would actively subvert protection mechanisms which would lead to exploitation of the vulnerability.">Active (A)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="metric-group">
+                                <h5 class="text-center">Vulnerable System Impact Metrics</h5>
+                                <div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric measures the impact to the confidentiality of the information managed by the VULNERABLE SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (VC)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of confidentiality, resulting in all information within the vulnerable system being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the vulnerable system.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of confidentiality within the vulnerable system.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the confidentiality of the information managed by the VULNERABLE SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (VC)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of confidentiality, resulting in all information within the vulnerable system being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the vulnerable system.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of confidentiality within the vulnerable system.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the confidentiality of the information managed by the VULNERABLE SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (VC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of confidentiality, resulting in all information within the vulnerable system being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the vulnerable system.">Low (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of confidentiality within the vulnerable system.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the confidentiality of the information managed by the VULNERABLE SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (VC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of confidentiality, resulting in all information within the vulnerable system being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the vulnerable system.">Low (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of confidentiality within the vulnerable system.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the confidentiality of the information managed by the VULNERABLE SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (VC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="There is a total loss of confidentiality, resulting in all information within the vulnerable system being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the vulnerable system.">Low (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="There is no loss of confidentiality within the vulnerable system.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the VULNERABLE SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (VI)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the vulnerable system. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the vulnerable system.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of integrity within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the VULNERABLE SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (VI)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the vulnerable system. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the vulnerable system.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of integrity within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the VULNERABLE SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (VI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the vulnerable system. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the vulnerable system.">High (H)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of integrity within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the VULNERABLE SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (VI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the vulnerable system. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the vulnerable system.">High (H)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of integrity within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the VULNERABLE SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (VI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the vulnerable system. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the vulnerable system.">High (H)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="There is no loss of integrity within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of the VULNERABLE SYSTEM itself, such as a networked service (e.g., web, database, email).">Availability (VA)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the vulnerable system; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Vulnerable System.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the vulnerable system are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no impact to availability within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of the VULNERABLE SYSTEM itself, such as a networked service (e.g., web, database, email).">Availability (VA)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the vulnerable system; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Vulnerable System.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the vulnerable system are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no impact to availability within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of the VULNERABLE SYSTEM itself, such as a networked service (e.g., web, database, email).">Availability (VA)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the vulnerable system; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Vulnerable System.">High (H)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the vulnerable system are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no impact to availability within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of the VULNERABLE SYSTEM itself, such as a networked service (e.g., web, database, email).">Availability (VA)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the vulnerable system; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Vulnerable System.">High (H)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the vulnerable system are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no impact to availability within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of the VULNERABLE SYSTEM itself, such as a networked service (e.g., web, database, email).">Availability (VA)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the vulnerable system; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Vulnerable System.">High (H)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the vulnerable system are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Vulnerable System.">Low (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="There is no impact to availability within the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="metric-group">
+                                <h5 class="text-center">Subsequent System Impact Metrics</h5>
+                                <div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric measures the impact to the confidentiality of the information managed by any SUBSEQUENT SYSTEMS due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (SC)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of confidentiality, resulting in all resources within the Subsequent System being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of confidentiality within the Subsequent System or all confidentiality impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the confidentiality of the information managed by any SUBSEQUENT SYSTEMS due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (SC)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of confidentiality, resulting in all resources within the Subsequent System being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of confidentiality within the Subsequent System or all confidentiality impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the confidentiality of the information managed by any SUBSEQUENT SYSTEMS due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (SC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of confidentiality, resulting in all resources within the Subsequent System being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of confidentiality within the Subsequent System or all confidentiality impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the confidentiality of the information managed by any SUBSEQUENT SYSTEMS due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (SC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of confidentiality, resulting in all resources within the Subsequent System being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of confidentiality within the Subsequent System or all confidentiality impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the confidentiality of the information managed by any SUBSEQUENT SYSTEMS due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.">Confidentiality (SC)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="There is a total loss of confidentiality, resulting in all resources within the Subsequent System being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact.">High (H)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is limited. The information disclosure does not cause a direct, serious loss to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="There is no loss of confidentiality within the Subsequent System or all confidentiality impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of any SUBSEQUENT SYSTEMS is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (SI)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the Subsequent System. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of integrity within the Subsequent System or all integrity impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of any SUBSEQUENT SYSTEMS is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (SI)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the Subsequent System. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of integrity within the Subsequent System or all integrity impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of any SUBSEQUENT SYSTEMS is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (SI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the Subsequent System. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of integrity within the Subsequent System or all integrity impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of any SUBSEQUENT SYSTEMS is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (SI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the Subsequent System. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no loss of integrity within the Subsequent System or all integrity impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of any SUBSEQUENT SYSTEMS is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).">Integrity (SI)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the Subsequent System. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is limited. The data modification does not have a direct, serious impact to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="There is no loss of integrity within the Subsequent System or all integrity impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="columns hide-xl mb-2">
+                                            <div class="col-3 text-right pr-2"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of any SUBSEQUENT SYSTEMS. Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a Subsequent System.">Availability (SA)</abbr>:</div>
+                                            <div class="col-9 columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the Subsequent System; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the Vulnerable System are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no impact to availability within the Subsequent System or all availability impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-xl hide-lg">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of any SUBSEQUENT SYSTEMS. Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a Subsequent System.">Availability (SA)</abbr>:</div>
+                                            <div class="columns">
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the Subsequent System; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-sm"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the Vulnerable System are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-2 pl-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no impact to availability within the Subsequent System or all availability impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-lg hide-md">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of any SUBSEQUENT SYSTEMS. Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a Subsequent System.">Availability (SA)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the Subsequent System; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the Vulnerable System are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-4 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no impact to availability within the Subsequent System or all availability impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-md hide-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of any SUBSEQUENT SYSTEMS. Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a Subsequent System.">Availability (SA)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the Subsequent System; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-sm"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the Vulnerable System are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-6 pb-2 pr-2"><button class="btn btn-m btn-primary btn-sm"><abbr title="There is no impact to availability within the Subsequent System or all availability impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="show-sm">
+                                            <div class="mb-1"><abbr title="This metric measures the impact to the availability of the impacted system resulting from a successfully exploited vulnerability.  This metric refers to the loss of availability of any SUBSEQUENT SYSTEMS. Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a Subsequent System.">Availability (SA)</abbr>:</div>
+                                            <div class="columns pl-2">
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="There is a total loss of availability, resulting in the attacker being able to fully deny access to resources in the Subsequent System; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the Subsequent System.">High (H)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m"><abbr title="Performance is reduced or there are interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the Vulnerable System are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the Subsequent System.">Low (L)</abbr></button></div>
+                                                <div class="col-12 pb-2 pr-2"><button class="btn btn-m btn-primary"><abbr title="There is no impact to availability within the Subsequent System or all availability impact is constrained to the Vulnerable System.">None (N)</abbr></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -122,7 +604,7 @@
                 </tr>
                 <tr>
                     <td colspan="3" align="center">&nbsp;</td>
-                </tr>         
+                </tr>
                 <tr>
                     <td colspan="3" align="center">
                         <textarea id="cvssreasons" name="cvssreasons" rows="20" cols="200" disabled></textarea>
