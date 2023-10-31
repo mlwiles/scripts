@@ -1,4 +1,4 @@
-Built from CWE Version 4.12|2023-06-29
+Built from CWE Version 4.13|2023-10-26
 DEPRECATED: Apple '.DS_Store'|CWE-71
 DEPRECATED: Improper Sanitization of Custom Special Characters|CWE-92
 DEPRECATED: Miscalculated Null Termination|CWE-132
@@ -418,7 +418,6 @@ Deadlock|CWE-833
 Invokable Control Element in Multi-Thread Context with non-Final Static Storable or Member Element|CWE-1058
 Singleton Class Instance Creation without Proper Locking or Synchronization|CWE-1096
 Improper Initialization|CWE-665
-External Initialization of Trusted Variables or Data Stores|CWE-454
 Non-exit on Failed Initialization|CWE-455
 Missing Initialization of a Variable|CWE-456
 Use of Uninitialized Variable|CWE-457
@@ -431,12 +430,16 @@ Use of Uninitialized Variable|CWE-457
 Missing Initialization of Resource|CWE-909
 Missing Initialization of a Variable|CWE-456
 Uninitialized Value on Reset for Registers Holding Security Settings|CWE-1271
+Initialization of a Resource with an Insecure Default|CWE-1188
+Insecure Default Variable Initialization|CWE-453
+Cryptographic Operations are run Before Supporting Units are Ready|CWE-1279
+Incorrect Initialization of Resource|CWE-1419
+External Initialization of Trusted Variables or Data Stores|CWE-454
 Initialization with Hard-Coded Network Resource Configuration Data|CWE-1051
 Excessive Use of Hard-Coded Literals in Initialization|CWE-1052
-Insecure Default Initialization of Resource|CWE-1188
+Initialization of a Resource with an Insecure Default|CWE-1188
 Insecure Default Variable Initialization|CWE-453
 Incorrect Register Defaults or Module Parameters|CWE-1221
-Cryptographic Operations are run Before Supporting Units are Ready|CWE-1279
 Operation on Resource in Wrong Phase of Lifetime|CWE-666
 Double Free|CWE-415
 Authentication Bypass: OpenSSL CTX Object Modified after SSL Objects are Created|CWE-593
@@ -785,6 +788,7 @@ Loop with Unreachable Exit Condition ('Infinite Loop')|CWE-835
 Use of Blocking Code in Single-threaded, Non-blocking Context|CWE-1322
 Improper Enforcement of Behavioral Workflow|CWE-841
 Unintended Reentrant Invocation of Non-reentrant Code Via Nested Calls|CWE-1265
+Cryptographic Operations are run Before Supporting Units are Ready|CWE-1279
 Sequence of Processor Instructions Leads to Unexpected Behavior|CWE-1281
 Protection Mechanism Failure|CWE-693
 Collapse of Data into Unsafe Value|CWE-182
