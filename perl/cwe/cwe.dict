@@ -1,4 +1,4 @@
-Built from CWE Version 4.13|2023-10-26
+Built from CWE Version 4.14|2024-02-29
 DEPRECATED: Apple '.DS_Store'|CWE-71
 DEPRECATED: Improper Sanitization of Custom Special Characters|CWE-92
 DEPRECATED: Miscalculated Null Termination|CWE-132
@@ -219,7 +219,7 @@ Improper Restriction of Security Token Assignment|CWE-1259
 Generation of Incorrect Security Tokens|CWE-1270
 Incorrect Decoding of Security Identifiers |CWE-1290
 Incorrect Conversion of Security Identifiers|CWE-1292
-Missing Security Identifier|CWE-1302
+Missing Source Identifier in Entity Transactions on a System-On-Chip (SOC)|CWE-1302
 Incorrect Chaining or Granularity of Debug Components|CWE-1296
 Improperly Preserved Integrity of Hardware Configuration State During a Power Save/Restore Operation|CWE-1304
 Improper Translation of Security Attributes by Fabric Bridge|CWE-1311
@@ -599,6 +599,10 @@ Inclusion of Functionality from Untrusted Control Sphere|CWE-829
 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')|CWE-98
 Improper Control of Document Type Definition|CWE-827
 Inclusion of Web Functionality from an Untrusted Source|CWE-830
+Exposure of Sensitive Information during Transient Execution|CWE-1420
+Exposure of Sensitive Information in Shared Microarchitectural Structures during Transient Execution|CWE-1421
+Exposure of Sensitive Information caused by Incorrect Data Forwarding during Transient Execution|CWE-1422
+Exposure of Sensitive Information caused by Shared Microarchitectural Predictor State that Influences Transient Execution|CWE-1423
 External Influence of Sphere Definition|CWE-673
 Untrusted Search Path|CWE-426
 Incorrect Type Conversion or Cast|CWE-704
@@ -923,10 +927,10 @@ Automated Recognition Mechanism with Inadequate Detection or Handling of Adversa
 Floating Point Comparison with Incorrect Operator|CWE-1077
 Incorrect Comparison Logic Granularity|CWE-1254
 Improper Check or Handling of Exceptional Conditions|CWE-703
+Improper Handling of Syntactically Invalid Structure|CWE-228
 Improper Handling of Missing Special Element|CWE-166
 Improper Handling of Additional Special Element|CWE-167
 Improper Handling of Inconsistent Special Elements|CWE-168
-Improper Handling of Syntactically Invalid Structure|CWE-228
 Improper Handling of Values|CWE-229
 Improper Handling of Missing Values|CWE-230
 Improper Handling of Extra Values|CWE-231
@@ -943,7 +947,6 @@ Improper Handling of Length Parameter Inconsistency|CWE-130
 Improper Handling of Unexpected Data Type|CWE-241
 Uncaught Exception|CWE-248
 Uncaught Exception in Servlet |CWE-600
-Improper Handling of Insufficient Entropy in TRNG|CWE-333
 Unchecked Error Condition|CWE-391
 Missing Report of Error Condition|CWE-392
 Return of Wrong Status Code|CWE-393
@@ -969,6 +972,7 @@ Uncaught Exception|CWE-248
 Uncaught Exception in Servlet |CWE-600
 Improper Handling of Insufficient Privileges|CWE-274
 Improper Handling of Insufficient Permissions or Privileges |CWE-280
+Improper Handling of Insufficient Entropy in TRNG|CWE-333
 Detection of Error Condition Without Action|CWE-390
 Missing Report of Error Condition|CWE-392
 Use of NullPointerException Catch to Detect NULL Pointer Dereference|CWE-395
@@ -1204,6 +1208,9 @@ Improper Handling of Mixed Encoding|CWE-175
 Improper Handling of Unicode Encoding|CWE-176
 Improper Handling of URL Encoding (Hex Encoding)|CWE-177
 Improper Handling of Syntactically Invalid Structure|CWE-228
+Improper Handling of Missing Special Element|CWE-166
+Improper Handling of Additional Special Element|CWE-167
+Improper Handling of Inconsistent Special Elements|CWE-168
 Improper Handling of Values|CWE-229
 Improper Handling of Missing Values|CWE-230
 Improper Handling of Extra Values|CWE-231
@@ -1271,7 +1278,6 @@ J2EE Bad Practices: Direct Use of Threads|CWE-383
 EJB Bad Practices: Use of Synchronization Primitives|CWE-574
 EJB Bad Practices: Use of AWT Swing|CWE-575
 EJB Bad Practices: Use of Java I/O|CWE-576
-J2EE Framework: Saving Unserializable Objects to Disk|CWE-594
 Violation of Secure Design Principles|CWE-657
 Execution with Unnecessary Privileges|CWE-250
 Not Failing Securely ('Failing Open')|CWE-636
@@ -1294,7 +1300,7 @@ Unimplemented or Unsupported Feature in UI|CWE-447
 Use of Hard-coded Credentials|CWE-798
 Use of Hard-coded Password|CWE-259
 Use of Hard-coded Cryptographic Key|CWE-321
-System-on-Chip (SoC) Using Components without Unique, Immutable Identifiers|CWE-1192
+Improper Identifier for IP Block used in System-On-Chip (SOC)|CWE-1192
 Dependency on Vulnerable Third-Party Component|CWE-1395
 Incorrect Provision of Specified Functionality|CWE-684
 Missing Report of Error Condition|CWE-392
@@ -1354,10 +1360,11 @@ Use of Incorrect Byte Ordering|CWE-198
 Runtime Resource Management Control Element in a Component Built to Run on Application Servers|CWE-1065
 Missing Serialization Control Element|CWE-1066
 Inconsistency Between Implementation and Documented Design|CWE-1068
-Serializable Data Element Containing non-Serializable Item Elements|CWE-1070
 Insufficient Adherence to Expected Conventions|CWE-1076
 Explicit Call to Finalize()|CWE-586
+J2EE Framework: Saving Unserializable Objects to Disk|CWE-594
 Parent Class with a Virtual Destructor and a Child Class without a Virtual Destructor|CWE-1045
+Serializable Data Element Containing non-Serializable Item Elements|CWE-1070
 Inappropriate Source Code Style or Formatting|CWE-1078
 Suspicious Comment|CWE-546
 Use of Hard-coded, Security-relevant Constants|CWE-547

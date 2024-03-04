@@ -1,8 +1,8 @@
 import githubcommon
 
 owner = "mwiles"
-repoName = "work"
-token = "7d06b5c398f2be4bff5af56d7a4da58129bb7a82"
+repoName = "REPO NAME"
+token = "TOKEN HERE"
 
 title = "Title Here"
 description = "Description Here"
