@@ -14,6 +14,8 @@ sub new {
    my $self = {
         _id => shift,
         _desc => $self->sanitize(shift),
+        _usage,
+        _status
    };
    bless $self, $class;
    return $self;
@@ -32,17 +34,33 @@ sub setId {
 sub getDesc {
    return $self->{_desc};
 }
+sub setDesc {
+   my ( $self, $desc ) = @_;
+   $self->{_desc} = $self->sanitize($desc) if defined($desc);
+   return $self->{_desc};
+}
+sub getStatus {
+   return $self->{_status};
+}
+sub setStatus {
+   my ( $self, $status ) = @_;
+   $self->{_status} = $status if defined($status);
+   return $self->{_status};
+}
+sub getUsage {
+   return $self->{_usage};
+}
+sub setUsage {
+   my ( $self, $usage ) = @_;
+   $self->{_usage} = $usage if defined($usage);
+   return $self->{_usage};
+}
 sub sanitize {
     my ( $instring ) = @_;
     my $outstring = $instring =~ s/\"/&quot;/rg;
     $outstring = $outstring =~ s/\>/&gt;/rg;
     $outstring = $outstring =~ s/\</&lt;/rg;
     return $outstring;
-}
-sub setDesc {
-   my ( $self, $desc ) = @_;
-   $self->{_desc} = $self->sanitize($desc) if defined($desc);
-   return $self->{_desc};
 }
 
 #################################
@@ -85,6 +103,11 @@ my $cweIDCountStatusDraft = 0;
 my $cweIDCountStatusIncomplete = 0;
 my $cweIDCountStatusStable = 0;
 my $cweIDCountStatusOther = 0;
+my $cweIDCountUsageAllowed = 0;
+my $cweIDCountUsageAllowedWithReview = 0;
+my $cweIDCountUsageDiscouraged = 0;
+my $cweIDCountUsageProhibited = 0;
+my $cweIDCountUsageOther = 0;
 
 my $cweVersion = $data->{Version};
 my $cweDate = $data->{Date};
@@ -105,9 +128,24 @@ foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
     $CWDDetails{ 'name' } = $weakness_node->{Name}; 
     if ($DEBUG) { print "ID->$CWDDetails{ 'name' }\n"; }
     $CWDDetails{ 'desc' } = sanitize($weakness_node->{Description}); 
-    if ($DEBUG) { print "ID->$CWDDetails{ 'desc' }\n"; }
-    $CWEData{ $cweid } = \%CWDDetails;
 
+    my $mappingNotes = $weakness_node->{Mapping_Notes};
+    $CWDDetails{ 'usage' } = $mappingNotes->{Usage}; 
+    if ($mappingNotes->{Usage} =~ /^Allowed-with-Review/) {
+        $cweIDCountUsageAllowedWithReview++;
+    } elsif ($mappingNotes->{Usage} =~ /^Allowed/) {
+        $cweIDCountUsageAllowed++;
+    } elsif ($mappingNotes->{Usage} =~ /^Discouraged/) {
+        $cweIDCountUsageDiscouraged++;
+    } elsif ($mappingNotes->{Usage} =~ /^Prohibited/) {
+        $cweIDCountUsageProhibited++;
+    } else {
+        if ($DEBUG) { print "mappingNotes->{Usage}=$mappingNotes->{Usage}\n" };
+        $cweIDCountUsageOther++;
+    }
+
+
+    $CWDDetails{ 'status' } = $weakness_node->{Status}; 
     if ($weakness_node->{Status} =~ /^Draft/) {
         $cweIDCountStatusDraft++;
     } elsif ($weakness_node->{Status} =~ /^Incomplete/) {
@@ -120,7 +158,10 @@ foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
         if ($DEBUG) { print "weakness_node->{Status}=$weakness_node->{Status}\n" };
         $cweIDCountStatusOther++;
     }
-    
+
+    if ($DEBUG) { print "ID->$CWDDetails{ 'desc' }\n"; }
+    $CWEData{ $cweid } = \%CWDDetails;    
+
     my $relatedWeaknesses = $weakness_node->{Related_Weaknesses};
     if ( $relatedWeaknesses != 0 )  {
         if ($DEBUG) { print "ID->relatedWeaknesses not null\n"; }
@@ -192,7 +233,9 @@ sub getCWEDetails {
     my ($in_id) = @_;
     my $lookup_name = $CWEData{$in_id}->{ 'name' }; 
     my $lookup_desc = $CWEData{$in_id}->{ 'desc' };
-    return ($lookup_name, $lookup_desc);
+    my $lookup_status = $CWEData{$in_id}->{ 'status' }; 
+    my $lookup_usage = $CWEData{$in_id}->{ 'usage' };
+    return ($lookup_name, $lookup_desc, $lookup_status, $lookup_usage);
 }
 
 sub  getCWEChildren {
@@ -212,7 +255,7 @@ sub  getCWEChildren {
     }
 
     foreach my $child_id (@sorted_children) {
-        my ($c_name, $c_desc) = getCWEDetails($child_id);        
+        my ($c_name, $c_desc, $c_status, $c_usage) = getCWEDetails($child_id);        
         #build the breadcrumbs
         my $newbreadcrumbs = "";
         if (length($breadcrumbs) < 1) {
@@ -224,7 +267,7 @@ sub  getCWEChildren {
             print FH "<div class=\"deprecated\">\n";
         }
         
-        print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><span id=\"div$newbreadcrumbs:$child_id\" class=\"cwedata\" data-hover=\"CWE-$child_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">CWE-$child_id</a>:$c_name</span></span>\n";
+        print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><span id=\"div$newbreadcrumbs:$child_id\" class=\"cwedata\" data-hover=\"CWE-$child_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">CWE-$child_id</a>:$c_name <i><b>($c_usage)</b></i></span></span>\n";
         print FH "<ul class=\"nested\">\n";
         print FH2 "$c_name\|CWE-$child_id\n";
         
@@ -243,12 +286,12 @@ sub printTree {
     my (@in_roots) = @_;
     print FH "<ul id=\"myUL\">\n";
     foreach my $root_id (@in_roots) {
-        my ($c_name, $c_desc) = getCWEDetails($root_id);
+        my ($c_name, $c_desc, $c_status, $c_usage) = getCWEDetails($root_id);        
 
         if ($c_name =~ /^DEPRECATED/){
             print FH "<div class=\"deprecated\">\n";
         }
-        print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><span id=\"div$root_id\" class=\"cwedata\" data-hover=\"CWE-$root_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">CWE-$root_id</a>:$c_name</span></span>\n";
+        print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><span id=\"div$root_id\" class=\"cwedata\" data-hover=\"CWE-$root_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">CWE-$root_id</a>:$c_name <i><b>($c_usage)</b></i></span></span>\n";
         print FH "<ul class=\"nested\">\n";
         print FH2 "$c_name\|CWE-$root_id\n";
 
@@ -477,6 +520,22 @@ sub printTopPage {
                 var cweIDCountStatusOther = document.getElementById('cweIDCountStatusOtherDisplay');
                 cweIDCountStatusOther.innerHTML = document.getElementById('cweIDCountStatusOtherHidden').value;
                 cweIDCountStatusOther.style.fontWeight = "bold";
+
+                var cweIDCountUsageAllowed = document.getElementById('cweIDCountUsageAllowedDisplay');
+                cweIDCountUsageAllowed.innerHTML = document.getElementById('cweIDCountUsageAllowedHidden').value;
+                cweIDCountUsageAllowed.style.fontWeight = "bold";
+                var cweIDCountUsageAllowedWithReview = document.getElementById('cweIDCountUsageAllowedWithReviewDisplay');
+                cweIDCountUsageAllowedWithReview.innerHTML = document.getElementById('cweIDCountUsageAllowedWithReviewHidden').value;
+                cweIDCountUsageAllowedWithReview.style.fontWeight = "bold";
+                var cweIDCountUsageDiscouraged = document.getElementById('cweIDCountUsageDiscouragedDisplay');
+                cweIDCountUsageDiscouraged.innerHTML = document.getElementById('cweIDCountUsageDiscouragedHidden').value;
+                cweIDCountUsageDiscouraged.style.fontWeight = "bold";
+                var cweIDCountUsageProhibited = document.getElementById('cweIDCountUsageProhibitedDisplay');
+                cweIDCountUsageProhibited.innerHTML = document.getElementById('cweIDCountUsageProhibitedHidden').value;
+                cweIDCountUsageProhibited.style.fontWeight = "bold";
+                var cweIDCountUsageOther = document.getElementById('cweIDCountUsageOtherDisplay');
+                cweIDCountUsageOther.innerHTML = document.getElementById('cweIDCountUsageOtherHidden').value;
+                cweIDCountUsageOther.style.fontWeight = "bold";
             }
             function toggleHoverText() {
                 var hover = document.getElementById("hover").value;
@@ -550,11 +609,16 @@ sub printTopPage {
     <tr><td>Generated from CWE Version:</td><td td align="right"><b>$cweVersion ($cweDate)</b></td></tr>
     <!-- <tr><td>&nbsp;</td><td td align="right"><input type="button" onclick="checkVersion();" id="versionBTN" value="Check Version"/></td></tr> -->
     <tr><td><b>TOTAL</b> Number of CWE Weaknesses:</td><td align="right" id="cweIDCountDisplay"></td></tr>
-    <tr><td>Number of Deprecated CWE Weaknesses:</td><td align="right" id="cweIDCountStatusDeprecatedDisplay"></td></tr>
-    <tr><td>Number of Incomplete CWE Weaknesses:</td><td align="right" id="cweIDCountStatusIncompleteDisplay"></td></tr>
-    <tr><td>Number of Stable CWE Weaknesses:</td><td align="right" id="cweIDCountStatusStableDisplay"></td></tr>
-    <tr><td>Number of Draft CWE Weaknesses:</td><td align="right" id="cweIDCountStatusDraftDisplay"></td></tr>
-    <tr><td>Number of Other CWE Weaknesses:</td><td align="right" id="cweIDCountStatusOtherDisplay"></td></tr>
+    <tr><td>Number of Deprecated (Status) CWE Weaknesses:</td><td align="right" id="cweIDCountStatusDeprecatedDisplay"></td></tr>
+    <tr><td>Number of Incomplete (Status) CWE Weaknesses:</td><td align="right" id="cweIDCountStatusIncompleteDisplay"></td></tr>
+    <tr><td>Number of Stable (Status) CWE Weaknesses:</td><td align="right" id="cweIDCountStatusStableDisplay"></td></tr>
+    <tr><td>Number of Draft (Status) CWE Weaknesses:</td><td align="right" id="cweIDCountStatusDraftDisplay"></td></tr>
+    <tr><td>Number of Other (Status) CWE Weaknesses:</td><td align="right" id="cweIDCountStatusOtherDisplay"></td></tr>
+    <tr><td>Number of Allowed (Usage) CWE Weaknesses:</td><td align="right" id="cweIDCountUsageAllowedDisplay"></td></tr>
+    <tr><td>Number of Allowed with Review (Usage) CWE Weaknesses:</td><td align="right" id="cweIDCountUsageAllowedWithReviewDisplay"></td></tr>
+    <tr><td>Number of Discouraged (Usage) CWE Weaknesses:</td><td align="right" id="cweIDCountUsageDiscouragedDisplay"></td></tr>
+    <tr><td>Number of Prohibited (Usage) CWE Weaknesses:</td><td align="right" id="cweIDCountUsageProhibitedDisplay"></td></tr>
+    <tr><td>Number of Other (Usage) CWE Weaknesses:</td><td align="right" id="cweIDCountUsageOtherDisplay"></td></tr>
     </table>
     </center>
 
@@ -588,6 +652,11 @@ sub printBottomPage {
         <input type="hidden" id="cweIDCountStatusStableHidden" value="$cweIDCountStatusStable">
         <input type="hidden" id="cweIDCountStatusDeprecatedHidden" value="$cweIDCountStatusDeprecated">
         <input type="hidden" id="cweIDCountStatusOtherHidden" value="$cweIDCountStatusOther">
+        <input type="hidden" id="cweIDCountUsageAllowedHidden" value="$cweIDCountUsageAllowed">
+        <input type="hidden" id="cweIDCountUsageAllowedWithReviewHidden" value="$cweIDCountUsageAllowedWithReview">
+        <input type="hidden" id="cweIDCountUsageDiscouragedHidden" value="$cweIDCountUsageDiscouraged">
+        <input type="hidden" id="cweIDCountUsageProhibitedHidden" value="$cweIDCountUsageProhibited">
+        <input type="hidden" id="cweIDCountUsageOtherHidden" value="$cweIDCountUsageOther">
     </body>
 </html>
 ENDBOTTOMPAGE
@@ -636,6 +705,11 @@ print "cweIDCountStatusDraft=$cweIDCountStatusDraft\n";
 print "cweIDCountStatusIncomplete=$cweIDCountStatusIncomplete\n";
 print "cweIDCountStatusStable=$cweIDCountStatusStable\n";
 print "cweIDCountStatusOther=$cweIDCountStatusOther\n";
+print "cweIDCountUsageAllowed=$cweIDCountUsageAllowed\n";
+print "cweIDCountUsageAllowedWithReview=$cweIDCountUsageAllowedWithReview\n";
+print "cweIDCountUsageDiscouraged=$cweIDCountUsageDiscouraged\n";
+print "cweIDCountUsageProhibited=$cweIDCountUsageProhibited\n";
+print "cweIDCountUsageOther=$cweIDCountUsageOther\n";
 
 close(FH);
 close(FH2);
