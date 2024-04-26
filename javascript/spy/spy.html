@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SPY calculator</title>
+        <script>
+            function myconsole(value) {
+                var value = document.getElementById(value).value;
+                console.log({ value: value });
+                return value;
+            }
+            function addToDiv(div) {
+                var low = -20;
+                var high = 20;
+
+                div.insertAdjacentHTML('beforeend', "<table>");
+
+                for (var i = low; i <= high; i += 5) {
+                    console.log({ i: i });
+                    var textNode = document.createTextNode(i);
+                    div.insertAdjacentHTML('beforeend', "<tr>");
+                    div.insertAdjacentHTML('beforeend', "<td>" + i + "</td>");
+                    div.insertAdjacentHTML('beforeend', "</tr>");
+                }
+                div.insertAdjacentHTML('beforeend', "</table>");
+
+                /* Unlike innerHTML, insertAdjacentHTML doesn't overwrite content. It will insert strings:
+                - in front of an element.........: "beforebegin"
+                - inside an element as 1st child.: "afterbegin"
+                - inside an element as last child: "beforeend"
+                - behind an element..............: "afterend"
+                */
+                div.insertAdjacentHTML('beforeend', "TEST");
+            }
+            function calculate() {
+                var price = myconsole("price");
+                var percentage = myconsole("percentage");
+
+                var hiddenDiv = document.getElementById("hiddenDiv");
+                hiddenDiv.style.display = "block";
+
+                addToDiv(hiddenDiv);
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <table>
+            <tr>
+                <td>Price:</td>
+                <td><input type="text" id="price" value="0.00"></td>
+                <td>$</td>
+            </tr>
+            <tr>
+                <td>Percentage:</td>
+                <td><input type="text" id="percentage" value="2"></td>
+                <td>%</td>
+            </tr>
+            <tr>
+                <td colspan="3"><button onclick="calculate()">Click Me</button></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <div id="hiddenDiv" style="display: none;"></div>
+
+    </body>
