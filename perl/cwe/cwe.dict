@@ -1,4 +1,4 @@
-Built from CWE Version 4.14|2024-02-29
+Built from CWE Version 4.15|2024-07-16
 DEPRECATED: Apple '.DS_Store'|CWE-71
 DEPRECATED: Improper Sanitization of Custom Special Characters|CWE-92
 DEPRECATED: Miscalculated Null Termination|CWE-132
@@ -1228,6 +1228,7 @@ Improper Handling of Unexpected Data Type|CWE-241
 Improper Handling of Inconsistent Structural Elements|CWE-240
 Improper Handling of Length Parameter Inconsistency|CWE-130
 Deletion of Data Structure Sentinel|CWE-463
+Improper Validation of Generative AI Output|CWE-1426
 Improper Adherence to Coding Standards|CWE-710
 NULL Pointer Dereference|CWE-476
 Use of Obsolete Function|CWE-477
