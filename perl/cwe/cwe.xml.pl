@@ -83,7 +83,7 @@ sub sanitize {
 
 # https://cwe.mitre.org/data/archive.html
 #my $filename = 'cwec_v4.6.xml';
-my $filename = 'cwec_v4.15.xml';
+my $filename = 'cwec_v4.16.xml';
 
 #2dim array - key (CWEID) - data (NAME, DESC) 
 my %CWEData = {};
