@@ -114,9 +114,13 @@ my $cweDate = $data->{Date};
 
 my $filename = 'cwe.html';
 my $filename2 = 'cwe.dict';
+my $filename3 = 'cwe.js';
 open(FH, '>', $filename);
 open(FH2, '>', $filename2);
 print FH2 "Built from CWE Version $cweVersion|$cweDate\n";
+open(FH3, '>', $filename3);
+print FH3 "//Built from CWE Version $cweVersion|$cweDate\n";
+print FH3 "const CWE_LOOKUP = {\n";
 
 #https://stackoverflow.com/questions/657058/how-do-i-retrieve-tag-attributes-with-xmlsimple
 foreach my $weakness_node (@{$data->{Weaknesses}->{Weakness}})
@@ -270,6 +274,7 @@ sub  getCWEChildren {
         print FH "<li><input type=\"checkbox\" id=\"$newbreadcrumbs:$child_id\" name=\"$newbreadcrumbs:$child_id\" value=\"$newbreadcrumbs:$child_id\" onclick=\"checkTree('$newbreadcrumbs:$child_id');\"><span class=\"caret\"><span id=\"div$newbreadcrumbs:$child_id\" class=\"cwedata\" data-hover=\"CWE-$child_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$child_id.html\" target=\"_blank\">CWE-$child_id</a>:$c_name <i><b>($c_usage)</b></i></span></span>\n";
         print FH "<ul class=\"nested\">\n";
         print FH2 "$c_name\|CWE-$child_id\n";
+        print FH3 "\"CWE-$child_id\": \"$c_name\",\n";
         
         #print children recursively here
         getCWEChildren($child_id, $newbreadcrumbs);
@@ -294,6 +299,7 @@ sub printTree {
         print FH "<li><input type=\"checkbox\" id=\"$root_id\" name=\"$root_id\" value=\"$root_id\" onclick=\"checkTree('$root_id');\"><span class=\"caret\"><span id=\"div$root_id\" class=\"cwedata\" data-hover=\"CWE-$root_id:$c_name -- $c_desc\"><a href=\"https://cwe.mitre.org/data/definitions/$root_id.html\" target=\"_blank\">CWE-$root_id</a>:$c_name <i><b>($c_usage)</b></i></span></span>\n";
         print FH "<ul class=\"nested\">\n";
         print FH2 "$c_name\|CWE-$root_id\n";
+        print FH3 "\"CWE-$root_id\": \"$c_name\",\n";
 
         getCWEChildren($root_id,"");
         print FH "</ul>\n";
@@ -713,6 +719,8 @@ print "cweIDCountUsageOther=$cweIDCountUsageOther\n";
 
 close(FH);
 close(FH2);
+print FH3 "\"CWE-NA\": \"Not Applicable\"\n};";
+close(FH3);
 
 my $newfile = "..\\..\\..\\www\\cwe\\index.html";
 copy($filename, $newfile);
