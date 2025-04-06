@@ -1,4 +1,4 @@
-Built from CWE Version 4.16|2024-11-19
+Built from CWE Version 4.17|2025-04-03
 DEPRECATED: Apple '.DS_Store'|CWE-71
 DEPRECATED: Improper Sanitization of Custom Special Characters|CWE-92
 DEPRECATED: Miscalculated Null Termination|CWE-132
@@ -197,7 +197,6 @@ Insufficient Granularity of Address Regions Protected by Register Locks|CWE-1222
 Improper Restriction of Write-Once Bit Fields|CWE-1224
 Improper Prevention of Lock Bit Modification|CWE-1231
 Security-Sensitive Hardware Controls with Missing Lock Bit Protection|CWE-1233
-Inclusion of Undocumented Features or Chicken Bits|CWE-1242
 CPU Hardware Not Configured to Support Exclusivity of Write and Execute Operations|CWE-1252
 Improper Access Control Applied to Mirrored or Aliased Memory Regions|CWE-1257
 Improper Restriction of Security Token Assignment|CWE-1259
@@ -275,6 +274,8 @@ Access of Memory Location Before Start of Buffer|CWE-786
 Buffer Underwrite ('Buffer Underflow')|CWE-124
 Buffer Under-read|CWE-127
 Out-of-bounds Write|CWE-787
+Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')|CWE-120
+Use of Path Manipulation Function without Maximum-sized Buffer|CWE-785
 Stack-based Buffer Overflow|CWE-121
 Heap-based Buffer Overflow|CWE-122
 Write-what-where Condition|CWE-123
@@ -295,6 +296,7 @@ Information Loss or Omission|CWE-221
 Truncation of Security-relevant Information|CWE-222
 Omission of Security-relevant Information|CWE-223
 Insufficient Logging|CWE-778
+Missing Security-Relevant Feedback for Unexecuted Operations in Hardware Interface|CWE-1429
 Obscured Security-relevant Information by Alternate Name|CWE-224
 Product UI does not Warn User of Unsafe Actions|CWE-356
 Declaration of Catch for Generic Exception|CWE-396
@@ -362,7 +364,6 @@ Missing Release of File Descriptor or Handle after Effective Lifetime|CWE-775
 Improper Scrubbing of Sensitive Data from Decommissioned Device|CWE-1266
 Insufficient Resource Pool|CWE-410
 Modification of Assumed-Immutable Data (MAID)|CWE-471
-Reliance on IP Address for Authentication|CWE-291
 External Control of Assumed-Immutable Web Parameter|CWE-472
 PHP External Variable Modification|CWE-473
 Public Static Final Field References Mutable Object|CWE-607
@@ -457,25 +458,6 @@ Use of Expired File Descriptor|CWE-910
 Premature Release of Resource During Expected Lifetime|CWE-826
 Exposure of Resource to Wrong Sphere|CWE-668
 J2EE Misconfiguration: Entity Bean Declared Remote|CWE-8
-Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')|CWE-22
-Relative Path Traversal|CWE-23
-Path Traversal: '../filedir'|CWE-24
-Path Traversal: '/../filedir'|CWE-25
-Path Traversal: '/dir/../filename'|CWE-26
-Path Traversal: 'dir/../../filename'|CWE-27
-Path Traversal: '..\filedir'|CWE-28
-Path Traversal: '\..\filename'|CWE-29
-Path Traversal: '\dir\..\filename'|CWE-30
-Path Traversal: 'dir\..\..\filename'|CWE-31
-Path Traversal: '...' (Triple Dot)|CWE-32
-Path Traversal: '....' (Multiple Dot)|CWE-33
-Path Traversal: '....//'|CWE-34
-Path Traversal: '.../...//'|CWE-35
-Absolute Path Traversal|CWE-36
-Path Traversal: '/absolute/pathname/here'|CWE-37
-Path Traversal: '\absolute\pathname\here'|CWE-38
-Path Traversal: 'C:dirname'|CWE-39
-Path Traversal: '\\UNC\share\name\' (Windows UNC Share)|CWE-40
 Use of Externally-Controlled Format String|CWE-134
 Exposure of Sensitive Information to an Unauthorized Actor|CWE-200
 Insertion of Sensitive Information Into Sent Data|CWE-201
@@ -514,6 +496,7 @@ Exposure of WSDL File Containing Sensitive Information|CWE-651
 Exposure of Sensitive System Information Due to Uncleared Debug Information|CWE-1258
 Device Unlock Credential Sharing|CWE-1273
 Debug Messages Revealing Unnecessary Information|CWE-1295
+Driving Intermediate Cryptographic State/Results to Hardware Module Outputs|CWE-1431
 Passing Mutable Objects to an Untrusted Method|CWE-374
 Returning a Mutable Object to an Untrusted Caller|CWE-375
 Insecure Temporary File|CWE-377
@@ -770,6 +753,7 @@ Incorrect Behavior Order: Early Amplification|CWE-408
 Incorrect Behavior Order: Authorization Before Parsing and Canonicalization|CWE-551
 DMA Device Enabled Too Early in Boot Phase|CWE-1190
 Power-On of Untrusted Execution Core Before Enabling Fabric Access Control|CWE-1193
+Cryptographic Operations are run Before Supporting Units are Ready|CWE-1279
 Access Control Check Implemented After Asset is Accessed|CWE-1280
 Incorrect Control Flow Scoping|CWE-705
 Uncaught Exception|CWE-248
@@ -792,10 +776,8 @@ Loop with Unreachable Exit Condition ('Infinite Loop')|CWE-835
 Use of Blocking Code in Single-threaded, Non-blocking Context|CWE-1322
 Improper Enforcement of Behavioral Workflow|CWE-841
 Unintended Reentrant Invocation of Non-reentrant Code Via Nested Calls|CWE-1265
-Cryptographic Operations are run Before Supporting Units are Ready|CWE-1279
 Sequence of Processor Instructions Leads to Unexpected Behavior|CWE-1281
 Protection Mechanism Failure|CWE-693
-Collapse of Data into Unsafe Value|CWE-182
 Incomplete List of Disallowed Inputs|CWE-184
 Incomplete Denylist to Cross-Site Scripting|CWE-692
 Missing Encryption of Sensitive Data|CWE-311
@@ -810,6 +792,7 @@ Cleartext Storage of Sensitive Information in an Environment Variable|CWE-526
 Cleartext Transmission of Sensitive Information|CWE-319
 J2EE Misconfiguration: Data Transmission Without Encryption|CWE-5
 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute|CWE-614
+Reliance on HTTP instead of HTTPS|CWE-1428
 Inadequate Encryption Strength|CWE-326
 Use of Weak Hash|CWE-328
 Use of Password Hash With Insufficient Computational Effort|CWE-916
@@ -888,12 +871,11 @@ Use of Password System for Primary Authentication|CWE-309
 Insufficient Psychological Acceptability|CWE-655
 Reliance on Security Through Obscurity|CWE-656
 Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')|CWE-757
-Insufficient Logging|CWE-778
 Reliance on Untrusted Inputs in a Security Decision|CWE-807
 Authentication Bypass by Assumed-Immutable Data|CWE-302
 Reliance on Reverse DNS Resolution for a Security-Critical Action|CWE-350
 Reliance on Cookies without Validation and Integrity Checking in a Security Decision|CWE-784
-Automated Recognition Mechanism with Inadequate Detection or Handling of Adversarial Input Perturbations|CWE-1039
+Inadequate Detection or Handling of Adversarial Input Perturbations in Automated Recognition Mechanism|CWE-1039
 Semiconductor Defects in Hardware Logic with Security-Sensitive Implications|CWE-1248
 Incorrect Selection of Fuse Values|CWE-1253
 Product Released in Non-Release Configuration|CWE-1269
@@ -923,7 +905,7 @@ Comparison of Classes by Name|CWE-486
 Comparison of Object References Instead of Object Contents|CWE-595
 Use of Wrong Operator in String Comparison|CWE-597
 Persistent Storable Data Element without Associated Comparison Control Element|CWE-1097
-Automated Recognition Mechanism with Inadequate Detection or Handling of Adversarial Input Perturbations|CWE-1039
+Inadequate Detection or Handling of Adversarial Input Perturbations in Automated Recognition Mechanism|CWE-1039
 Floating Point Comparison with Incorrect Operator|CWE-1077
 Incorrect Comparison Logic Granularity|CWE-1254
 Improper Check or Handling of Exceptional Conditions|CWE-703
@@ -1021,6 +1003,8 @@ Access of Memory Location Before Start of Buffer|CWE-786
 Buffer Underwrite ('Buffer Underflow')|CWE-124
 Buffer Under-read|CWE-127
 Out-of-bounds Write|CWE-787
+Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')|CWE-120
+Use of Path Manipulation Function without Maximum-sized Buffer|CWE-785
 Stack-based Buffer Overflow|CWE-121
 Heap-based Buffer Overflow|CWE-122
 Write-what-where Condition|CWE-123
@@ -1208,6 +1192,7 @@ Double Decoding of the Same Data|CWE-174
 Improper Handling of Mixed Encoding|CWE-175
 Improper Handling of Unicode Encoding|CWE-176
 Improper Handling of URL Encoding (Hex Encoding)|CWE-177
+Collapse of Data into Unsafe Value|CWE-182
 Improper Handling of Syntactically Invalid Structure|CWE-228
 Improper Handling of Missing Special Element|CWE-166
 Improper Handling of Additional Special Element|CWE-167
@@ -1323,6 +1308,7 @@ Replicating Malicious Code (Virus or Worm)|CWE-509
 Trapdoor|CWE-510
 Logic/Time Bomb|CWE-511
 Spyware|CWE-512
+Inclusion of Undocumented Features or Chicken Bits|CWE-1242
 Improper Finite State Machines (FSMs) in Hardware Logic|CWE-1245
 Reliance on Undefined, Unspecified, or Implementation-Defined Behavior|CWE-758
 Use of Function with Inconsistent Implementations|CWE-474
