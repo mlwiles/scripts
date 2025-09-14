@@ -1,4 +1,4 @@
-Built from CWE Version 4.17|2025-04-03
+Built from CWE Version 4.18|2025-09-09
 DEPRECATED: Apple '.DS_Store'|CWE-71
 DEPRECATED: Improper Sanitization of Custom Special Characters|CWE-92
 DEPRECATED: Miscalculated Null Termination|CWE-132
@@ -60,7 +60,7 @@ Authorization Bypass Through User-Controlled Key|CWE-639
 Authorization Bypass Through User-Controlled SQL Primary Key|CWE-566
 Use of Non-Canonical URL Paths for Authorization Decisions|CWE-647
 Guessable CAPTCHA|CWE-804
-Permissive Cross-domain Policy with Untrusted Domains|CWE-942
+Permissive Cross-domain Security Policy with Untrusted Domains|CWE-942
 Internal Asset Exposed to Unsafe Debug Access Level or State|CWE-1244
 Improper Export of Android Application Components|CWE-926
 Use of Implicit Intent for Sensitive Communication|CWE-927
@@ -175,7 +175,7 @@ Authorization Bypass Through User-Controlled Key|CWE-639
 Authorization Bypass Through User-Controlled SQL Primary Key|CWE-566
 Use of Non-Canonical URL Paths for Authorization Decisions|CWE-647
 Guessable CAPTCHA|CWE-804
-Permissive Cross-domain Policy with Untrusted Domains|CWE-942
+Permissive Cross-domain Security Policy with Untrusted Domains|CWE-942
 Internal Asset Exposed to Unsafe Debug Access Level or State|CWE-1244
 Improper Restriction of Communication Channel to Intended Endpoints|CWE-923
 Reliance on IP Address for Authentication|CWE-291
@@ -189,7 +189,7 @@ Missing Protection Mechanism for Alternate Hardware Interface|CWE-1299
 Improper Verification of Source of a Communication Channel|CWE-940
 Improper Verification of Intent by Broadcast Receiver|CWE-925
 Incorrectly Specified Destination in a Communication Channel|CWE-941
-Permissive Cross-domain Policy with Untrusted Domains|CWE-942
+Permissive Cross-domain Security Policy with Untrusted Domains|CWE-942
 Sensitive Cookie with Improper SameSite Attribute|CWE-1275
 On-Chip Debug and Test Interface With Improper Access Control|CWE-1191
 Insufficient Granularity of Access Control|CWE-1220
@@ -441,6 +441,7 @@ Excessive Use of Hard-Coded Literals in Initialization|CWE-1052
 Initialization of a Resource with an Insecure Default|CWE-1188
 Insecure Default Variable Initialization|CWE-453
 Incorrect Register Defaults or Module Parameters|CWE-1221
+Insecure Setting of Generative AI/ML Model Inference Parameters|CWE-1434
 Operation on Resource in Wrong Phase of Lifetime|CWE-666
 Double Free|CWE-415
 Authentication Bypass: OpenSSL CTX Object Modified after SSL Objects are Created|CWE-593
@@ -887,7 +888,7 @@ Missing Immutable Root of Trust in Hardware|CWE-1326
 Improper Protections Against Hardware Overheating|CWE-1338
 Incorrect Comparison|CWE-697
 Permissive List of Allowed Inputs|CWE-183
-Permissive Cross-domain Policy with Untrusted Domains|CWE-942
+Permissive Cross-domain Security Policy with Untrusted Domains|CWE-942
 Incorrect Regular Expression|CWE-185
 Overly Restrictive Regular Expression|CWE-186
 Permissive Regular Expression|CWE-625
@@ -1293,6 +1294,7 @@ Incorrect Provision of Specified Functionality|CWE-684
 Missing Report of Error Condition|CWE-392
 Return of Wrong Status Code|CWE-393
 Expected Behavior Violation|CWE-440
+Insecure Setting of Generative AI/ML Model Inference Parameters|CWE-1434
 UI Discrepancy for Security Feature|CWE-446
 Unimplemented or Unsupported Feature in UI|CWE-447
 Obsolete Feature in UI|CWE-448
